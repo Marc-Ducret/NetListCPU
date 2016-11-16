@@ -1,0 +1,1 @@
+Netlist simulator contient le simulateur de netlist dans son état actuel (simulation bête et méchante)
