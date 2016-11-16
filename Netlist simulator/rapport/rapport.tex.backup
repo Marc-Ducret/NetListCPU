@@ -1,0 +1,72 @@
+\documentclass[a4paper, 10pt, french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{lmodern}
+\usepackage[autolanguage]{numprint}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{collcell}
+
+\usepackage[margin=3cm]{geometry}
+\usepackage{multicol}
+\usepackage[10pt]{moresize}
+\usepackage{pdflscape}
+
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsopn}
+\usepackage{stmaryrd}
+
+
+\usepackage{listings}
+\usepackage{minted}
+
+\usemintedstyle[OCaml]{frame=lines,style=colorful,fontfamily=tt,breaklines}
+\renewcommand{\listingscaption}{Listing}
+\renewcommand{\listoflistingscaption}{Table des listings}
+
+
+\newcommand{\netlist}{\emph{net-list}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+
+\title{Interpréteur netlist}
+\author{Florentin \bsc{Guth}}
+
+\begin{document}
+
+
+
+\maketitle
+
+\section{Fonctionnement général}
+
+L'interpréteur prend en entrée un nom de fichier contenant la \netlist\ du circuit et, de manière optionnelle, le nombre de cycles sur lesquels effectuer la simulation. On utilise alors le module \code{\textbf{Netlist}} pour obtenir la liste d'équations du programme, que l'on trie topologiquement. Dans le tri topologique, les instructions \code{REG} sont ignorées car elles seront exécutées à la fin du cycle, et l'instruction \code{RAM} ne dépend que de \code{read\_addr} puisque l'écriture est également exécutée à la fin du cycle (pour éviter les boucles combinatoires).
+
+Le programme est alors évalué cycle par cycle. La structure d'un cycle se décompose comme suit :
+\begin{itemize}
+ \item On demande les \code{inputs} à l'utilisateur (en refusant toute valeur non conforme au type attendu de l'entrée)
+ \item On évalue chaque équation dans l'ordre. Lorsqu'une instruction \code{REG} ou \code{RAM} est rencontrée, on ajoute à la liste des tâches la variable qui devra être mise à jour ainsi que les paramètres utiles pour la calculer (sans chercher à les évaluer, leur valeur n'est peut-être pas encore calculée pour ce cycle).
+ \item On affiche la valeur de toutes les entrées
+ \item On effectue chaque tâche \og simultanément \fg (cf. section sur l'environnement) afin de se préparer pour le cycle suivant
+\end{itemize}
+
+
+\section{Gestion de l'environnement}
+
+\section{Gestion de la RAM}
+
+
+
+
+\listoflistings
+
+
+\end{document}

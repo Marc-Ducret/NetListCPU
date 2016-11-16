@@ -1,0 +1,80 @@
+\documentclass[a4paper, 10pt, french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{lmodern}
+\usepackage[autolanguage]{numprint}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{collcell}
+
+\usepackage[margin=3cm]{geometry}
+\usepackage{multicol}
+\usepackage[10pt]{moresize}
+\usepackage{pdflscape}
+
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsopn}
+\usepackage{stmaryrd}
+
+
+\usepackage{listings}
+\usepackage{minted}
+
+\usemintedstyle[OCaml]{frame=lines,style=colorful,fontfamily=tt,breaklines}
+\renewcommand{\listingscaption}{Listing}
+\renewcommand{\listoflistingscaption}{Table des listings}
+
+
+\newcommand{\netlist}{\emph{net-list}}
+\newcommand{\minijazz}{\bsc{MiniJazz}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+
+\title{Interpréteur netlist}
+\author{Florentin \bsc{Guth}}
+
+\begin{document}
+
+
+
+\maketitle
+
+\section{Fonctionnement général}
+
+L'interpréteur prend en entrée un nom de fichier contenant la \netlist\ du circuit et, de manière optionnelle, le nombre de cycles sur lesquels effectuer la simulation. On utilise alors le module \code{\textbf{Netlist}} pour obtenir la liste d'équations du programme, que l'on trie topologiquement. Dans le tri topologique, les instructions \code{REG} sont ignorées car elles seront exécutées à la fin du cycle, et l'instruction \code{RAM} ne dépend que de \code{read\_addr} puisque l'écriture est également exécutée à la fin du cycle (pour éviter les boucles combinatoires).
+
+Le programme est alors évalué cycle par cycle. La structure d'un cycle se décompose comme suit :
+\begin{itemize}
+ \item On demande les \code{inputs} à l'utilisateur (en refusant toute valeur non conforme au type attendu de l'entrée).
+ \item On évalue chaque équation dans l'ordre. Lorsqu'une instruction \code{REG} ou \code{RAM} est rencontrée, on ajoute à la liste des tâches la variable qui devra être mise à jour ainsi que les paramètres utiles pour la calculer (sans chercher à les évaluer, leur valeur n'est peut-être pas encore calculée pour ce cycle).
+ \item On affiche la valeur de toutes les entrées.
+ \item On effectue chaque tâche \og simultanément \fg (cf. section sur l'environnement) afin de se préparer pour le cycle suivant.
+\end{itemize}
+
+
+\section{Gestion de la \code{RAM}}
+
+La \code{RAM} est représentée par un tableau de taille $2^{\code{addr\_size}}$ contenant des tableaux de \code{word\_size} bits. On vérifie au préalable que la \netlist\ effectue une utilisation consistante de la \code{RAM} ou \code{ROM}, i.e. que la taille des adresses et des mots est la même pour chacune des instructions concernées. Les adresses reçues sont converties en entier afin d'accéder à la valeur demandée. Au début de l'évaluation, la \code{RAM} est initialisée avec des 0.
+
+
+\section{Gestion de l'environnement}
+
+L'environnement est représenté par une table de hachage \code{env} dont les clés sont de type \code{string} (identificateurs) et qui contient des valeurs de type \code{\textbf{Netlist\_ast}.value}. Celle-ci est mise à jour à chaque équation évaluée, et est utilisée en cours de calcul pour obtenir les valeurs des variables intermédiaires déjà calculées. Lorsqu'on cherche à obtenir la valeur d'une variable qui n'est pas présente dans la table, ce qui correspond à la première itération d'un registre (les autres cas ont été écartés par la détection des cycles combinatoires ou par le compilateur \minijazz), on renvoie 0 ou un tableau de 0 suivant le type de la variable considérée.
+
+Pour traiter les tâches \og simultanément \fg (i.e. les instructions \code{x = REG y} et \code{y = REG x} doivent échanger les valeurs de \code{x} et \code{y} à la fin du cycle), on utilise un deuxième environnement \code{env'} :
+\begin{itemize}
+ \item A chaque fin de cycle, on commence par vider \code{env'}.
+ \item Lors de l'évaluation de chaque tâche en fin de cycle, on stocke les valeurs calculées dans \code{env'}, mais en utilisant les valeurs des variables contenues dans \code{env}.
+ \item Une fois toutes les tâches effectuées, on recopie les valeurs que contient \code{env'} dans \code{env}.
+\end{itemize}
+
+
+\end{document}
