@@ -1,0 +1,74 @@
+Architecture du MIPS :
+mots de 32 bits, ..
+
+NB : '¬' = " <- "
+Jeu d'instructions du MIPS :
+
+move r1, r2 	r1 ¬ r2
+add r1, r2, o 	r1 ¬ o + r2
+sub r1, r2, o 	r1 ¬ r2 - o
+mul r1, r2, o 	r1 ¬ r2 × o
+div r1, r2, o 	r1 ¬ r2 ÷ o
+and r1, r2, o 	r1 ¬ r2 land o
+or r1, r2, o 	r1 ¬ r2 lor o
+xor r1, r2, o 	r1 ¬ r2 lxor o
+sll r1, r2, o 	r1 ¬ r2 lsl o
+srl r1, r2, o 	r1 ¬ r2 lsr o
+li r1, n 	r1 ¬ n (i = immediat -> constante dans le programme !)
+la r1, a 	r1 ¬ a (load address ?)
+
+lw r1, o (r2) 	r1 ¬ tas.(r2 + o)
+sw r1, o (r2) 	r1 ® tas.(r2 + o)
+slt r1, r2, o 	r1 ¬ r2 < o "set on less than"
+sle r1, r2, o 	r1 ¬ r2 £ o "set on less or equal"
+seq r1, r2, o 	r1 ¬ r2 = o "set on equal"
+sne r1, r2, o 	r1 ¬ r2 ¹ o "set on non equal"
+j o 	pc ¬ o  (saut inconditionnel)
+jal o 	ra ¬ pc+1 Ù pc ¬ o "jump and link" (?)
+beq r, o, a 	pc¬ a si r = o "branch on equal" (saut conditionnel)
+bne r, o, a 	pc¬ a si r ¹ o "branch on non equal" (saut conditionnel)
+syscall 	appel système -> fait des opérations selon les valeurs de vo et .. (print_int, print_string, ..)
+nop 	ne fait rien
+
+
+
+Celles qu'on devra garder (d'après moi) ((c'est à dire toutes, en fait)):
+Opérations arithmético-logiques :
+add r1, r2, o 	r1 ¬ o + r2
+sub r1, r2, o 	r1 ¬ r2 - o
+mul r1, r2, o 	r1 ¬ r2 × o
+div r1, r2, o 	r1 ¬ r2 ÷ o
+sll r1, r2, o 	r1 ¬ r2 lsl o
+srl r1, r2, o 	r1 ¬ r2 lsr o
+
+and r1, r2, o 	r1 ¬ r2 land o
+or r1, r2, o 	r1 ¬ r2 lor o
+xor r1, r2, o 	r1 ¬ r2 lxor o
+
+slt r1, r2, o 	r1 ¬ r2 < o "set on less than"
+sle r1, r2, o 	r1 ¬ r2 £ o "set on less or equal"
+seq r1, r2, o 	r1 ¬ r2 = o "set on equal"
+sne r1, r2, o 	r1 ¬ r2 ¹ o "set on non equal"
+
+Opérations de manipulations de données :
+move r1, r2 	r1 ¬ r2
+lw r1, o (r2) 	r1 ¬ tas.(r2 + o)
+sw r1, o (r2) 	r1 ® tas.(r2 + o)
+
+Opérations de contrôle de l'exécution
+j o 	pc ¬ o  (saut inconditionnel)
+beq r, o, a 	pc¬ a si r = o "branch on equal" (saut conditionnel)
+
+Opérations de contrôle de la sortie 
+print_int, print_string, ..
+
+Opérations qu'il pourrait être utile de rajouter :
+mod 
+mod24
+mod60
+mod365 ? 
+add24 (addition modulo 24)
+add60
+add365 ?
+
+
