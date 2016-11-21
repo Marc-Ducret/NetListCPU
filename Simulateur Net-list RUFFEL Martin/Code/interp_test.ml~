@@ -1,0 +1,32 @@
+
+let print_only = ref false
+let number_steps = ref (0)
+
+let compile filename =
+  try
+    let p = Netlist.read_file filename in
+    let out_name = (Filename.chop_suffix filename ".net") ^ "_sch.net" in
+    let out = open_out out_name in
+    let close_all () =
+      close_out out
+    in
+    begin try
+        let p = Scheduler.schedule p in
+        Interp.interprete p !number_steps
+      with
+        | Scheduler.Combinational_cycle ->
+            Format.eprintf "The netlist has a combinatory cycle.@.";
+            close_all (); exit 2
+    end;
+    close_all ()
+  with
+    | Netlist.Parse_error s -> Format.eprintf "An error accurred: %s@." s; exit 2
+
+let main () =
+  Arg.parse
+    ["-n", Arg.Set_int number_steps, "Number of steps to simulate"]
+    compile
+    ""
+;;
+
+main ()
