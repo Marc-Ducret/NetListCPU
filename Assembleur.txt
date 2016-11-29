@@ -58,6 +58,7 @@ sw r1, o (r2) 	r1 ® tas.(r2 + o)
 Opérations de contrôle de l'exécution
 j o 	pc ¬ o  (saut inconditionnel)
 beq r, o, a 	pc¬ a si r = o "branch on equal" (saut conditionnel)
+nop 	ne fait rien
 
 Opérations qu'il pourrait être utile de rajouter :
 mod 
@@ -66,4 +67,14 @@ mod60
 add24 (addition modulo 24)
 add60
 
+32 bits pourquoi ?
+Parce que le Japon.
+On pourra utiliser des entiers signés seulement, des couleurs, des ascii 27 bits.
 
+Mémoire : 
+ - si 256*256 pixels et couleurs 32 bits : 256 Ko pour l'écran
+ - 512 Ko
+ - + ROM pour initialiser le microprocesseur ?
+ - + ROM qui contient la montre digitale (de taille qu'on veut)
+ - Taille des mots : 32 bits (4 octets) i.e. taille d'une instruction
+ - 32 registres (5 bits) : 3*5 bits pour 3 registres et 17 bits pour l'opcode
