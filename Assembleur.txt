@@ -78,3 +78,7 @@ Mémoire :
  - + ROM qui contient la montre digitale (de taille qu'on veut)
  - Taille des mots : 32 bits (4 octets) i.e. taille d'une instruction
  - 32 registres (5 bits) : 3*5 bits pour 3 registres et 17 bits pour l'opcode
+ 
+ L'horloge stockée dans la RAM quelque part (on voudra stocker aussi les constantes 0, 24, 60, 30?, 365? dans les registres) en format nombre de secondes depuis une référence fixe. Pour l'affichage : un bit pour dire mode pixels ou mode LCD
+Pour les entrées (changement de mode ou changement d'heure), on pourrait écrire à des endroits spécifiques dans la RAM.
+ 
