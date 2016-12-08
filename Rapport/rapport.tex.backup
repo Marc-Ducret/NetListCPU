@@ -1,0 +1,169 @@
+\documentclass[a4paper, 10pt, french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{lmodern}
+\usepackage[autolanguage]{numprint}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{collcell}
+
+\usepackage[margin=3cm]{geometry}
+\usepackage{multicol}
+\usepackage[10pt]{moresize}
+\usepackage{pdflscape}
+
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsopn}
+\usepackage{stmaryrd}
+
+
+\usepackage{listings}
+\usepackage{minted}
+
+\usemintedstyle[OCaml]{frame=lines,style=colorful,fontfamily=tt,breaklines}
+\renewcommand{\listingscaption}{Listing}
+\renewcommand{\listoflistingscaption}{Table des listings}
+
+
+\newcommand{\netlist}{\emph{net-list}}
+\newcommand{\minijazz}{\bsc{MiniJazz}}
+\newcommand{\mips}{\emph{MIPS}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\newcommand{\affects}{$\leftarrow$}
+\newcolumntype{R}{>{\ttfamily}{l}}
+\newcolumntype{M}{>{$}{c}<{$}}
+\newcolumntype{U}{>{\code{r1,}}{c}}
+\newcolumntype{D}{>{\code{r2,}}{c}}
+\newcolumntype{O}{>{\code{o}}{c}}
+\newcolumntype{E}{>{$r_1$}{c}}
+\newcolumntype{A}{>{\affects}{l}}
+
+
+
+\title{Choix relatifs à l'implémentation du processeur}
+\author{Marc \bsc{Ducret} \and Florentin \bsc{Guth} \and Martin \bsc{Ruffel} \and Lionel \bsc{Zoubritzky}}
+
+\begin{document}
+
+\maketitle
+
+\section{Choix d'architecture}
+
+On choisit 32 bits pourquoi ?
+Parce que le Japon.
+On pourra utiliser des entiers signés seulement, des couleurs, des ascii 27 bits.
+
+Mémoire : 
+ - si 256*256 pixels et couleurs 32 bits : 256 Ko pour l'écran
+ - 512 Ko
+ - + ROM pour initialiser le microprocesseur ?
+ - + ROM qui contient la montre digitale (de taille qu'on veut)
+ - Taille des mots : 32 bits (4 octets) i.e. taille d'une instruction
+ - 32 registres (5 bits) : 3*5 bits pour 3 registres et 17 bits pour l'opcode
+ 
+ L'horloge stockée dans la RAM quelque part (on voudra stocker aussi les constantes 0, 24, 60, 30?, 365? dans les registres) en format nombre de secondes depuis une référence fixe. Pour l'affichage : un bit pour dire mode pixels ou mode LCD
+Pour les entrées (changement de mode ou changement d'heure), on pourrait écrire à des endroits spécifiques dans la RAM.
+
+
+\section{Opérations implémentées}
+
+\subsection{Opérations arithmético-logiques}
+
+On conserve pratiquement toutes les opérations de base du \mips.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|RUDO|EAMMM|}
+    \hline
+    \multicolumn{4}{|c|}{Opération} & \multicolumn{5}{c|}{Effet} \\
+    \hline
+    add & & & & & & r_2 &+& o \\
+    sub & & & & & & r_2 &-& o \\
+    mul & & & & & & r_2 &\times& o \\
+    div & & & & & & r_2 &\div& o \\
+    sll & & & & & & r_2 &\mathrm{lsl}& o \\
+    srl & & & & & & r_2 &\mathrm{lsr}& o \\
+    \hline
+    and & & & & & & r_2 &\wedge& o \\
+    or  & & & & & & r_2 &\vee& o \\
+    xor & & & & & & r_2 &\oplus& o \\
+    \hline
+    slt & & & & & & r_2 &<& o \\
+    sle & & & & & & r_2 &\leq& o \\
+    seq & & & & & & r_2 &=& o \\
+    sne & & & & & & r_2 &\neq& o \\
+    \hline
+  \end{tabular}
+  \caption{Opérations arithmético-logiques}
+\end{table}
+
+On ajoute néanmoins les opérations suivantes, afin de faciliter les opérations sur les heures :
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|RURR|EAMMM|}
+    \hline
+    \multicolumn{4}{|c|}{Opération} & \multicolumn{5}{c|}{Effet} \\
+    \hline
+    add24 & & r2, & o & & & r_2 + o & \mathrm{mod} & 24 \\
+    add60 & & r2, & o & & & r_2 + o & \mathrm{mod} & 60 \\
+    \hline
+    mod   & & r2, & o & & & r_2     & \mathrm{mod} & o  \\
+    mod24 & & r2  &   & & & r_2     & \mathrm{mod} & 24 \\
+    mod60 & & r2  &   & & & r_2     & \mathrm{mod} & 60 \\
+    \hline
+  \end{tabular}
+  \caption{Opérations arithmético-logiques}
+\end{table}
+
+
+\subsection{Opérations de manipulations de données}
+
+Parmi les opérations du \mips, on conserve les suivantes.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|RURR|EcM|}
+    \hline
+    \multicolumn{4}{|c|}{Opération} & \multicolumn{3}{c|}{Effet} \\
+    \hline
+    move & & r2 &      & & \affects & r_2 \\
+    \hline
+    lw   & & o  & (r2) & & \affects & \mathrm{RAM}[r_2 + o] \\
+    rw   & & o  & (r2) & & $\rightarrow$ & \mathrm{RAM}[r_2 + o] \\
+    \hline
+  \end{tabular}
+  \caption{Opérations de manipulations de données}
+\end{table}
+
+
+\subsection{Opérations de contrôle de l’exécution}
+
+Enfin, on dispose des opérations suivantes afin de simuler des conditions et des boucles.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|RRRR|McMM|}
+    \hline
+    \multicolumn{4}{|c|}{Opération} & \multicolumn{4}{c|}{Effet} \\
+    \hline
+    j   & o &   &   & \mathrm{PC} & \affects & o & \\
+    \hline
+    beq & r & o & a & \mathrm{PC} & \affects & a & \text{si } $r = o$ \\
+    \hline
+    nop &   &   &   &             & & \varnothing & \\
+    \hline
+  \end{tabular}
+  \caption{Opérations de contrôle de l’exécution}
+\end{table}
+
+
+\end{document}
