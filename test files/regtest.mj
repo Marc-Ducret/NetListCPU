@@ -1,0 +1,4 @@
+main(z) = (x, y) where
+  y = reg z;
+  x = reg y;
+end where
