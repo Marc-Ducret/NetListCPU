@@ -1,0 +1,127 @@
+
+mux_n<n>(c,a:[n],b:[n]) = (o:[n]) where
+   if n = 0 then o = [] else
+   o = mux(c,a[0],b[0]) . mux_n<n-1>(c,a[1..n-1],b[1..n-1]) end if
+end where
+
+maj (r:[32], cond, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31) = (s:[32]) where
+
+   (*Update of register r with data d depending on condition cond*)
+
+   s = mux(cond, d0, reg(r[0])) . mux(cond, d1, reg(r[1])) . mux(cond, d2, reg(r[2])) . mux(cond, d3, reg(r[3])) . mux(cond, d4, reg(r[4])) . mux(cond, d5, reg(r[5])) . mux(cond, d6, reg(r[6])) . mux(cond, d7, reg(r[7])) . mux(cond, d8, reg(r[8])) . mux(cond, d9, reg(r[9])) . mux(cond, d10, reg(r[10])) . mux(cond, d11, reg(r[11])) . mux(cond, d12, reg(r[12])) . mux(cond, d13, reg(r[13])) . mux(cond, d14, reg(r[14])) . mux(cond, d15, reg(r[15])) . mux(cond, d16, reg(r[16])) . mux(cond, d17, reg(r[17])) . mux(cond, d18, reg(r[18])) . mux(cond, d19, reg(r[19])) . mux(cond, d20, reg(r[20])) . mux(cond, d21, reg(r[21])) . mux(cond, d22, reg(r[22])) . mux(cond, d23, reg(r[23])) . mux(cond, d24, reg(r[24])) . mux(cond, d25, reg(r[25])) . mux(cond, d26, reg(r[26])) . mux(cond, d27, reg(r[27])) . mux(cond, d28, reg(r[28])) . mux(cond, d29, reg(r[29])) . mux(cond, d30, reg(r[30])) . mux(cond, d31, reg(r[31]));
+
+end where
+
+
+filtre<n>(r:[n],cond) = (o:[n]) where (*TOOPT*)
+   if n = 0 then o = []
+   else o = (reg(r[0]) & cond) . filtre<n-1>(r[1..n-1],cond) end if
+end where
+
+or_n<n>(r1:[n],r2:[n]) = (o:[n]) where
+   if n = 0 then o = []
+   else o = (r1[0] + r2[0]) . or_n<n-1>(r1[1..n-1],r2[1..n-1]) end if
+end where
+
+main(rea1:[3], rea2:[3], we, d:[32]) = (o1:[32],o2:[32]) where
+
+   (*rea1 : read address 1
+     rea2 : read address 2
+     we   : write enable
+     d    : data to write*)
+   
+   (*Constants*)
+   a0 = rea1[2]; a1 = rea1[1]; a2 = rea1[0]; an0 = not a0; an1 = not a1; an2 = not a2;
+   z0 = rea2[2]; z1 = rea2[1]; z2 = rea2[0]; zn0 = not z0; zn1 = not z1; zn2 = not z2;
+   
+   a01 = a1 & a0; a0n1 = an1 & a0; an01 = a1 & an0; an0n1 = an1 & an0;
+   ca2 = a2 & we; can2 = an2 & we;
+   z01 = z1 & z0; z0n1 = zn1 & z0; zn01 = z1 & zn0; zn0n1 = zn1 & zn0;
+
+   a_0 = an0n1 & an2;
+   a_1 = a0n1  & an2;
+   a_2 = an01  & an2;
+   a_3 = a01   & an2;
+   a_4 = an0n1 & a2;
+   a_5 = a0n1  & a2;
+   a_6 = an01  & a2;
+   a_7 = a01   & a2;
+
+   z_0 = zn0n1 & zn2;
+   z_1 = z0n1  & zn2;
+   z_2 = zn01  & zn2;
+   z_3 = z01   & zn2;
+   z_4 = zn0n1 & z2;
+   z_5 = z0n1  & z2;
+   z_6 = zn01  & z2;
+   z_7 = z01   & z2;
+
+   d0 = d[0];
+   d1 = d[1];
+   d2 = d[2];
+   d3 = d[3];
+   d4 = d[4];
+   d5 = d[5];
+   d6 = d[6];
+   d7 = d[7];
+   d8 = d[8];
+   d9 = d[9];
+   d10 = d[10];
+   d11 = d[11];
+   d12 = d[12];
+   d13 = d[13];
+   d14 = d[14];
+   d15 = d[15];
+   d16 = d[16];
+   d17 = d[17];
+   d18 = d[18];
+   d19 = d[19];
+   d20 = d[20];
+   d21 = d[21];
+   d22 = d[22];
+   d23 = d[23];
+   d24 = d[24];
+   d25 = d[25];
+   d26 = d[26];
+   d27 = d[27];
+   d28 = d[28];
+   d29 = d[29];
+   d30 = d[30];
+   d31 = d[31];
+
+
+   (*Registers update*)
+
+   r0 = maj(r0, can2 & an0n1, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+   r1 = maj(r1, can2 & a0n1, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+   r2 = maj(r2, can2 & an01, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+   r3 = maj(r3, can2 & a01, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+   r4 = maj(r4, ca2 & an0n1, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+   r5 = maj(r5, ca2 & a0n1, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+   r6 = maj(r6, ca2 & an01, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+   r7 = maj(r7, ca2 & a01, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+
+
+   (*Registers reading*)
+
+   aa_0 = or_n<32>(filtre<32>(r0,a_0),filtre<32>(r1,a_1));
+   aa_1 = or_n<32>(filtre<32>(r2,a_2),filtre<32>(r3,a_3));
+   aa_2 = or_n<32>(filtre<32>(r4,a_4),filtre<32>(r5,a_5));
+   aa_3 = or_n<32>(filtre<32>(r6,a_6),filtre<32>(r7,a_7));
+   aa_4 = or_n<32>(aa_0, aa_1);
+   aa_5 = or_n<32>(aa_2, aa_3);
+   o1 = or_n<32>(aa_4, aa_5);
+
+   zz_0 = or_n<32>(filtre<32>(r0,z_0),filtre<32>(r1,z_1));
+   zz_1 = or_n<32>(filtre<32>(r2,z_2),filtre<32>(r3,z_3));
+   zz_2 = or_n<32>(filtre<32>(r4,z_4),filtre<32>(r5,z_5));
+   zz_3 = or_n<32>(filtre<32>(r6,z_6),filtre<32>(r7,z_7));
+   zz_4 = or_n<32>(zz_0, zz_1);
+   zz_5 = or_n<32>(zz_2, zz_3);
+   o2 = or_n<32>(zz_4, zz_5);
+
+end where
+
+
+
+
