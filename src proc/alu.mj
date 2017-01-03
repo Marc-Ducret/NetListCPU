@@ -1,0 +1,83 @@
+(* complément à deux, poids fort (signe) en 0, poids faible à droite (indice n-1) *)
+
+
+mux_n<n>(c,a:[n],b:[n]) = (o:[n]) where
+  (* mux(0, a, b) = b PUTAIN QEKLFBHQDJOFHJKLQE *)
+  if n = 0 then o = [] else
+  o = mux(c,a[0],b[0]) . mux_n<n-1>(c,a[1..n-1],b[1..n-1]) end if
+end where
+
+
+fulladder(a,b,c) = (s, r) where
+  s = (a ^ b) ^ c;
+  r = (a & b) + ((a ^ b) & c);
+end where
+
+add<n>(a:[n], b:[n], c_in) = (o:[n], c_out) where
+  if n = 0 then
+    o = [];
+    c_out = c_in
+  else
+    (s_n1, c_n1) = add<n-1>(a[1..], b[1..], c_in);
+    (s_n, c_out) = fulladder(a[0], b[0], c_n1);
+    o = s_n . s_n1
+  end if
+end where
+
+add32(a:[32], b:[32]) = (o:[32]) where
+  (o, osef) = add<32>(a, b, 0)
+end where
+
+
+not_n<n>(a:[n]) = (o:[n]) where
+  if n = 0 then
+    o = []
+  else
+    o = not a[0] . not_n<n-1>(a[1..])
+  end if
+end where
+
+sub32(a:[32], b:[32]) = (o:[32]) where
+  (o, osef) = add<32>(a, not_n<32>(b), 1);
+end where
+
+
+andbit<n>(a, b:[n]) = (o:[n]) where
+  if n = 0 then
+    o = []
+  else
+    o = a and b[0] . andbit<n-1>(a, b[1..])
+  end if
+end where
+
+mul<n>(a:[n], b:[n]) = (o:[n]) where
+  if n = 0 then
+    o = []
+  else
+    (o, osef) = add<n>(andbit<n>(a[n-1], b), mul<n-1>(a[0..n-2], b[1..n-1]) . 0, 0)
+  end if
+end where
+
+
+div<n>(a:[n], b:[n]) = (o:[n]) where
+
+  (* GLHF, compilator's job to transform in multiplication? *)
+  
+  if n = 0 then
+    o = []
+  else
+    o = 0 . div<n-1>(a[1..], b[1..])
+  end if
+end where
+
+
+
+
+
+main(opcode, a:[32], b:[32]) = (o:[32]) where
+  o = mul<32>(a, b);
+  c = add32(a, b);
+  d = sub32(a, b)
+end where
+
+(* 32 bits : 00000000000000000000000000000000 *)

@@ -26,7 +26,7 @@ struct
     Array.fold_left (fun i b -> 2*i + (if b then 1 else 0)) 0 addr
 
   let init ~addr_size ~word_size =
-    { contents = Array.init (1 lsl addr_size) (fun _ -> Array.create word_size false);
+    { contents = Array.init (1 lsl addr_size) (fun _ -> Array.make word_size false);
       addr_size;
       word_size }
 
@@ -139,7 +139,7 @@ let simulate p =
     with Not_found -> let t = Env.find x p.p_vars in
       match t with
       | TBit -> VBit false
-      | TBitArray n -> VBitArray (Array.create n false)
+      | TBitArray n -> VBitArray (Array.make n false)
   in
 
 
@@ -196,7 +196,7 @@ let simulate p =
     in
     let type_to_string = function
       | TBit -> ""
-      | TBitArray n -> " : " ^ (string_of_int n) ^ " "
+      | TBitArray n -> " : " ^ (string_of_int n)
     in
     List.iter (fun x -> 
                 let v = ref None in
@@ -223,13 +223,14 @@ let simulate p =
   in
 
   let print_outputs () =
-    let rec val_to_string = function
-      | VBit true -> "1"
-      | VBit false -> "0"
-      | VBitArray a -> Array.fold_left (fun s b -> s ^ (val_to_string (VBit b))) "" a
+    let val_to_string = function
+      | VBit true -> " = 1"
+      | VBit false -> " = 0"
+      | VBitArray a -> Array.fold_left (fun s b -> s ^ (if b then "1" else "0"))
+                         (" : " ^ (string_of_int (Array.length a)) ^ " = ") a
     in
     List.iter (fun x -> print_endline
-                          (x ^ " = " ^ (val_to_string (proc_arg (Avar x)))))
+                          (x ^ (val_to_string (proc_arg (Avar x)))))
       p.p_outputs
   in      
 
