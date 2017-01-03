@@ -1,0 +1,11 @@
+INPUT a
+OUTPUT f
+VAR
+  b, c, d, e
+IN
+e = a
+f = e
+d = AND b c
+b = a
+c = a
+

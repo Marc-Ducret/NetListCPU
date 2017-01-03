@@ -20,7 +20,7 @@ let node_for_label g x =
   List.find (fun n -> n.n_label = x) g.g_nodes
 
 let add_edge g id1 id2 =
-  let n1 = node_for_label g id1 in
+  let n1 = node_for_label g id1 in 
   let n2 = node_for_label g id2 in
   n1.n_link_to <- n2::n1.n_link_to;
   n2.n_linked_by <- n1::n2.n_linked_by
@@ -49,15 +49,13 @@ let has_cycle g =
       
 
 let topological g =
-  let rec visit to_visit u =
-    match to_visit with
-      [] -> u
-    | h::t -> if h.n_mark = NotVisited then (
-		h.n_mark <- Visited;
-		visit (t @ h.n_linked_by) (h.n_label::u) )
-	      else visit t u
+	let res = ref [] in
+  let rec visit s =
+    	if s.n_mark = NotVisited then (
+				s.n_mark <- Visited;
+				List.iter visit s.n_link_to;
+				res := s.n_label :: !res)
   in
   clear_marks g;
-  visit (find_roots_rev g) []
-
-
+  List.iter visit (find_roots g);
+	!res

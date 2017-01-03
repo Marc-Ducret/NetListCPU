@@ -11,11 +11,9 @@ let rec read_exp (id, exp) =
   | Emux (a, b, c) -> (read_arg a) @ (read_arg b) @ (read_arg c)
   | Eram (_,_,a,b,c,d) -> (read_arg a)
   | Ereg i -> [i]
-  | _ -> []
 
 
 let schedule p =
-  print_string "#####\n";
   let g = mk_graph() in
   let vars = List.fold_left (fun u (id,exp) -> u @ (id::(read_exp (id,exp)))) [] p.p_eqs in
   List.iter (fun v ->
@@ -26,17 +24,14 @@ let schedule p =
 			match exp with
 				Ereg _ -> id::u
 			|	_ -> u) [] p.p_eqs in
-  print_string "ADDED NODES\n";
   List.iter (fun (id,exp) 
 		-> List.iter (fun v -> 
 			if List.mem v regs then add_edge g id v
 			else 			add_edge g v id
 			) (read_exp (id,exp))) 
 		p.p_eqs;
-  print_string "ADDED EDGES\n";
-  if has_cycle g then (print_string "WARNING CYCLE OUCH\n"; raise Combinational_cycle);
-  let id_order = List.rev (topological g) in
-  print_string "ezTOPO\n";
+  if has_cycle g then raise Combinational_cycle;
+  let id_order = List.rev (topological g) in 
   {p with p_eqs = List.fold_left (fun u id -> 
 		try
 	  	  (List.find (fun (i,exp) -> i = id) p.p_eqs)::u

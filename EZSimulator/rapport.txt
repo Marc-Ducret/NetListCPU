@@ -1,0 +1,26 @@
+Simulateur de Net-List (nls.ml) - Marc DUCRET
+
+Pour simuler une net-list, il s'agit de mettre à jour les valeurs de toutes les variables.
+Si dans un premier temps on ignore la ram et les registres :
+Par nature d'une net-list, il existe un ordre d'exécution avec lequel les variables nécessaires
+au calcul d'une nouvelle ont déjà été calculées. Ainsi, on effectue un tri topologique des
+instructions de la net-list en formant un arbre dont ces instructions sont les sommets et
+les arrêtes sont les dépendances.
+L'implémentation de la détection de cycle et du tri topologique n'a rien de particulier.
+Pour conserver les valeurs des différentes variables, on utilise une hash map. Il suffit
+alors d'effectuer les opérations dans l'ordre résultant.
+
+Ensuite, on s'intéresse au cas des registres. On peut remarquer que lorsqu'une variable
+est un registre, on souhaite, pour calculer les variables qui en dépendent, utiliser
+la valeur du tick précédent. Pour cela, il suffit de d'inverser les dépendances vis à vis
+des registres (faire dépendre le registre des variables en "dépendant") : en effet on veut
+alors mettre à jour le registre un fois toutes les variables en dépendant calculées.
+ 
+Pour ce qui est de la ram, une solution simple est d'effectuer les écritures dans une
+seconde passe. Ainsi, dans la première passe on interprète une instruction ram comme
+uniquement une lecture et l'on fait abstraction des paramètres liés à l'écriture pour
+ce qui est des dépendances. Dans la seconde passe, toutes les variables sont calculées
+donc on peut procéder aux écritures sans se soucier de l'ordre d'exécution.
+
+Je n'ai pas rencontré de problèmes particuliers si ce n'est comprendre le fonctionnement
+souhaité des registres et de la ram.

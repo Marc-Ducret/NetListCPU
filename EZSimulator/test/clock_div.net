@@ -1,9 +1,9 @@
-INPUT
+INPUT d
 OUTPUT o
 VAR
-  a, c, o
+  a, o
 IN
-c = NOT a
-o = REG c
 a = REG o
+o = NOT a
+
 
