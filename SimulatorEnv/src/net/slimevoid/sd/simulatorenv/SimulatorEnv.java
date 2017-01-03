@@ -21,8 +21,9 @@ public class SimulatorEnv {
 				public void run() {
 					try {
 						for(int i = 0; i < 20; i ++) {
-							if(i % 5 == 4) {
+							if(i % 2 == 0) {
 								out.write(2);
+								out.flush();
 								Thread.sleep(500);
 							}
 							out.write(1);
@@ -88,13 +89,13 @@ public class SimulatorEnv {
 	}
 
 	public void drawScreen() {
+		StringBuilder builder = new StringBuilder();
 		for(int y = 0; y < h; y ++) {
 			for(int x = 0; x < w; x ++) {
-				System.out.print(buff[x+w*y]);
+				builder.append(buff[x+w*y]);
 			}
-			System.out.println();
+			builder.append('\n');
 		}
+		System.out.print(builder.toString());
 	}
-
-	public void handlePacket() {}
 }
