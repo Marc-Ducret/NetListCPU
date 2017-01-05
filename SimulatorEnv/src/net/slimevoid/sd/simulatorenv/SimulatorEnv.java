@@ -1,49 +1,32 @@
 package net.slimevoid.sd.simulatorenv;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SimulatorEnv {
 	
 	public static final int EXIT = 0, CHAR = 1, REDRAW = 2;
 
 	public static void main(String[] args) throws IOException {
-		if(args.length > 0) {
-			Process p = Runtime.getRuntime().exec(args[0]);
-			new SimulatorEnv(80, 20).run(p.getInputStream());
+		if(args.length >= 4) {
+			int sW = Integer.parseInt(args[0]);
+			int sH = Integer.parseInt(args[1]);
+			Process p = Runtime.getRuntime().exec(args[2]);
+			new SimulatorEnv(sW, sH).run(p.getInputStream(), p.getOutputStream(), 
+											new FileInputStream(new File(args[3])));
 		} else {
-			//TESTING start
-			PipedInputStream in = new PipedInputStream();
-			PipedOutputStream out = new PipedOutputStream();
-			in.connect(out);
-			new Thread(new Runnable() {
-				
-				@Override
-				public void run() {
-					try {
-						for(int i = 0; i < 20; i ++) {
-							if(i % 2 == 0) {
-								out.write(2);
-								out.flush();
-								Thread.sleep(500);
-							}
-							out.write(1);
-							out.write(i);
-							out.write(i);
-							out.write((int)'x');
-						}
-						out.write(0);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			}).start();
-			new SimulatorEnv(80, 20).run(in);
-			//TESTING end
-			System.err.println("Please specify a simulator to run");
+			System.err.println("Args format: [width] [height] [simulator] [ROM]");
 			System.exit(-1);
 		}
 	}
-
+	
 	private final int w;
 	private final int h;
 	private final char[] buff;
@@ -55,9 +38,13 @@ public class SimulatorEnv {
 		for(int i = 0; i < buff.length; i ++) buff[i] = '.';
 	}
 
-	public void run(InputStream in) {
+	public void run(InputStream in, OutputStream out, InputStream rom) {
 		try {
 			in = new BufferedInputStream(in);
+			out = new BufferedOutputStream(out);
+			out.write(w);
+			out.write(h);
+			writeRom(rom, out);
 			while(true) {
 				switch(in.read()) {
 				case EXIT:
@@ -80,6 +67,21 @@ public class SimulatorEnv {
 			if(e.getMessage() != null)
 				System.err.print(": "+e.getMessage());
 			System.err.println();
+		}
+	}
+	
+	public void writeRom(InputStream rom, OutputStream out) throws IOException {
+		List<Integer> buff = new ArrayList<>();
+		int r;
+		while((r = rom.read()) > 0) {
+			buff.add(r);
+		}
+		int sizePow = 0;
+		while((1 << sizePow) < buff.size()) sizePow += 1;
+		out.write(sizePow);
+		for(int i = 0; i < (1 << sizePow); i ++) {
+			if(i < buff.size()) out.write(buff.get(i));
+			else out.write(0);
 		}
 	}
 
