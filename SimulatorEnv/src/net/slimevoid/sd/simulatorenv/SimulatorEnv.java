@@ -45,21 +45,25 @@ public class SimulatorEnv {
 			out.write(w);
 			out.write(h);
 			writeRom(rom, out);
-			while(true) {
-				switch(in.read()) {
-				case EXIT:
-					in.close();
-					return;
-				
-				case CHAR:
-					buff[in.read() + w * in.read()] = (char) in.read();
-					break;
-					
-				case REDRAW:
-					clearScreen();
-					drawScreen();
-					break;
-				}
+			out.flush();
+			System.err.println("written?");
+			int r;
+			while((r = in.read()) >= 0) {
+				System.out.print((char) r);
+//				switch(in.read()) {
+//				case EXIT:
+//					in.close();
+//					return;
+//				
+//				case CHAR:
+//					buff[in.read() + w * in.read()] = (char) in.read();
+//					break;
+//					
+//				case REDRAW:
+//					clearScreen();
+//					drawScreen();
+//					break;
+//				}
 			}
 		} catch(Exception e) {
 			System.err.println("Error while executing simulator:");
@@ -73,14 +77,17 @@ public class SimulatorEnv {
 	public void writeRom(InputStream rom, OutputStream out) throws IOException {
 		List<Integer> buff = new ArrayList<>();
 		int r;
-		while((r = rom.read()) > 0) {
+		while((r = rom.read()) >= 0) {
 			buff.add(r);
 		}
 		int sizePow = 0;
 		while((1 << sizePow) < buff.size()) sizePow += 1;
 		out.write(sizePow);
 		for(int i = 0; i < (1 << sizePow); i ++) {
-			if(i < buff.size()) out.write(buff.get(i));
+			if(i < buff.size()) {
+				System.out.println("WRITE+"+buff.get(i));
+				out.write(buff.get(i));
+			}
 			else out.write(0);
 		}
 	}

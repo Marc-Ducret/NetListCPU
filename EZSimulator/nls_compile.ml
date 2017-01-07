@@ -67,7 +67,7 @@ let sim p =
 				"\t\tfor(int i = "^(string_of_int i)^"; i <= "^(string_of_int j)^"; i ++) "^(sel ("i-"^(string_of_int i)) (Avar var))
 				^" = "^(sel "i" a)^";\n";
 		| Eselect (i, a) -> assign var (sel (string_of_int i) a)
-		| Eram (sa, sw, ra, we, wa, data) -> "\t\tint _addr = 0, _pow = 1;\n\t\tfor(int i = 0; i < "
+		| Eram (sa, sw, ra, we, wa, data) -> "\t\t_addr = 0; _pow = 1;\n\t\tfor(int i = 0; i < "
 																				^(string_of_int sa)^"; i++) {\n\t\t\t_addr += _pow * "^(sel "i" ra)^";\n"
 																				^"\t\t\t_pow *= 2;\n\t\t}\n"
 																				^"\t\tfor(int i = 0; i < "^(string_of_int sw)^"; i++) "^var^"[i] = "
@@ -75,9 +75,7 @@ let sim p =
 		| Erom (sa, sw, ra) -> 							"\t\t_addr = 0; _pow = 1;\n\t\tfor(int i = 0; i < "
 																				^(string_of_int sa)^"; i++) {\n\t\t\t_addr += _pow * "^(sel "i" ra)^";\n"
 																				^"\t\t\t_pow *= 2;\n\t\t}\n"
-																				^"\t\tfor(int i = 0; i < "^(string_of_int sw)^"; i++) "^var^"[i] = "
-																				^"_rom[_addr*"^(string_of_int sw)^" + i];\n"
-		|	_ -> failwith "not learned yet"
+																				^"\t\trom("^var^", _rom, "^(string_of_int sw)^", _addr);\n"
 	in
 	let pre_expr = function
 		| Eram (sa, sw, ra, we, wa, data) -> "\tchar _ram["^(string_of_int ((1 lsl sa)*sw))^"] = {0};\n"
@@ -91,11 +89,11 @@ let sim p =
 																				^(string_of_int sw)^" + i] = "^(sel "i" data)^";\n"
 		|	_ -> ""
 	in
-	let head = "#include <stdio.h>\n#include <utils.c>\n\nint main() {\n"
+	let head = "#include <stdio.h>\n#include \"utils.c\"\n\nint main() {\n"
 						^"\tchar _screenW = readByte();\n"
 						^"\tchar _screenH = readByte();\n"
 						^"\tchar* _rom = readRom();\n" in
-	let vars = Env.fold (fun var t str -> match t with
+	let vars = "\tint _addr, _pow;\n" ^ Env.fold (fun var t str -> match t with
 				|	TBit -> str ^ "\tchar " ^ var ^ " = 0;\n"
 				| TBitArray n -> str ^ "\tchar " ^ var ^ "[" ^(string_of_int n)^ "] = {0};\n"
 				) p.p_vars "" in

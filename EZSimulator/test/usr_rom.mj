@@ -1,0 +1,42 @@
+const addr = 2
+const word = 4
+
+fulladder(a,b,c) = (s, r) where
+  s = (a ^ b) ^ c;
+  r = (a & b) + ((a ^ b) & c);
+end where
+
+adder<n>(a:[n], b:[n], c_in) = (o:[n], c_out) where
+  if n = 0 then
+    o = [];
+    c_out = c_in
+  else
+    (s_n1, c_n1) = adder<n-1>(a[1..], b[1..], c_in);
+    (s_n, c_out) = fulladder(a[0], b[0], c_n1);
+    o = s_n . s_n1
+  end if
+end where
+
+add<n>(a:[n], b:[n]) = (o:[n]) where
+  (o, trash) = adder<n>(a, b, 0);
+end where
+
+or_n<n>(a:[n],b:[n]) = (o:[n]) where
+  if n = 0 then
+    o = []
+  else
+    o = (a[0] or b[0]).(or_n<n-1>(a[1..], b[1..]))
+  end if
+end where
+
+rom_add() = (o:[word]) where
+  a = rom<addr, word>(0.0);
+  b = rom<addr, word>(1.0);
+  c = rom<addr, word>(1.1);
+  s = add<word>(a, b);
+  o = add<word>(s, c);
+end where
+
+main() = (o:[word]) where 
+  o = rom_add();
+end where
