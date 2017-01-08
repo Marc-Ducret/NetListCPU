@@ -1,12 +1,7 @@
 
 (*Fonctions générales*)
 
-mux_n<n>(c,a:[n],b:[n]) = (o:[n]) where
-   if n = 0 then o = [] else
-   o = mux(c,a[0],b[0]) . mux_n<n-1>(c,a[1..n-1],b[1..n-1]) end if
-end where
-
-xor_32(a:[32],cond) = (o:[32]) where
+xorCond(a:[32],cond) = (o:[32]) where
 o = (a[0] ^ cond) . (a[1] ^ cond) . (a[2] ^ cond) . (a[3] ^ cond) . (a[4] ^ cond) . (a[5] ^ cond) . (a[6] ^ cond) . (a[7] ^ cond) . (a[8] ^ cond) . (a[9] ^ cond) . (a[10] ^ cond) . (a[11] ^ cond) . (a[12] ^ cond) . (a[13] ^ cond) . (a[14] ^ cond) . (a[15] ^ cond) . (a[16] ^ cond) . (a[17] ^ cond) . (a[18] ^ cond) . (a[19] ^ cond) . (a[20] ^ cond) . (a[21] ^ cond) . (a[22] ^ cond) . (a[23] ^ cond) . (a[24] ^ cond) . (a[25] ^ cond) . (a[26] ^ cond) . (a[27] ^ cond) . (a[28] ^ cond) . (a[29] ^ cond) . (a[30] ^ cond) . (a[31] ^ cond)
 end where
 
@@ -50,6 +45,30 @@ end where
 
 reg_17(p:[17]) = (o:[17]) where
   o = reg(p[0]) . reg(p[1]) . reg(p[2]) . reg(p[3]) . reg(p[4]) . reg(p[5]) . reg(p[6]) . reg(p[7]) . reg(p[8]) . reg(p[9]) . reg(p[10]) . reg(p[11]) . reg(p[12]) . reg(p[13]) . reg(p[14]) . reg(p[15]) . reg(p[16]);
+end where
+
+filtre32(r:[32],cond) = (o:[32]) where
+  o = (r[0] & cond) . (r[1] & cond) . (r[2] & cond) . (r[3] & cond) . (r[4] & cond) . (r[5] & cond) . (r[6] & cond) . (r[7] & cond) . (r[8] & cond) . (r[9] & cond) . (r[10] & cond) . (r[11] & cond) . (r[12] & cond) . (r[13] & cond) . (r[14] & cond) . (r[15] & cond) . (r[16] & cond) . (r[17] & cond) . (r[18] & cond) . (r[19] & cond) . (r[20] & cond) . (r[21] & cond) . (r[22] & cond) . (r[23] & cond) . (r[24] & cond) . (r[25] & cond) . (r[26] & cond) . (r[27] & cond) . (r[28] & cond) . (r[29] & cond) . (r[30] & cond) . (r[31] & cond);
+end where
+
+or_32(r1:[32],r2:[32]) = (o:[32]) where
+  o = (r1[0] + r2[0]) . (r1[1] + r2[1]) . (r1[2] + r2[2]) . (r1[3] + r2[3]) . (r1[4] + r2[4]) . (r1[5] + r2[5]) . (r1[6] + r2[6]) . (r1[7] + r2[7]) . (r1[8] + r2[8]) . (r1[9] + r2[9]) . (r1[10] + r2[10]) . (r1[11] + r2[11]) . (r1[12] + r2[12]) . (r1[13] + r2[13]) . (r1[14] + r2[14]) . (r1[15] + r2[15]) . (r1[16] + r2[16]) . (r1[17] + r2[17]) . (r1[18] + r2[18]) . (r1[19] + r2[19]) . (r1[20] + r2[20]) . (r1[21] + r2[21]) . (r1[22] + r2[22]) . (r1[23] + r2[23]) . (r1[24] + r2[24]) . (r1[25] + r2[25]) . (r1[26] + r2[26]) . (r1[27] + r2[27]) . (r1[28] + r2[28]) . (r1[29] + r2[29]) . (r1[30] + r2[30]) . (r1[31] + r2[31]);
+end where
+
+and_32(r1:[32],r2:[32]) = (o:[32]) where
+  o = (r1[0] & r2[0]) . (r1[1] & r2[1]) . (r1[2] & r2[2]) . (r1[3] & r2[3]) . (r1[4] & r2[4]) . (r1[5] & r2[5]) . (r1[6] & r2[6]) . (r1[7] & r2[7]) . (r1[8] & r2[8]) . (r1[9] & r2[9]) . (r1[10] & r2[10]) . (r1[11] & r2[11]) . (r1[12] & r2[12]) . (r1[13] & r2[13]) . (r1[14] & r2[14]) . (r1[15] & r2[15]) . (r1[16] & r2[16]) . (r1[17] & r2[17]) . (r1[18] & r2[18]) . (r1[19] & r2[19]) . (r1[20] & r2[20]) . (r1[21] & r2[21]) . (r1[22] & r2[22]) . (r1[23] & r2[23]) . (r1[24] & r2[24]) . (r1[25] & r2[25]) . (r1[26] & r2[26]) . (r1[27] & r2[27]) . (r1[28] & r2[28]) . (r1[29] & r2[29]) . (r1[30] & r2[30]) . (r1[31] & r2[31])
+end where
+
+xor_32(r1:[32],r2:[32]) = (o:[32]) where
+  o = (r1[0] ^ r2[0]) . (r1[1] ^ r2[1]) . (r1[2] ^ r2[2]) . (r1[3] ^ r2[3]) . (r1[4] ^ r2[4]) . (r1[5] ^ r2[5]) . (r1[6] ^ r2[6]) . (r1[7] ^ r2[7]) . (r1[8] ^ r2[8]) . (r1[9] ^ r2[9]) . (r1[10] ^ r2[10]) . (r1[11] ^ r2[11]) . (r1[12] ^ r2[12]) . (r1[13] ^ r2[13]) . (r1[14] ^ r2[14]) . (r1[15] ^ r2[15]) . (r1[16] ^ r2[16]) . (r1[17] ^ r2[17]) . (r1[18] ^ r2[18]) . (r1[19] ^ r2[19]) . (r1[20] ^ r2[20]) . (r1[21] ^ r2[21]) . (r1[22] ^ r2[22]) . (r1[23] ^ r2[23]) . (r1[24] ^ r2[24]) . (r1[25] ^ r2[25]) . (r1[26] ^ r2[26]) . (r1[27] ^ r2[27]) . (r1[28] ^ r2[28]) . (r1[29] ^ r2[29]) . (r1[30] ^ r2[30]) . (r1[31] ^ r2[31])
+end where
+
+mux_32(cond,r1:[32],r2:[32]) = (o:[32]) where
+  o = mux(cond, r1[0], r2[0]) . mux(cond, r1[1], r2[1]) . mux(cond, r1[2], r2[2]) . mux(cond, r1[3], r2[3]) . mux(cond, r1[4], r2[4]) . mux(cond, r1[5], r2[5]) . mux(cond, r1[6], r2[6]) . mux(cond, r1[7], r2[7]) . mux(cond, r1[8], r2[8]) . mux(cond, r1[9], r2[9]) . mux(cond, r1[10], r2[10]) . mux(cond, r1[11], r2[11]) . mux(cond, r1[12], r2[12]) . mux(cond, r1[13], r2[13]) . mux(cond, r1[14], r2[14]) . mux(cond, r1[15], r2[15]) . mux(cond, r1[16], r2[16]) . mux(cond, r1[17], r2[17]) . mux(cond, r1[18], r2[18]) . mux(cond, r1[19], r2[19]) . mux(cond, r1[20], r2[20]) . mux(cond, r1[21], r2[21]) . mux(cond, r1[22], r2[22]) . mux(cond, r1[23], r2[23]) . mux(cond, r1[24], r2[24]) . mux(cond, r1[25], r2[25]) . mux(cond, r1[26], r2[26]) . mux(cond, r1[27], r2[27]) . mux(cond, r1[28], r2[28]) . mux(cond, r1[29], r2[29]) . mux(cond, r1[30], r2[30]) . mux(cond, r1[31], r2[31])
+end where
+
+mux_17(cond,r1:[17],r2:[17]) = (o:[17]) where
+  o = mux(cond, r1[0], r2[0]) . mux(cond, r1[1], r2[1]) . mux(cond, r1[2], r2[2]) . mux(cond, r1[3], r2[3]) . mux(cond, r1[4], r2[4]) . mux(cond, r1[5], r2[5]) . mux(cond, r1[6], r2[6]) . mux(cond, r1[7], r2[7]) . mux(cond, r1[8], r2[8]) . mux(cond, r1[9], r2[9]) . mux(cond, r1[10], r2[10]) . mux(cond, r1[11], r2[11]) . mux(cond, r1[12], r2[12]) . mux(cond, r1[13], r2[13]) . mux(cond, r1[14], r2[14]) . mux(cond, r1[15], r2[15]) . mux(cond, r1[16], r2[16])
 end where
 
 
@@ -112,10 +131,15 @@ end where
 
 
 
-
-alu(add,sub,andOp,orOp,xorOp,a:[32],b:[32]) = (o:[32],zf,of,sf) where
-  (c,of) = add<32>(a, xor_32(b,sub), sub);
+alu(addOp,subOp,andOp,orOp,xorOp,compOp,ltOp,eqOp,neqOp,a:[32],b:[32]) = (o:[32],zf,of,sf) where
+  (c,of) = add<32>(a, xorCond(b,subOp), subOp);
   sf = c[0]; zf = not orTot32(c);
+  andRes = and_32(a,b);
+  orRes = or_32(a,b);
+  xorRes = xor_32(a,b);
+  x = ((sf & ltOp) + (zf & eqOp)) ^ neqOp;
+  compRes = 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.x;
+  o = mux_32(addOp,(mux_32(compOp,compRes,c)),mux_32(xorOp,xorRes,mux_32(orOp,orRes,andRes)));
   
 end where
 
@@ -134,14 +158,6 @@ end where
 
 filtreReg32(r:[32],cond) = (o:[32]) where
   o = (reg(r[0]) & cond) . (reg(r[1]) & cond) . (reg(r[2]) & cond) . (reg(r[3]) & cond) . (reg(r[4]) & cond) . (reg(r[5]) & cond) . (reg(r[6]) & cond) . (reg(r[7]) & cond) . (reg(r[8]) & cond) . (reg(r[9]) & cond) . (reg(r[10]) & cond) . (reg(r[11]) & cond) . (reg(r[12]) & cond) . (reg(r[13]) & cond) . (reg(r[14]) & cond) . (reg(r[15]) & cond) . (reg(r[16]) & cond) . (reg(r[17]) & cond) . (reg(r[18]) & cond) . (reg(r[19]) & cond) . (reg(r[20]) & cond) . (reg(r[21]) & cond) . (reg(r[22]) & cond) . (reg(r[23]) & cond) . (reg(r[24]) & cond) . (reg(r[25]) & cond) . (reg(r[26]) & cond) . (reg(r[27]) & cond) . (reg(r[28]) & cond) . (reg(r[29]) & cond) . (reg(r[30]) & cond) . (reg(r[31]) & cond);
-end where
-
-filtre32(r:[32],cond) = (o:[32]) where
-  o = (r[0] & cond) . (r[1] & cond) . (r[2] & cond) . (r[3] & cond) . (r[4] & cond) . (r[5] & cond) . (r[6] & cond) . (r[7] & cond) . (r[8] & cond) . (r[9] & cond) . (r[10] & cond) . (r[11] & cond) . (r[12] & cond) . (r[13] & cond) . (r[14] & cond) . (r[15] & cond) . (r[16] & cond) . (r[17] & cond) . (r[18] & cond) . (r[19] & cond) . (r[20] & cond) . (r[21] & cond) . (r[22] & cond) . (r[23] & cond) . (r[24] & cond) . (r[25] & cond) . (r[26] & cond) . (r[27] & cond) . (r[28] & cond) . (r[29] & cond) . (r[30] & cond) . (r[31] & cond);
-end where
-
-or_32(r1:[32],r2:[32]) = (o:[32]) where
-  o = (r1[0] + r2[0]) . (r1[1] + r2[1]) . (r1[2] + r2[2]) . (r1[3] + r2[3]) . (r1[4] + r2[4]) . (r1[5] + r2[5]) . (r1[6] + r2[6]) . (r1[7] + r2[7]) . (r1[8] + r2[8]) . (r1[9] + r2[9]) . (r1[10] + r2[10]) . (r1[11] + r2[11]) . (r1[12] + r2[12]) . (r1[13] + r2[13]) . (r1[14] + r2[14]) . (r1[15] + r2[15]) . (r1[16] + r2[16]) . (r1[17] + r2[17]) . (r1[18] + r2[18]) . (r1[19] + r2[19]) . (r1[20] + r2[20]) . (r1[21] + r2[21]) . (r1[22] + r2[22]) . (r1[23] + r2[23]) . (r1[24] + r2[24]) . (r1[25] + r2[25]) . (r1[26] + r2[26]) . (r1[27] + r2[27]) . (r1[28] + r2[28]) . (r1[29] + r2[29]) . (r1[30] + r2[30]) . (r1[31] + r2[31]);
 end where
 
 
@@ -165,8 +181,10 @@ main() = (pc:[17],o:[32]) where
   imm = o[0]; notImm = not imm;
   jump = o[1] & notImm; 
   wReg = o[2] & notImm;
-  o3 = o[3] & notImm; o4 = o[4] & notImm; o5 = o[5] & notImm; o6 = o[6] & notImm; o7 = o[7] & notImm; o8 = o[8] & notImm; o9 = o[9] & notImm;
-  op10 = o[10]; op11 = o[11]; op12 = o[12]; op13 = o[13]; op14 = o[14]; op15 = o[15];
+  addOp = o[3] & notImm; subOp = o[4] & notImm; andOp = o[5] & notImm; orOp = o[6] & notImm; xorOp = o[7] & notImm;
+  compOp = o[8] & notImm; ltOp = o[9] & notImm; 
+  op10 = o[10]; op11 = o[11]; eqOp = op10 & notImm; neqOp = op11 & notImm; 
+  op12 = o[12]; op13 = o[13]; op14 = o[14]; op15 = o[15];
   op16 = o[16]; op17 = o[17]; op18 = o[18]; op19 = o[19]; op20 = o[20]; op21 = o[21]; op22 = o[22]; op23 = o[23]; op24 = o[24]; op25 = o[25];  
 
   (*adresses des registres*)
@@ -197,7 +215,7 @@ main() = (pc:[17],o:[32]) where
   reg2 = or_32(zz_4, zz_5);
 
   (*Exécution de l'alu*)
-  (d,zf,of,sf) = alu(0,reg1,reg2);
+  (d,zf,of,sf) = alu(addOp,subOp,andOp,orOp,xorOp,compOp,ltOp,eqOp,neqOp,reg1,reg2);
 
   (*Récupération des données*)
   d0 = imm & d[0];
@@ -244,7 +262,7 @@ main() = (pc:[17],o:[32]) where
   r7 = maj(r7, a_7 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
 
   (addPC,osef) = add<17>(pc,zero16.1,0);
-  newPC = mux_n<17>(jump,d[15..31],addPC);
+  newPC = mux_17(jump,d[15..31],addPC);
   
 end where
 
