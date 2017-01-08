@@ -1,0 +1,10 @@
+not_32(z0, z1, z2, z3, z4, z5, z6, z7, z8, z9, z10, z11, z12, z13, z14, z15, z16, z17, z18, z19, z20, z21, z22, z23, z24, z25, z26, z27, z28, z29, z30, z31) = (o0, o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12, o13, o14, o15, o16, o17, o18, o19, o20, o21, o22, o23, o24, o25, o26, o27, o28, o29, o30, o31) where
+  o0 = not z0; o1 = not z1; o2 = not z2; o3 = not z3; o4 = not z4; o5 = not z5; o6 = not z6; o7 = not z7; o8 = not z8; o9 = not z9; o10 = not z10; o11 = not z11; o12 = not z12; o13 = not z13; o14 = not z14; o15 = not z15; o16 = not z16; o17 = not z17; o18 = not z18; o19 = not z19; o20 = not z20; o21 = not z21; o22 = not z22; o23 = not z23; o24 = not z24; o25 = not z25; o26 = not z26; o27 = not z27; o28 = not z28; o29 = not z29; o30 = not z30; o31 = not z31; 
+end where
+
+main() = (o0, o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12, o13, o14, o15, o16, o17, o18, o19, o20, o21, o22, o23, o24, o25, o26, o27, o28, o29, o30, o31) where
+  z0 = 0; z1 = 0; z2 = 0; z3 = 0; z4 = 0; z5 = 0; z6 = 0; z7 = 0; z8 = 0; z9 = 0; z10 = 0; z11 = 0; z12 = 0; z13 = 0; z14 = 0; z15 = 0; z16 = 0; z17 = 0; z18 = 0; z19 = 0; z20 = 0; z21 = 0; z22 = 0; z23 = 0; z24 = 0; z25 = 0; z26 = 0; z27 = 0; z28 = 0; z29 = 0; z30 = 0; z31 = 0; 
+  (o0, o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12, o13, o14, o15, o16, o17, o18, o19, o20, o21, o22, o23, o24, o25, o26, o27, o28, o29, o30, o31) = not_32(z0, z1, z2, z3, z4, z5, z6, z7, z8, z9, z10, z11, z12, z13, z14, z15, z16, z17, z18, z19, z20, z21, z22, z23, z24, z25, z26, z27, z28, z29, z30, z31);
+end where
+
+

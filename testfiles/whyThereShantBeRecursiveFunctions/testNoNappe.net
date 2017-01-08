@@ -1,0 +1,74 @@
+INPUT 
+OUTPUT o0, o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12, o13, o14, o15, o16, o17, o18, o19, o20, o21, o22, o23, o24, o25, o26, o27, o28, o29, o30, o31
+VAR
+  o0, o1, o10, o11, o12, o13, o14, o15, o16, o17, o18, o19, o2, o20, 
+  o21, o22, o23, o24, o25, o26, o27, o28, o29, o3, o30, o31, o4, o5, 
+  o6, o7, o8, o9, z0, z1, z10, z11, z12, z13, z14, z15, z16, z17, z18, 
+  z19, z2, z20, z21, z22, z23, z24, z25, z26, z27, z28, z29, z3, z30, 
+  z31, z4, z5, z6, z7, z8, z9
+IN
+o31 = NOT z31
+o30 = NOT z30
+o29 = NOT z29
+o28 = NOT z28
+o27 = NOT z27
+o26 = NOT z26
+o25 = NOT z25
+o24 = NOT z24
+o23 = NOT z23
+o22 = NOT z22
+o21 = NOT z21
+o20 = NOT z20
+o19 = NOT z19
+o18 = NOT z18
+o17 = NOT z17
+o16 = NOT z16
+o15 = NOT z15
+o14 = NOT z14
+o13 = NOT z13
+o12 = NOT z12
+o11 = NOT z11
+o10 = NOT z10
+o9 = NOT z9
+o8 = NOT z8
+o7 = NOT z7
+o6 = NOT z6
+o5 = NOT z5
+o4 = NOT z4
+o3 = NOT z3
+o2 = NOT z2
+o1 = NOT z1
+o0 = NOT z0
+z31 = 0
+z30 = 0
+z29 = 0
+z28 = 0
+z27 = 0
+z26 = 0
+z25 = 0
+z24 = 0
+z23 = 0
+z22 = 0
+z21 = 0
+z20 = 0
+z19 = 0
+z18 = 0
+z17 = 0
+z16 = 0
+z15 = 0
+z14 = 0
+z13 = 0
+z12 = 0
+z11 = 0
+z10 = 0
+z9 = 0
+z8 = 0
+z7 = 0
+z6 = 0
+z5 = 0
+z4 = 0
+z3 = 0
+z2 = 0
+z1 = 0
+z0 = 0
+
