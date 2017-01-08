@@ -131,8 +131,12 @@ main() = (pc:[17],o:[32]) where
   
   (*instruction*)
   o = ram<17,32>(pc,0,zero16.0,zero32);
-  o0 = o[0]; no0 = not o0;
-  jump = o[1] & no0; o2 = o[2] & no0; o3 = o[3] & no0; o4 = o[4] & no0; o5 = o[5] & no0; o6 = o[6] & no0; o7 = o[7] & no0; o8 = o[8] & no0; o9 = o[9] & no0; o10 = o[10] & no0; o11 = o[11] & no0; o12 = o[12] & no0; o13 = o[13] & no0; o14 = o[14] & no0; o15 = o[15] & no0;
+  imm = o[0]; notImm = not imm;
+  jump = o[1] & notImm; 
+  wReg = o[2] & notImm;
+  o3 = o[3] & notImm; o4 = o[4] & notImm; o5 = o[5] & notImm; o6 = o[6] & notImm; o7 = o[7] & notImm; o8 = o[8] & notImm; o9 = o[9] & notImm;
+  op10 = o[10]; op11 = o[11]; op12 = o[12]; op13 = o[13]; op14 = o[14]; op15 = o[15];
+  op16 = o[16]; op17 = o[17]; op18 = o[18]; op19 = o[19]; op20 = o[20]; op21 = o[21]; op22 = o[22]; op23 = o[23]; op24 = o[24]; op25 = o[25];  
 
   (*adresses des registres*)
   a0 = o[28]; a1 = o[27]; a2 = o[26]; an0 = not a0; an1 = not a1; an2 = not a2;
@@ -165,19 +169,48 @@ main() = (pc:[17],o:[32]) where
   (d,zf,of,sf) = alu(0,reg1,reg2);
 
   (*Récupération des données*)
-  d0 = d[0]; d1 = d[1]; d2 = d[2]; d3 = d[3]; d4 = d[4]; d5 = d[5]; d6 = d[6]; d7 = d[7]; d8 = d[8]; d9 = d[9]; d10 = d[10]; d11 = d[11]; d12 = d[12]; d13 = d[13]; d14 = d[14]; d15 = d[15]; d16 = d[16]; d17 = d[17]; d18 = d[18]; d19 = d[19]; d20 = d[20]; d21 = d[21]; d22 = d[22]; d23 = d[23]; d24 = d[24]; d25 = d[25]; d26 = d[26]; d27 = d[27]; d28 = d[28]; d29 = d[29]; d30 = d[30]; d31 = d[31];
+  d0 = imm & d[0];
+  d1 = imm & d[1];
+  d2 = imm & d[2];
+  d3 = imm & d[3];
+  d4 = imm & d[4];
+  d5 = imm & d[5];
+  d6 = imm & d[6];
+  d7 = imm & d[7];
+  d8 = imm & d[8];
+  d9 = imm & d[9];
+  d10 = imm & d[10];
+  d11 = imm & d[11];
+  d12 = imm & d[12];
+  d13 = imm & d[13];
+  d14 = imm & d[14];
+  d15 = imm & d[15];
+  d16 = mux(imm,op10,d[16]);
+  d17 = mux(imm,op11,d[17]);
+  d18 = mux(imm,op12,d[18]);
+  d19 = mux(imm,op13,d[19]);
+  d20 = mux(imm,op14,d[20]);
+  d21 = mux(imm,op15,d[21]);
+  d22 = mux(imm,op16,d[22]);
+  d23 = mux(imm,op17,d[23]);
+  d24 = mux(imm,op18,d[24]);
+  d25 = mux(imm,op19,d[25]);
+  d26 = mux(imm,op20,d[26]);
+  d27 = mux(imm,op21,d[27]);
+  d28 = mux(imm,op22,d[28]);
+  d29 = mux(imm,op23,d[29]);
+  d30 = mux(imm,op24,d[30]);
+  d31 = mux(imm,op25,d[31]);
 
   (*Mise à jour des registres*)
-  ca2 = a2 & o2; can2 = an2 & o2;
-
-  r0 = maj(r0, can2 & an0n1, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r1 = maj(r1, can2 & a0n1, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r2 = maj(r2, can2 & an01, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r3 = maj(r3, can2 & a01, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r4 = maj(r4, ca2 & an0n1, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r5 = maj(r5, ca2 & a0n1, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r6 = maj(r6, ca2 & an01, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r7 = maj(r7, ca2 & a01, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r0 = maj(r0, a_0 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r1 = maj(r1, a_1 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r2 = maj(r2, a_2 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r3 = maj(r3, a_3 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r4 = maj(r4, a_4 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r5 = maj(r5, a_5 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r6 = maj(r6, a_6 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r7 = maj(r7, a_7 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
 
   (addPC,osef) = add<17>(pc,zero16.1,0);
   newPC = mux_n<17>(jump,d[15..31],addPC); 
