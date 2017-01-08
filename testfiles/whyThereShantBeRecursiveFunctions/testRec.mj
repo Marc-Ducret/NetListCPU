@@ -1,0 +1,16 @@
+not_n<n>(a:[n]) = (o:[n]) where
+  if n = 0 then
+    o = []
+  else
+    o = not a[0] . not_n<n-1>(a[1..])
+  end if
+end where
+
+main() = (o:[32]) where
+  zero2 = 0.0;
+  zero4 = zero2.zero2;
+  zero8 = zero4.zero4;
+  zero16 = zero8.zero8;
+  zero32 = zero16.zero16;
+  o = not_n<32>(zero32);
+end where
