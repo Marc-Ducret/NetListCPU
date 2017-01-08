@@ -6,6 +6,47 @@ mux_n<n>(c,a:[n],b:[n]) = (o:[n]) where
    o = mux(c,a[0],b[0]) . mux_n<n-1>(c,a[1..n-1],b[1..n-1]) end if
 end where
 
+xor_32(a:[32],cond) = (o:[32]) where
+o = (a[0] ^ cond) . (a[1] ^ cond) . (a[2] ^ cond) . (a[3] ^ cond) . (a[4] ^ cond) . (a[5] ^ cond) . (a[6] ^ cond) . (a[7] ^ cond) . (a[8] ^ cond) . (a[9] ^ cond) . (a[10] ^ cond) . (a[11] ^ cond) . (a[12] ^ cond) . (a[13] ^ cond) . (a[14] ^ cond) . (a[15] ^ cond) . (a[16] ^ cond) . (a[17] ^ cond) . (a[18] ^ cond) . (a[19] ^ cond) . (a[20] ^ cond) . (a[21] ^ cond) . (a[22] ^ cond) . (a[23] ^ cond) . (a[24] ^ cond) . (a[25] ^ cond) . (a[26] ^ cond) . (a[27] ^ cond) . (a[28] ^ cond) . (a[29] ^ cond) . (a[30] ^ cond) . (a[31] ^ cond)
+end where
+
+orTot32(a:[32]) = (o) where
+  r_16_0 = a[0] + a[1];
+  r_16_1 = a[2] + a[3];
+  r_16_2 = a[4] + a[5];
+  r_16_3 = a[6] + a[7];
+  r_16_4 = a[8] + a[9];
+  r_16_5 = a[10] + a[11];
+  r_16_6 = a[12] + a[13];
+  r_16_7 = a[14] + a[15];
+  r_16_8 = a[16] + a[17];
+  r_16_9 = a[18] + a[19];
+  r_16_10 = a[20] + a[21];
+  r_16_11 = a[22] + a[23];
+  r_16_12 = a[24] + a[25];
+  r_16_13 = a[26] + a[27];
+  r_16_14 = a[28] + a[29];
+  r_16_15 = a[30] + a[31];
+  r_8_0 = r_16_0 + r_16_1;
+  r_8_1 = r_16_2 + r_16_3;
+  r_8_2 = r_16_4 + r_16_5;
+  r_8_3 = r_16_6 + r_16_7;
+  r_8_4 = r_16_8 + r_16_9;
+  r_8_5 = r_16_10 + r_16_11;
+  r_8_6 = r_16_12 + r_16_13;
+  r_8_7 = r_16_14 + r_16_15;
+  r_4_0 = r_8_0 + r_8_1;
+  r_4_1 = r_8_2 + r_8_3;
+  r_4_2 = r_8_4 + r_8_5;
+  r_4_3 = r_8_6 + r_8_7;
+  r_2_0 = r_4_0 + r_4_1;
+  r_2_1 = r_4_2 + r_4_3;
+  o = r_2_0 + r_2_1;
+end where
+
+not_32(a:[32]) = (o:[32]) where
+  o = (not a[0]) . (not a[1]) . (not a[2]) . (not a[3]) . (not a[4]) . (not a[5]) . (not a[6]) . (not a[7]) . (not a[8]) . (not a[9]) . (not a[10]) . (not a[11]) . (not a[12]) . (not a[13]) . (not a[14]) . (not a[15]) . (not a[16]) . (not a[17]) . (not a[18]) . (not a[19]) . (not a[20]) . (not a[21]) . (not a[22]) . (not a[23]) . (not a[24]) . (not a[25]) . (not a[26]) . (not a[27]) . (not a[28]) . (not a[29]) . (not a[30]) . (not a[31]);
+end where
 
 reg_17(p:[17]) = (o:[17]) where
   o = reg(p[0]) . reg(p[1]) . reg(p[2]) . reg(p[3]) . reg(p[4]) . reg(p[5]) . reg(p[6]) . reg(p[7]) . reg(p[8]) . reg(p[9]) . reg(p[10]) . reg(p[11]) . reg(p[12]) . reg(p[13]) . reg(p[14]) . reg(p[15]) . reg(p[16]);
@@ -35,14 +76,6 @@ add<n>(a:[n], b:[n], c_in) = (o:[n], c_out) where
   end if
 end where
 
-add32(a:[32], b:[32]) = (o:[32]) where
-  (o, osef) = add<32>(a, b, 0)
-end where
-
-
-not_32(a:[32]) = (o:[32]) where
-  o = (not a[0]) . (not a[1]) . (not a[2]) . (not a[3]) . (not a[4]) . (not a[5]) . (not a[6]) . (not a[7]) . (not a[8]) . (not a[9]) . (not a[10]) . (not a[11]) . (not a[12]) . (not a[13]) . (not a[14]) . (not a[15]) . (not a[16]) . (not a[17]) . (not a[18]) . (not a[19]) . (not a[20]) . (not a[21]) . (not a[22]) . (not a[23]) . (not a[24]) . (not a[25]) . (not a[26]) . (not a[27]) . (not a[28]) . (not a[29]) . (not a[30]) . (not a[31]);
-end where
 
 sub32(a:[32], b:[32]) = (o:[32]) where
   (o, osef) = add<32>(a, not_32(b), 1);
@@ -80,11 +113,9 @@ end where
 
 
 
-alu(opcode, a:[32], b:[32]) = (o:[32],zf,of,sf) where
-  o = mul<32>(a, b);
-  c = add32(a, b);
-  d = sub32(a, b);
-  zf = 0; of = 0; sf = 0;
+alu(add,sub,andOp,orOp,xorOp,a:[32],b:[32]) = (o:[32],zf,of,sf) where
+  (c,of) = add<32>(a, xor_32(b,sub), sub);
+  sf = c[0]; zf = not orTot32(c);
   
 end where
 
@@ -213,7 +244,7 @@ main() = (pc:[17],o:[32]) where
   r7 = maj(r7, a_7 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
 
   (addPC,osef) = add<17>(pc,zero16.1,0);
-  newPC = mux_n<17>(jump,d[15..31],addPC); 
+  newPC = mux_n<17>(jump,d[15..31],addPC);
   
 end where
 
