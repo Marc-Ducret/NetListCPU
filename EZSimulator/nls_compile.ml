@@ -23,6 +23,10 @@ let sim p =
 		| Avar var -> size var
 		| Aconst _ -> 1
 	in
+	let arg_var_name = function
+		Avar var -> var
+		| _ -> failwith "Arg is not a var"
+	in
 	let eval_var var =
 		if is_array var then var^"[0]"
 		else var
@@ -67,26 +71,32 @@ let sim p =
 				"\t\tfor(int i = "^(string_of_int i)^"; i <= "^(string_of_int j)^"; i ++) "^(sel ("i-"^(string_of_int i)) (Avar var))
 				^" = "^(sel "i" a)^";\n";
 		| Eselect (i, a) -> assign var (sel (string_of_int i) a)
-		| Eram (sa, sw, ra, we, wa, data) -> "\t\t_addr = 0; _pow = 1;\n\t\tfor(int i = 0; i < "
-																				^(string_of_int sa)^"; i++) {\n\t\t\t_addr += _pow * "^(sel "i" ra)^";\n"
+		| Eram (sa, sw, ra, we, wa, data) -> "\t\t_addr = 0; _pow = 1;\n\t\tfor(int i = "^(string_of_int sa)^"-1; i >=0; i--)"
+																				^"{\n\t\t\t_addr += _pow * "^(sel "i" ra)^";\n"
 																				^"\t\t\t_pow *= 2;\n\t\t}\n"
 																				^"\t\tfor(int i = 0; i < "^(string_of_int sw)^"; i++) "^var^"[i] = "
 																				^"_ram[_addr*"^(string_of_int sw)^" + i];\n"
-		| Erom (sa, sw, ra) -> 							"\t\t_addr = 0; _pow = 1;\n\t\tfor(int i = 0; i < "
-																				^(string_of_int sa)^"; i++) {\n\t\t\t_addr += _pow * "^(sel "i" ra)^";\n"
+		| Erom (sa, sw, ra) -> 							"\t\t_addr = 0; _pow = 1;\n\t\tfor(int i = "^(string_of_int sa)^"-1; i >=0; i--)"
+																				^"{\n\t\t\t_addr += _pow * "^(sel "i" ra)^";\n"
 																				^"\t\t\t_pow *= 2;\n\t\t}\n"
 																				^"\t\trom("^var^", _rom, "^(string_of_int sw)^", _addr);\n"
 	in
 	let pre_expr = function
 		| Eram (sa, sw, ra, we, wa, data) -> "\tchar _ram["^(string_of_int ((1 lsl sa)*sw))^"] = {0};\n"
+																				(*^"_ram[0] = " TODO put screen dim in ram*)
 		|	_ -> ""
 	in
 	let post_expr = function
-		| Eram (sa, sw, ra, we, wa, data) -> "\t\t_addr = 0; _pow = 1;\n\t\tfor(int i = 0; i < "
-																				^(string_of_int sa)^"; i++) {\n\t\t\t_addr += _pow * "^(sel "i" wa)^";\n"
+		| Eram (sa, sw, ra, we, wa, data) -> "\t\t_addr = 0; _pow = 1;\n\t\tfor(int i = "^(string_of_int sa)^"-1; i >=0; i--)"
+																				^"{\n\t\t\t_addr += _pow * "^(sel "i" wa)^";\n"
 																				^"\t\t\t_pow *= 2;\n\t\t}\n"
 																				^"\t\tfor(int i = 0; i < "^(string_of_int sw)^"; i++) _ram[_addr*"
 																				^(string_of_int sw)^" + i] = "^(sel "i" data)^";\n"
+																				^"\t\tif(_addr >= 3 && _addr < _screenW*_screenH+3)"
+																				^" writeChar((_addr-3)%_screenH, (_addr-3)/_screenH,"
+																				^" toInt("^(arg_var_name data)^", "^(string_of_int sw)^"));\n"
+																				^"\t\tif(_addr == _screenW*_screenH+3) writeRedraw();\n"
+																				^"\t\tif(_addr == _screenW*_screenH+4) { writeExit(); break; }\n"
 		|	_ -> ""
 	in
 	let head = "#include <stdio.h>\n#include \"utils.c\"\n\nint main() {\n"

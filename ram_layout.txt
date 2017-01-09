@@ -1,0 +1,9 @@
+#words	Data
+1		screen width  sW
+1		screen height sH
+1		current time
+sW*sH	screen data
+1		redraw
+1		exit
+X		keyboard state
+?		program related memory (vars...)

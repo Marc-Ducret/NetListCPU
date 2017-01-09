@@ -19,7 +19,7 @@ public class SimulatorEnv {
 			int sW = Integer.parseInt(args[0]);
 			int sH = Integer.parseInt(args[1]);
 			Process p = Runtime.getRuntime().exec(args[2]);
-			new SimulatorEnv(sW, sH).run(p.getInputStream(), p.getOutputStream(), 
+			new SimulatorEnv(sW, sH).run(p.getInputStream(), p.getOutputStream(), p.getErrorStream(), 
 											new FileInputStream(new File(args[3])));
 		} else {
 			System.err.println("Args format: [width] [height] [simulator] [ROM]");
@@ -38,32 +38,44 @@ public class SimulatorEnv {
 		for(int i = 0; i < buff.length; i ++) buff[i] = '.';
 	}
 
-	public void run(InputStream in, OutputStream out, InputStream rom) {
+	public void run(InputStream in, OutputStream out, final InputStream debug, InputStream rom) {
 		try {
 			in = new BufferedInputStream(in);
 			out = new BufferedOutputStream(out);
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					try {
+						int r;
+						while((r = debug.read()) >= 0) {
+//							System.out.print((char) r);
+						}
+					} catch (IOException e) {
+						System.out.println("Program terminated ("+e.getMessage()+")");
+					}
+				}
+			}).start();
 			out.write(w);
 			out.write(h);
 			writeRom(rom, out);
 			out.flush();
-			System.err.println("written?");
 			int r;
 			while((r = in.read()) >= 0) {
-				System.out.print((char) r);
-//				switch(in.read()) {
-//				case EXIT:
-//					in.close();
-//					return;
-//				
-//				case CHAR:
-//					buff[in.read() + w * in.read()] = (char) in.read();
-//					break;
-//					
-//				case REDRAW:
-//					clearScreen();
-//					drawScreen();
-//					break;
-//				}
+				switch(r) {
+				case EXIT:
+					in.close();
+					return;
+				
+				case CHAR:
+					buff[in.read() + w * in.read()] = (char) in.read();
+					break;
+					
+				case REDRAW:
+					clearScreen();
+					drawScreen();
+					break;
+				}
 			}
 		} catch(Exception e) {
 			System.err.println("Error while executing simulator:");
@@ -85,7 +97,6 @@ public class SimulatorEnv {
 		out.write(sizePow);
 		for(int i = 0; i < (1 << sizePow); i ++) {
 			if(i < buff.size()) {
-				System.out.println("WRITE+"+buff.get(i));
 				out.write(buff.get(i));
 			}
 			else out.write(0);
@@ -93,7 +104,7 @@ public class SimulatorEnv {
 	}
 
 	public void clearScreen() {
-		System.out.print("\033[H\033[2J");  
+		System.out.println("\033[H\033[2J");  
 		System.out.flush(); 
 	}
 

@@ -1,0 +1,2 @@
+fprintf(stderr, "o = %d %d %d %d", o[0], o[1], o[2], o[3]);
+		break;
