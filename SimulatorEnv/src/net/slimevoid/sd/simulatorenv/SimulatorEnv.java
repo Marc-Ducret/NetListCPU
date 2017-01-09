@@ -13,6 +13,7 @@ import java.util.List;
 public class SimulatorEnv {
 	
 	public static final int EXIT = 0, CHAR = 1, REDRAW = 2;
+	public static final boolean DEBUG = true;
 
 	public static void main(String[] args) throws IOException {
 		if(args.length >= 4) {
@@ -49,10 +50,10 @@ public class SimulatorEnv {
 					try {
 						int r;
 						while((r = debug.read()) >= 0) {
-//							System.out.print((char) r);
+							if(DEBUG) System.err.print((char) r);
 						}
 					} catch (IOException e) {
-						System.out.println("Program terminated ("+e.getMessage()+")");
+						System.err.println("Program terminated ("+e.getMessage()+")");
 					}
 				}
 			}).start();
@@ -68,7 +69,7 @@ public class SimulatorEnv {
 					return;
 				
 				case CHAR:
-					buff[in.read() + w * in.read()] = (char) in.read();
+					setPixel(in.read(), in.read(), (char) in.read());
 					break;
 					
 				case REDRAW:
@@ -84,6 +85,7 @@ public class SimulatorEnv {
 				System.err.print(": "+e.getMessage());
 			System.err.println();
 		}
+		System.err.println("Processor crashed?");
 	}
 	
 	public void writeRom(InputStream rom, OutputStream out) throws IOException {
@@ -102,9 +104,17 @@ public class SimulatorEnv {
 			else out.write(0);
 		}
 	}
+	
+	public void setPixel(int x, int y, char c) {
+		if(x < 0 || x >= w || y < 0 || y >= h)
+			System.err.println("Writing outside of screen ("+x+" "+y+") = '"+c+"'");
+		else {
+			buff[x + w*y] = c;
+		}
+	}
 
 	public void clearScreen() {
-		System.out.println("\033[H\033[2J");  
+		System.out.print("\033[H\033[2J");  
 		System.out.flush(); 
 	}
 

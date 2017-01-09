@@ -1,9 +1,9 @@
-#words	Data
-1		screen width  sW
-1		screen height sH
-1		current time
-sW*sH	screen data
-1		redraw
-1		exit
-X		keyboard state
-?		program related memory (vars...)
+Addr	#words	Data
+00000	sW*sH	screen data
+E1000	1		redraw
+E1001	1		exit
+E1002	1		screen width  sW
+E1003	1		screen height sH
+E1004	1		current time
+E1005	-		keyboard state
+E2000	-		program related memory (vars...)

@@ -7,9 +7,9 @@ char* readRom() {
 	read(0, &sizePow, 1);
 	int size = 1 << sizePow;
 	fprintf(stderr, "size=%d\n", size);
+	fflush(stderr);
 	char* rom = (char *) malloc(size);
 	read(0, rom, size);
-	fflush(stderr);
 	return rom;
 }
 
@@ -23,6 +23,8 @@ char readByte() {
 }
 
 void writeExit() {
+	fprintf(stderr, "exit!\n");
+	fflush(stderr);
 	char buf = 0;
 	write(1, &buf, 1);
 	fflush(stdout);

@@ -57,7 +57,7 @@ let sim p =
 					| And 	-> va^" & "^vb
 					|	Nand 	-> "!("^va ^" & "^vb^")"
 				)
-		| Emux (a, b, sel) -> 
+		| Emux (sel, a, b) -> 
 				let vsel = eval_arg sel in
 				let va = eval_arg a in
 				let vb = eval_arg b in
@@ -82,7 +82,7 @@ let sim p =
 																				^"\t\trom("^var^", _rom, "^(string_of_int sw)^", _addr);\n"
 	in
 	let pre_expr = function
-		| Eram (sa, sw, ra, we, wa, data) -> "\tchar _ram["^(string_of_int ((1 lsl sa)*sw))^"] = {0};\n"
+		| Eram (sa, sw, ra, we, wa, data) -> "\tchar * _ram = (char *) malloc("^(string_of_int ((1 lsl sa)*sw))^");\n"
 																				(*^"_ram[0] = " TODO put screen dim in ram*)
 		|	_ -> ""
 	in
@@ -92,11 +92,11 @@ let sim p =
 																				^"\t\t\t_pow *= 2;\n\t\t}\n"
 																				^"\t\tfor(int i = 0; i < "^(string_of_int sw)^"; i++) _ram[_addr*"
 																				^(string_of_int sw)^" + i] = "^(sel "i" data)^";\n"
-																				^"\t\tif(_addr >= 3 && _addr < _screenW*_screenH+3)"
-																				^" writeChar((_addr-3)%_screenH, (_addr-3)/_screenH,"
+																				^"\t\tif(_addr >= 0 && _addr < _screenW*_screenH)"
+																				^" writeChar(_addr%_screenW, _addr/_screenW,"
 																				^" toInt("^(arg_var_name data)^", "^(string_of_int sw)^"));\n"
-																				^"\t\tif(_addr == _screenW*_screenH+3) writeRedraw();\n"
-																				^"\t\tif(_addr == _screenW*_screenH+4) { writeExit(); break; }\n"
+																				^"\t\tif(_addr == 0xE1000) writeRedraw();\n"
+																				^"\t\tif(_addr == 0xE1001) { writeExit(); break; }\n"
 		|	_ -> ""
 	in
 	let head = "#include <stdio.h>\n#include \"utils.c\"\n\nint main() {\n"
@@ -110,7 +110,7 @@ let sim p =
 	let pre_exprs = (List.fold_left 
 																(fun str (var, expr) -> str ^(pre_expr expr))
 																"" p.p_eqs) in
-	let exprs = "\n\twhile(1) {\n" ^ (List.fold_left 
+	let exprs = "\n\twhile(1) {\n" ^ (List.fold_left
 																								(fun str (var, expr) -> str ^ (eval_expr var expr))
 																								"" p.p_eqs)
 																 ^ (List.fold_left 

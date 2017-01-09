@@ -1,0 +1,53 @@
+const addr = 20
+const word = 8
+
+fulladder(a,b,c) = (s, r) where
+  s = (a ^ b) ^ c;
+  r = (a & b) + ((a ^ b) & c);
+end where
+
+adder<n>(a:[n], b:[n], c_in) = (o:[n], c_out) where
+  if n = 0 then
+    o = [];
+    c_out = c_in
+  else
+    (s_n1, c_n1) = adder<n-1>(a[1..], b[1..], c_in);
+    (s_n, c_out) = fulladder(a[0], b[0], c_n1);
+    o = s_n . s_n1
+  end if
+end where
+
+add<n>(a:[n], b:[n]) = (o:[n]) where
+  (o, trash) = adder<n>(a, b, 0);
+end where
+
+reg_n<n>(i:[n]) = (o:[n]) where
+  if n = 0 then
+    o = [];
+  else
+    o = reg(i[0]) . reg_n<n-1>(i[1..]);
+  end if
+end where
+
+mux_n<n>(sel, a:[n], b:[n]) = (o:[n]) where
+  if n = 0 then
+    o = [];
+  else
+    o = mux(sel, a[0], b[0]) . mux_n<n-1>(sel, a[1..], b[1..]);
+  end if
+end where
+
+main() = () where
+  (s, overflow) = adder<word>(0.0.0.0.0.0.0.1, ct, 0);
+  ct = reg_n<word>(s);
+  drawn = reg(overflow);
+  c = rom<word, word>(ct);
+  a = ram<addr, word>(1.1.1.0.0.0.0.1.0.0.0.0.0.0.0.0.0.0.0.1, 1, mux_n<addr>(drawn,
+											mux_n<addr>(overflow, 
+													  0.0.0.0.0.0.0.0.0.0.0.0.ct,
+													  1.1.1.0.0.0.0.1.0.0.0.0.0.0.0.0.0.0.0.0),
+											1.1.1.0.0.0.0.1.0.0.0.0.0.0.0.0.0.0.0.1
+											
+											),
+					c);
+end where
