@@ -1,0 +1,52 @@
+.vars
+	time
+
+	century
+	year
+	month
+	day
+	hour
+	minute
+	second
+
+	is_bissext_res
+
+	seconds_in_year_res
+
+	div_a
+	div_b
+	div_q
+	div_r
+	
+.prgm	
+@ main
+	century = 19;
+	year = 70;
+	month = 0;
+	day = 0;
+	hour = 0;
+	minute = 0;
+	second = time;
+
+	> seconds_in_year;
+	! time >= seconds_in_year_res
+	{
+	  
+	}
+
+@ is_bissext
+	is_bissext_res = (((year & 3) = 0) & (century != 0)) | ((year = 0) & ((century & 3) = 0));
+
+@seconds_in_year
+	> is_bissext;
+	if is_bissext_res { seconds_in_year_res = 31622400; } { seconds_in_year_res = 31536000; }
+	
+@ div
+	div_q = 0;
+	div_r = 0;
+	! div_a >= div_b
+	{
+	  div_a = div_a - div_b;
+	  div_q = div_q + 1;
+	}
+	div_r = div_a;
