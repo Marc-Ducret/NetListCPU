@@ -1,10 +1,6 @@
 #include <stdio.h>
-#include "utils.c"
 
 int main() {
-	char _screenW = readByte();
-	char _screenH = readByte();
-	char* _rom = readRom();
 	int _addr, _pow;
 	char _l_100_112[31] = {0};
 	char _l_101_111 = 0;
@@ -107,7 +103,7 @@ int main() {
 	char zero4[4] = {0};
 	char zero8[8] = {0};
 
-	while(1) {
+	for(int j = 0; j < 100000; j++) {
 		for(int i = 0; i < 1; i++)
 			zero2[i] = 0;
 		for(int i = 0; i < 1; i++)
