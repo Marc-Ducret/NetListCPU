@@ -1,5 +1,24 @@
 
 (*Fonctions générales*)
+zero2() = (o:[2]) where
+  o = 0.0;
+end where;
+
+zero4() = (o:[4]) where
+  o = 0.0.0.0;
+end where;
+
+zero8() = (o:[8]) where
+  o = 0.0.0.0.0.0.0.0;
+end where;
+
+zero16() = (o:[16]) where
+  o = 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0;
+end where;
+
+zero32() = (o:[32]) where
+  o = 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0;
+end where;
 
 xorCond(a:[32],cond) = (o:[32]) where
 o = (a[0] ^ cond) . (a[1] ^ cond) . (a[2] ^ cond) . (a[3] ^ cond) . (a[4] ^ cond) . (a[5] ^ cond) . (a[6] ^ cond) . (a[7] ^ cond) . (a[8] ^ cond) . (a[9] ^ cond) . (a[10] ^ cond) . (a[11] ^ cond) . (a[12] ^ cond) . (a[13] ^ cond) . (a[14] ^ cond) . (a[15] ^ cond) . (a[16] ^ cond) . (a[17] ^ cond) . (a[18] ^ cond) . (a[19] ^ cond) . (a[20] ^ cond) . (a[21] ^ cond) . (a[22] ^ cond) . (a[23] ^ cond) . (a[24] ^ cond) . (a[25] ^ cond) . (a[26] ^ cond) . (a[27] ^ cond) . (a[28] ^ cond) . (a[29] ^ cond) . (a[30] ^ cond) . (a[31] ^ cond)
@@ -129,9 +148,24 @@ div<n>(a:[n], b:[n]) = (o:[n]) where
   end if
 end where
 
+lsl5(a:[32], x:[5]) = (o :[32]) where
+  a0 = mux_32(x[0], a[16..31]. zero16(), a);
+  a1 = mux_32(x[1], a0[8..31]. zero8(), a0);
+  a2 = mux_32(x[2], a1[4..31]. zero4(), a1);
+  a3 = mux_32(x[3], a2[2..31]. zero2(), a2);
+  o = mux_32(x[4], a3[1..31]. 0, a3);
+end where;
+
+lsr5(a:[32], x:[5]) = (o :[32]) where
+  a0 = mux_32(x[0], zero16(). a[0..15], a);
+  a1 = mux_32(x[1], zero8().a0[0..23], a0);
+  a2 = mux_32(x[2], zero4().a1[0..27], a1);
+  a3 = mux_32(x[3], zero2().a2[0..29], a2);
+  o = mux_32(x[4], 0.a3[0..30], a3);
+end where;
 
 
-alu(addOp,subOp,andOp,orOp,xorOp,compOp,ltOp,eqOp,neqOp,a:[32],b:[32]) = (o:[32],zf,of,sf) where
+alu(addOp,subOp,andOp,orOp,xorOp,compOp,ltOp,eqOp,neqOp, shiftOp, lrOp, a:[32],b:[32]) = (o:[32],zf,of,sf) where
   (c,of) = add<32>(a, xorCond(b,subOp), subOp);
   sf = c[0]; zf = not orTot32(c);
   andRes = and_32(a,b);
@@ -139,7 +173,10 @@ alu(addOp,subOp,andOp,orOp,xorOp,compOp,ltOp,eqOp,neqOp,a:[32],b:[32]) = (o:[32]
   xorRes = xor_32(a,b);
   x = ((sf & ltOp) + (zf & eqOp)) ^ neqOp;
   compRes = 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.x;
-  o = mux_32(addOp,(mux_32(compOp,compRes,c)),mux_32(xorOp,xorRes,mux_32(orOp,orRes,andRes)));
+  rshiftRes = mux_32(orTot32(b[0..26].0.0.0.0.0), zero32(), lsr5(a, b[27..31]));
+  lshiftRes = mux_32(orTot32(b[0..26].0.0.0.0.0), zero32(), lsl5(a, b[27..31]));
+  o1 = mux_32(addOp,(mux_32(compOp,compRes,c)),mux_32(xorOp,xorRes,mux_32(orOp,orRes,andRes)));
+  o = mux_32(shiftOp, mux_32(lrOp, rshiftRes, lshiftRes), o1);
   
 end where
 
@@ -163,7 +200,7 @@ end where
 
 (*Main*)
 
-main() = (pc:[17],o:[32]) where
+main() = (pc:[17],o:[32], r1:[32]) where
   
   (*Constantes*)
   zero2 = 0.0;
@@ -172,20 +209,34 @@ main() = (pc:[17],o:[32]) where
   zero16 = zero8.zero8;
   zero32 = zero16.zero16;
 
-
   (*PC initial*)
   pc = reg_17(newPC);
   
   (*instruction*)
   o = ram<17,32>(pc,0,zero16.0,zero32);
   imm = o[0]; notImm = not imm;
-  jump = o[1] & notImm; 
-  wReg = o[2] & notImm;
-  addOp = o[3] & notImm; subOp = o[4] & notImm; andOp = o[5] & notImm; orOp = o[6] & notImm; xorOp = o[7] & notImm;
-  compOp = o[8] & notImm; ltOp = o[9] & notImm; 
-  op10 = o[10]; op11 = o[11]; eqOp = op10 & notImm; neqOp = op11 & notImm; 
-  op12 = o[12]; op13 = o[13]; op14 = o[14]; op15 = o[15];
-  op16 = o[16]; op17 = o[17]; op18 = o[18]; op19 = o[19]; op20 = o[20]; op21 = o[21]; op22 = o[22]; op23 = o[23]; op24 = o[24]; op25 = o[25];  
+  jumpOp = o[1]; 
+  wReg = o[2];
+  juncOp = o[3]; 
+  jzOp = o[4]; 
+  andOp = o[5] & notImm; 
+  orOp = o[6] & notImm; 
+  xorOp = o[7] & notImm;
+  compOp = o[8] & notImm; 
+  ltOp = o[9] & notImm; op9 = o[9];
+  op10 = o[10]; op11 = o[11]; 
+  eqOp = op10 & notImm; neqOp = op11 & notImm; 
+  op12 = o[12]; op13 = o[13]; 
+  shiftOp = op12 & notImm; lrOp = op13 & notImm; 
+  op14 = o[14]; movOp = op14 & notImm; 
+  op15 = o[15];  op16 = o[16]; 
+  addOp = o[15] & notImm; 
+  subOp = o[16] & notImm; 
+  op17 = o[17]; op18 = o[18]; 
+  op19 = o[19]; op20 = o[20]; op21 = o[21]; op22 = o[22]; 
+  op23 = o[23]; op24 = o[24]; 
+  weRamOp = o[24] & notImm; ramOp = o[25] & notImm;
+  op25 = o[25];  
 
   (*adresses des registres*)
   a0 = o[28]; a1 = o[27]; a2 = o[26]; an0 = not a0; an1 = not a1; an2 = not a2;
@@ -215,25 +266,33 @@ main() = (pc:[17],o:[32]) where
   reg2 = or_32(zz_4, zz_5);
 
   (*Exécution de l'alu*)
-  (d,zf,of,sf) = alu(addOp,subOp,andOp,orOp,xorOp,compOp,ltOp,eqOp,neqOp,reg1,reg2);
-
+  (dataAlu,zf,of,sf) = alu(addOp,subOp,andOp,orOp,xorOp,compOp,ltOp,eqOp,neqOp,shiftOp, lrOp, reg1,reg2);
+  
+  (*Appel de la RAM*)
+  ra = reg2[15..31];
+  wa = ra;
+  dataRamIn = reg1;
+  weRam = ramOp and weRamOp;
+  dataRamOut = ram<17,32>(ra,weRam,wa,dataRamIn);
+  
+  d = mux_32(ramOp, dataRamOut, mux_32(movOp, reg2, dataAlu));
   (*Récupération des données*)
-  d0 = imm & d[0];
-  d1 = imm & d[1];
-  d2 = imm & d[2];
-  d3 = imm & d[3];
-  d4 = imm & d[4];
-  d5 = imm & d[5];
-  d6 = imm & d[6];
-  d7 = imm & d[7];
-  d8 = imm & d[8];
-  d9 = imm & d[9];
-  d10 = imm & d[10];
-  d11 = imm & d[11];
-  d12 = imm & d[12];
-  d13 = imm & d[13];
-  d14 = imm & d[14];
-  d15 = imm & d[15];
+  d0 = notImm & d[0];
+  d1 = notImm & d[1];
+  d2 = notImm & d[2];
+  d3 = notImm & d[3];
+  d4 = notImm & d[4];
+  d5 = notImm & d[5];
+  d6 = notImm & d[6];
+  d7 = notImm & d[7];
+  d8 = notImm & d[8];
+  d9 = notImm & d[9];
+  d10 = notImm & d[10];
+  d11 = notImm & d[11];
+  d12 = notImm & d[12];
+  d13 = notImm & d[13];
+  d14 = notImm & d[14];
+  d15 = mux(imm,op9,d[15]);
   d16 = mux(imm,op10,d[16]);
   d17 = mux(imm,op11,d[17]);
   d18 = mux(imm,op12,d[18]);
@@ -260,9 +319,11 @@ main() = (pc:[17],o:[32]) where
   r5 = maj(r5, a_5 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
   r6 = maj(r6, a_6 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
   r7 = maj(r7, a_7 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-
+  
+  jump = jumpOp & ((jzOp ^ (reg zf)) or juncOp);
   (addPC,osef) = add<17>(pc,zero16.1,0);
-  newPC = mux_17(jump,d[15..31],addPC);
+  addr = d15.d16.d17.d18.d19.d20.d21.d22.d23.d24.d25.d26.d27.d28.d29.d30.d31;
+  newPC = mux_17(jump,addr,addPC);
   
 end where
 
