@@ -1,0 +1,9 @@
+INPUT
+OUTPUT o
+VAR
+  a, o
+IN
+  a = REG o
+  b = NOT a
+  o = REG b
+
