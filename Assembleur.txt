@@ -81,4 +81,23 @@ Mémoire :
  
  L'horloge stockée dans la RAM quelque part (on voudra stocker aussi les constantes 0, 24, 60, 30?, 365? dans les registres) en format nombre de secondes depuis une référence fixe. Pour l'affichage : un bit pour dire mode pixels ou mode LCD
 Pour les entrées (changement de mode ou changement d'heure), on pourrait écrire à des endroits spécifiques dans la RAM.
- 
+
+
+
+
+
+Opcodes :
+
+0 : load_immediate (bits de 9 à 25 indiquent la constante, 26 à 28 registre)
+1 : jump
+2 : write_register
+3 : add
+4 : sub
+5 : and
+6 : or
+7 : xor
+8 : comp
+9 : less than
+... (inutilisés pour l'instant)
+26 à 28 : registre 1 (qui contiendra le résultat)
+29 à 31 : registre 2
