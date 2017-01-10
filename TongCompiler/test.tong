@@ -1,13 +1,13 @@
-	.vars lol wut x y z florentin
-	.program
+.vars lol wut x y z florentin
+.prgm
 @ main
-	x = y + z;
-	> draw;
+	x = y + z ;
+	> draw ;
 	? wut & lol {
-		x = 1;
+		x = 1 ;
 	} {
-		x = -1;	
+		x = -1 ;	
 	}
-	! y { y = y - 1; }
+	! y { y = y - 1 ; }
 @ draw
-	florentin = lol;
+	florentin = lol ;

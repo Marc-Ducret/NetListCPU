@@ -23,12 +23,25 @@ public class Compiler {
 
 	private final String[] src;
 	private int index = 0;
+	private Map<String, Integer> vars = new HashMap<>();
 
 	private Compiler(String src) {
+		StringBuilder build = new StringBuilder();
+		List<String> toks = new ArrayList<>();
+		for(int i = 0; i < src.lenght()) {
+			char c = src.charAt(i);
+			if(('A' <= c && c <= 'z') || c == '.' || c == "_")
+				build.append(c);
+			else {
+				String s = build.toString();
+				if(s.length() > 0) toks.add(s);
+				build.setLength(0);//TODO check
+			}
+		}
 		this.src = src.trim().split("[ \t\n\r]+");
 	}
 
-	public void error(String msg) {
+	public static void error(String msg) {
 		System.err.println("Error: "+msg);
 		System.exit(-1);
 	}
@@ -38,16 +51,20 @@ public class Compiler {
 		List<String> vars = new ArrayList<>();
 		String tok;
 		while((tok = nextToken()) != null && !tok.startsWith(".")) {
+			if(!isIdent(tok)) error("Invalid identifier: "+tok);
 			vars.add(tok);
 		}
 		System.out.println("vars: ");
-		for(String var : vars) System.out.print(var+" ");
+		int offset = 0xE2000;
+		for(String var : vars) {
+			System.out.print(var+" ");
+			this.vars.put(var, offset++);
+		}			
 		System.out.println();
-		if(tok == null || !tok.equals(".program")) error("Missing .program");
+		if(tok == null || !tok.equals(".program")) error("Missing .prgm");
 		List<Procedure> procs = new ArrayList<>();
 		Procedure proc;
 		while((proc = nextProc()) != null) procs.add(proc);
-		
 	}
 
 	private Procedure nextProc() {
@@ -55,9 +72,24 @@ public class Compiler {
 		return null;
 	}
 
-	private Instr nextInstr() {
-		if(curToken().equals("@")) return null;
-		
+	private void nextInstr(List<Instr> instrs) {
+		String tok = nextToken();
+		if(tok == null || tok.equals("@")) return;
+		if(tok.equals(">")) {
+			//TODO 
+		} else if(tok.equals("?")) {
+			//TODO
+		} else if(tok.equals("!")) {
+			//TODO
+		} else if(isIdent(tok)) {
+			if(!vars.contains(tok)) error("Unknown variable "+tok);
+			if(!nextToken().equals("=")) error("Missing =");
+			Register
+		} else error("Invalid instruction");
+	}
+
+	private void computeExpr(Register out) {
+		//TODO
 	}
 
 	private String nextToken() {
@@ -68,5 +100,9 @@ public class Compiler {
 	private String curToken() {
 		if(index >= src.length) return null;
 		return src[index];
+	}
+
+	private boolean isIdent(String str) {
+		return true; // TODO
 	}
 }
