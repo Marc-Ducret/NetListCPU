@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [[ "$@" == "clean" ]]
+then
+    echo "Cleaning..."
+	cd bin
+	rm -R *
+	echo "Cleaning terminated"
+else
+	echo "Compiling..."
+    	cd src
+	javac -d ../bin/ net/slimevoid/tong/Compiler.java
+	echo "Compilation terminated"
+fi
