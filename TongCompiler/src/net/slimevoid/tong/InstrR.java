@@ -9,6 +9,12 @@ public class InstrR extends Instr {
 
 	public final Register from, dest;
 	public final Op op;
+
+	public InstrR(Op op, Register from, Register dest) {
+		this.op = op;
+		this.from = from;
+		this.dest = dest;
+	}
 	
 	@Override
 	public int toAsm(Compiler compiler) {
