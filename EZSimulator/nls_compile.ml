@@ -95,8 +95,8 @@ let sim p =
 																				^"\t\tif(_addr >= 0 && _addr < _screenW*_screenH)"
 																				^" writeChar(_addr%_screenW, _addr/_screenW,"
 																				^" toInt("^(arg_var_name data)^", "^(string_of_int sw)^"));\n"
-																				^"\t\tif(_addr == 0xE1000) writeRedraw();\n"
-																				^"\t\tif(_addr == 0xE1001) { writeExit(); break; }\n"
+																				^"\t\tif(_addr == 0x10000) writeRedraw();\n"
+																				^"\t\tif(_addr == 0x10001) { writeExit(); break; }\n"
 		|	_ -> ""
 	in
 	let head = "#include <stdio.h>\n#include \"utils.c\"\n\nint main() {\n"

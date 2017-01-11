@@ -85,7 +85,7 @@ public class SimulatorEnv {
 				System.err.print(": "+e.getMessage());
 			System.err.println();
 		}
-		System.err.println("Processor crashed?");
+		System.err.println("Processor link lost");
 	}
 	
 	public void writeRom(InputStream rom, OutputStream out) throws IOException {

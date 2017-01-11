@@ -1,13 +1,4 @@
-.vars lol wut x y z florentin
+.vars
 .prgm
 @main
-	x = y + z ;
-	> draw ;
-	? wut & lol {
-		x = 1;
-	} {
-		x = -1;	
-	}
-	! y { y = y - 1; }
-@draw
-	florentin = lol;
+	>exit;
