@@ -8,8 +8,11 @@ char* readRom() {
 	int size = 1 << sizePow;
 	fprintf(stderr, "size=%d\n", size);
 	fflush(stderr);
-	char* rom = (char *) malloc(size);
+	unsigned char* rom = (unsigned char *) malloc(size);
+	fprintf(stderr, "{ROM}\n");
 	read(0, rom, size);
+	for(int i = 0; i < size; i ++)
+		fprintf(stderr, "%x:\t%x\n", i, rom[i]);
 	return rom;
 }
 
@@ -48,20 +51,18 @@ void writeChar(char x, char y, char c) {
 int toInt(char * data, char wordSize) {
 	int val = 0;
 	for(int i = 0; i < wordSize; i++)
-		val |= data[i] << i;
+		val |= data[wordSize-i-1] << i;
 	return val;
 }
 
 void rom(char * dest, char * _rom, char wordSize, int _addr) {
 	char realSize = (wordSize+7) / 8;
 	for(int i = 0; i < wordSize; i ++) {
-		char mask = 1 << (i % 8);
+		char mask = 0x80 >> (i % 8);
 		dest[i] = !!(_rom[_addr*realSize + i / 8] & mask);
 	}
 }
 
-
-
-
-
-
+void printBitVector(char * vec, int size, char * name) {
+	fprintf(stderr, "%s:\t%x\n", name, toInt(vec, size));
+}

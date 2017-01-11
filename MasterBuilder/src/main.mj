@@ -213,7 +213,7 @@ main() = (pc:[17],o:[32], r1:[32]) where
   pc = reg_17(newPC);
   
   (*instruction*)
-  o = ram<17,32>(pc,0,zero16.0,zero32);
+  o = rom<17,32>(pc);
   imm = o[0]; notImm = not imm;
   jumpOp = o[1]; 
   wReg = o[2];

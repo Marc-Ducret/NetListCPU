@@ -3,10 +3,10 @@ package net.slimevoid.tong;
 public class InstrR extends Instr {
 
 	public static enum Op {JMP, 
-			AND	(0x0000_0022), 
-			OR	(0x0000_0042), XOR, COMP, LT, EQ, NEQ, SL, SR, ADD, SUB, MUL, 
-			LW	(0x0100_0000), 
-			SW	(0x0180_0002);
+			AND	(), 
+			OR	(), XOR, COMP, LT, EQ, NEQ, SL, SR, ADD, SUB, MUL, 
+			LW	(), 
+			SW	(0x0000_00c0);
 		
 		private final int code;
 		
@@ -27,7 +27,7 @@ public class InstrR extends Instr {
 	
 	@Override
 	public int toAsm(Compiler compiler) {
-		return op.code | ((dest.ordinal() | (from.ordinal() << 3)) << 24);
+		return op.code | ((dest.ordinal() | (from.ordinal() << 3)));//TODO check
 	}
 	
 	@Override

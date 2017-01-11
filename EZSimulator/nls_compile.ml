@@ -19,6 +19,11 @@ let sim p =
   		| TBit -> false
   		| TBitArray _ -> true
 	in
+	let is_only_array var =
+		match Env.find var p.p_vars with
+  		| TBit -> false
+  		| TBitArray n -> n > 1;
+	in
 	let size_arg = function
 		| Avar var -> size var
 		| Aconst _ -> 1
@@ -27,29 +32,42 @@ let sim p =
 		Avar var -> var
 		| _ -> failwith "Arg is not a var"
 	in
-	let eval_var var =
+	let eval_var_array var =
+		var
+	in
+	let eval_var_bit var =
 		if is_array var then var^"[0]"
 		else var
 	in
-	let eval_arg = function
-		| Avar id -> eval_var id
+	let eval_var array var =
+		if array then eval_var_array var
+		else eval_var_bit var
+	in
+	let eval_arg_array = function
+		| Avar id -> id
+		| _ -> failwith "array constants unsupported" in
+	let eval_arg_bit = function
+		| Avar id -> eval_var_bit id
 		|	Aconst VBit true -> "1"
 		|	Aconst VBit false -> "0"
 		|	Aconst VBitArray _ -> failwith "array constants unsupported" in
+	let eval_arg array arg =
+		if array then eval_arg_array arg
+		else eval_arg_bit arg in
 	let sel i = function
 		| Avar var when is_array var -> var^"["^i^"]"
-		| x -> eval_arg x
+		| x -> eval_arg_bit x
 	in
 	let assign var str =
-		"\t\t"^(eval_var var)^" = "^str^";\n"
+		"\t\t"^(eval_var (is_only_array var) var)^" = "^str^";\n"
 	in
 	let eval_expr var = function
-		| Earg a -> assign var (eval_arg a)
-		|	Ereg i -> assign var (eval_var i)
-		|	Enot a -> assign var ("!" ^ (eval_arg a))
+		| Earg a -> assign var(* normal into array = lose*) (eval_arg (is_only_array var) a)
+		|	Ereg i -> assign var (eval_var (is_only_array var) i)
+		|	Enot a -> assign var ("!" ^ (eval_arg_bit a))
 		| Ebinop (op, a, b) ->
-				let va = eval_arg a in
-				let vb = eval_arg b in
+				let va = eval_arg_bit a in
+				let vb = eval_arg_bit b in
 				assign var
 				(match op with
 					|	Or 		-> va^" | "^vb
@@ -58,10 +76,10 @@ let sim p =
 					|	Nand 	-> "!("^va ^" & "^vb^")"
 				)
 		| Emux (sel, a, b) -> 
-				let vsel = eval_arg sel in
-				let va = eval_arg a in
-				let vb = eval_arg b in
-				assign var (vsel^" ? "^vb^" : "^va)
+				let vsel = eval_arg_bit sel in
+				let va = eval_arg_bit a in
+				let vb = eval_arg_bit b in
+				assign var (vsel^" ? "^va^" : "^vb)
 		|	Econcat (a, b) ->
   			let sa = size_arg a in
   			let sb = size_arg b in
@@ -71,14 +89,10 @@ let sim p =
 				"\t\tfor(int i = "^(string_of_int i)^"; i <= "^(string_of_int j)^"; i ++) "^(sel ("i-"^(string_of_int i)) (Avar var))
 				^" = "^(sel "i" a)^";\n";
 		| Eselect (i, a) -> assign var (sel (string_of_int i) a)
-		| Eram (sa, sw, ra, we, wa, data) -> "\t\t_addr = 0; _pow = 1;\n\t\tfor(int i = "^(string_of_int sa)^"-1; i >=0; i--)"
-																				^"{\n\t\t\t_addr += _pow * "^(sel "i" ra)^";\n"
-																				^"\t\t\t_pow *= 2;\n\t\t}\n"
+		| Eram (sa, sw, ra, we, wa, data) -> "\t\t_addr = toInt("^(eval_arg_array ra)^", "^(string_of_int sa)^");\n"
 																				^"\t\tfor(int i = 0; i < "^(string_of_int sw)^"; i++) "^var^"[i] = "
 																				^"_ram[_addr*"^(string_of_int sw)^" + i];\n"
-		| Erom (sa, sw, ra) -> 							"\t\t_addr = 0; _pow = 1;\n\t\tfor(int i = "^(string_of_int sa)^"-1; i >=0; i--)"
-																				^"{\n\t\t\t_addr += _pow * "^(sel "i" ra)^";\n"
-																				^"\t\t\t_pow *= 2;\n\t\t}\n"
+		| Erom (sa, sw, ra) -> 							 "\t\t_addr = toInt("^(eval_arg_array ra)^", "^(string_of_int sa)^");\n"
 																				^"\t\trom("^var^", _rom, "^(string_of_int sw)^", _addr);\n"
 	in
 	let pre_expr = function
@@ -87,25 +101,25 @@ let sim p =
 		|	_ -> ""
 	in
 	let post_expr = function
-		| Eram (sa, sw, ra, we, wa, data) -> "\t\t_addr = 0; _pow = 1;\n\t\tfor(int i = "^(string_of_int sa)^"-1; i >=0; i--)"
-																				^"{\n\t\t\t_addr += _pow * "^(sel "i" wa)^";\n"
-																				^"\t\t\t_pow *= 2;\n\t\t}\n"
-																				^"\t\tfor(int i = 0; i < "^(string_of_int sw)^"; i++) _ram[_addr*"
+		| Eram (sa, sw, ra, we, wa, data) -> "\t\tif("^(eval_arg_bit we)^") {\n"
+																				^"\t\t\t_addr = toInt("^(eval_arg_array wa)^", "^(string_of_int sa)^");\n"
+																				^"\t\t\tfor(int i = 0; i < "^(string_of_int sw)^"; i++) _ram[_addr*"
 																				^(string_of_int sw)^" + i] = "^(sel "i" data)^";\n"
-																				^"\t\tif(_addr >= 0 && _addr < _screenW*_screenH)"
+																				^"\t\t\tif(_addr >= 0 && _addr < _screenW*_screenH)"
 																				^" writeChar(_addr%_screenW, _addr/_screenW,"
 																				^" toInt("^(arg_var_name data)^", "^(string_of_int sw)^"));\n"
-																				^"\t\tif(_addr == 0x10000) writeRedraw();\n"
-																				^"\t\tif(_addr == 0x10001) { writeExit(); break; }\n"
+																				^"\t\t\tif(_addr == 0x10000) writeRedraw();\n"
+																				^"\t\t\tif(_addr == 0x10001) { writeExit(); break; }\n"
+																				^"\t\t}"
 		|	_ -> ""
 	in
 	let head = "#include <stdio.h>\n#include \"utils.c\"\n\nint main() {\n"
 						^"\tchar _screenW = readByte();\n"
 						^"\tchar _screenH = readByte();\n"
 						^"\tchar* _rom = readRom();\n" in
-	let vars = "\tint _addr, _pow;\n" ^ Env.fold (fun var t str -> match t with
+	let vars = "\tint _addr;\n" ^ Env.fold (fun var t str -> match t with
 				|	TBit -> str ^ "\tchar " ^ var ^ " = 0;\n"
-				| TBitArray n -> str ^ "\tchar " ^ var ^ "[" ^(string_of_int n)^ "] = {0};\n"
+				| TBitArray n -> str ^ "\tchar * " ^ var ^ " = (char *) malloc("^(string_of_int n)^");\n"
 				) p.p_vars "" in
 	let pre_exprs = (List.fold_left 
 																(fun str (var, expr) -> str ^(pre_expr expr))
@@ -122,12 +136,14 @@ let sim p =
 let compile filename =
   try
     let p = Netlist.read_file filename in
+		print_endline "Scheduling the netlist...";
     let p = Scheduler.schedule p in
+		print_endline "Writing C code...";
     let code = sim p in
 		let oc = open_out (filename^".c") in
 		fprintf oc "%s" code;
 		close_out oc;
-		
+		print_endline "Code writen";
   with
     | Netlist.Parse_error s -> Format.eprintf "An error accurred: %s@." s; exit 2
 

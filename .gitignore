@@ -1,2 +1,4 @@
 EZSimulator/_build
 *.class
+*.class
+SimulatorEnv/bin/net/slimevoid/sd/simulatorenv/SimulatorEnv$1.class

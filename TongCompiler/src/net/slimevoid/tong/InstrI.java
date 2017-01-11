@@ -11,7 +11,7 @@ public class InstrI extends Instr {
 	}
 	
 	public int toAsm(Compiler compiler) {
-		return 1 | (immediate << 8) | (dest.ordinal() << 25);
+		return 0xa000_0000 | (immediate << 6) | (dest.ordinal() << 3); //TODO check
 	}
 	
 	@Override

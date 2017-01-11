@@ -13,7 +13,7 @@ import java.util.List;
 public class SimulatorEnv {
 	
 	public static final int EXIT = 0, CHAR = 1, REDRAW = 2;
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = false;
 
 	public static void main(String[] args) throws IOException {
 		if(args.length >= 4) {

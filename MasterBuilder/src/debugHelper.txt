@@ -1,0 +1,8 @@
+fprintf(stderr, "{CLK}\n");
+		printBitVector(pc, 17, "pc");
+		printBitVector(o, 32, "o");
+		printBitVector(r0, 32, "r0");
+		printBitVector(r1, 32, "r1");
+		printBitVector(wa, 17, "addr");
+		printBitVector(dataRamIn, 32, "ramIn");
+		fflush(stderr);

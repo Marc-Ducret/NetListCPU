@@ -122,6 +122,7 @@ public class Compiler {
 			while(!(tok = nextToken()).equals(";")) {
 				Register r = Register.allocReg();
 				args.add(r);
+				prevToken();
 				computeExpr(r, instrs);
 			}
 			prevToken();

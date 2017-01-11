@@ -1,4 +1,8 @@
 .vars
 .prgm
 @main
+	>draw 65;
+	>redraw;
+	>draw 66;
+	>redraw;
 	>exit;
