@@ -212,30 +212,33 @@ main() = (pc:[17],o:[32], r1:[32]) where
   (*PC initial*)
   pc = reg_17(newPC);
   
-  (*instruction*)
-  o = ram<17,32>(pc,0,zero16.0,zero32);
+  (*Instruction*)
+  o = rom<17,32>(pc);
   imm = o[0]; notImm = not imm;
   jumpOp = o[1]; 
   wReg = o[2];
   juncOp = o[3]; 
   jzOp = o[4]; 
-  andOp = o[5] & notImm; 
-  orOp = o[6] & notImm; 
-  xorOp = o[7] & notImm;
+  branchOp = o[5]; 
+  addOp = o[6]; 
+  subOp = o[7];
   compOp = o[8] & notImm; 
   ltOp = o[9] & notImm; op9 = o[9];
   op10 = o[10]; op11 = o[11]; 
-  eqOp = op10 & notImm; neqOp = op11 & notImm; 
+  eqOp = op10 & notImm; negOp = op11 & notImm; 
   op12 = o[12]; op13 = o[13]; 
   shiftOp = op12 & notImm; lrOp = op13 & notImm; 
   op14 = o[14]; movOp = op14 & notImm; 
   op15 = o[15];  op16 = o[16]; 
-  addOp = o[15] & notImm; 
-  subOp = o[16] & notImm; 
-  op17 = o[17]; op18 = o[18]; 
-  op19 = o[19]; op20 = o[20]; op21 = o[21]; op22 = o[22]; 
+  orOp = o[15] & notImm; 
+  xorOp = o[16] & notImm; 
+  op17 = o[17]; 
+  andOp = o[17] & notImm;
+  op18 = o[18]; op19 = o[19]; 
+  weRamOp = o[18] & notImm; ramOp = o[19] & notImm;
+  op20 = o[20]; op21 = o[21]; op22 = o[22]; 
   op23 = o[23]; op24 = o[24]; 
-  weRamOp = o[24] & notImm; ramOp = o[25] & notImm;
+  
   op25 = o[25];  
 
   (*adresses des registres*)
@@ -266,7 +269,7 @@ main() = (pc:[17],o:[32], r1:[32]) where
   reg2 = or_32(zz_4, zz_5);
 
   (*Exécution de l'alu*)
-  (dataAlu,zf,of,sf) = alu(addOp,subOp,andOp,orOp,xorOp,compOp,ltOp,eqOp,neqOp,shiftOp, lrOp, reg1,reg2);
+  (dataAlu,zf,of,sf) = alu(addOp,subOp,andOp,orOp,xorOp,compOp,ltOp,eqOp,negOp,shiftOp, lrOp, reg1,reg2);
   
   (*Appel de la RAM*)
   ra = reg2[15..31];
@@ -320,7 +323,7 @@ main() = (pc:[17],o:[32], r1:[32]) where
   r6 = maj(r6, a_6 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
   r7 = maj(r7, a_7 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
   
-  jump = jumpOp & ((jzOp ^ (reg zf)) or juncOp);
+  jump = jumpOp & ((jzOp ^ (mux(branchOp, zf, reg zf))) or juncOp);
   (addPC,osef) = add<17>(pc,zero16.1,0);
   addr = d15.d16.d17.d18.d19.d20.d21.d22.d23.d24.d25.d26.d27.d28.d29.d30.d31;
   newPC = mux_17(jump,addr,addPC);
