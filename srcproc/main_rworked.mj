@@ -312,8 +312,8 @@ main() = (pc:[17],o:[32], r1:[32]) where
             dImm23.dImm24.dImm25.dImm26.dImm27.dImm28.dImm29.dImm30.dImm31;
   
   (*Appel de la RAM*)
-  ra = dImm15.dImm16.dImm17.dImm18.dImm19.dImm20.dImm21.dImm22.dImm23.dImm24.dImm25.dImm26.
-       dImm27.dImm28.dImm29.dImm30.dImm31;
+  ra = dImm15.dImm16.dImm17.dImm18.dImm19.dImm20.dImm21.dImm22.
+       dImm23.dImm24.dImm25.dImm26.dImm27.dImm28.dImm29.dImm30.dImm31;
   wa = ra;
   dataRamIn = reg1;
   weRam = ramOp and weRamOp;
