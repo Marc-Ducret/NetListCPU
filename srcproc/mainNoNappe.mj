@@ -1564,7 +1564,7 @@ main() = (pc:[17]) where
   op25 = o[25];  
 
   aAddr0 = o[28]; aAddr1 = o[27]; aAddr2 = o[26]; aAddrn0 = not aAddr0; aAddrn1 = not aAddr1; aAddrn2 = not aAddr2;
-  zAddr0 = o[31]; zAddr1 = o[30]; zAddr2 = o[29]; zAddrn0 = not zAddr0; zAddrn1 = not zAddr1; zAddrn2 = not z2;
+  zAddr0 = o[31]; zAddr1 = o[30]; zAddr2 = o[29]; zAddrn0 = not zAddr0; zAddrn1 = not zAddr1; zAddrn2 = not zAddr2;
   
   a01 = aAddr1 & aAddr0; a0n1 = aAddrn1 & aAddr0; an01 = aAddr1 & aAddrn0; an0n1 = aAddrn1 & aAddrn0;
   z01 = zAddr1 & zAddr0; z0n1 = zAddrn1 & zAddr0; zn01 = zAddr1 & zAddrn0; zn0n1 = zAddrn1 & zAddrn0;
@@ -1626,9 +1626,9 @@ r2_0,r2_1,r2_2,r2_3,r2_4,r2_5,r2_6,r2_7,r2_8,r2_9,r2_10,r2_11,r2_12,r2_13,r2_14,
   rwa = di15.di16.di17.di18.di19.di20.di21.di22.di23.di24.di25.di26.di27.di28.di29.di30.di31;
   dataRamIn = r1_0.r1_1.r1_2.r1_3.r1_4.r1_5.r1_6.r1_7.r1_8.r1_9.r1_10.r1_11.r1_12.r1_13.r1_14.r1_15.r1_16.r1_17.r1_18.r1_19.r1_20. r1_21.r1_22.r1_23.r1_24.r1_25.r1_26.r1_27.r1_28.r1_29.r1_30.r1_31;
   weRam = ramOp and weRamOp;
-  do = ram<17,32>(rwa,weRam,rwa,dataRamIn);
+  dOut = ram<17,32>(rwa,weRam,rwa,dataRamIn);
 
-  (d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20, d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31) = mux32(ramOp, do[0],do[1],do[2],do[3],do[4],do[5],do[6],do[7],do[8],do[9],do[10],do[11],do[12],do[13],do[14],do[15],do[16],do[17],do[18],do[19],do[20],do[21],do[22],do[23],do[24],do[25],do[26],do[27],do[28],do[29],do[30],do[31], di0,di1,di2,di3,di4,di5,di6,di7,di8,di9,di10,di11,di12,di13,di14,di15,di16,di17,di18,di19,di20, di21,di22,di23,di24,di25,di26,di27,di28,di29,di30,di31);
+  (d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20, d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31) = mux32(ramOp, dOut[0],dOut[1],dOut[2],dOut[3],dOut[4],dOut[5],dOut[6],dOut[7],dOut[8],dOut[9],dOut[10],dOut[11],dOut[12],dOut[13],dOut[14],dOut[15],dOut[16],dOut[17],dOut[18],dOut[19],dOut[20],dOut[21],dOut[22],dOut[23],dOut[24],dOut[25],dOut[26],dOut[27],dOut[28],dOut[29],dOut[30],dOut[31], di0,di1,di2,di3,di4,di5,di6,di7,di8,di9,di10,di11,di12,di13,di14,di15,di16,di17,di18,di19,di20, di21,di22,di23,di24,di25,di26,di27,di28,di29,di30,di31);
 
   (r_0_0,r_0_1,r_0_2,r_0_3,r_0_4,r_0_5,r_0_6,r_0_7,r_0_8,r_0_9,r_0_10,r_0_11,r_0_12,r_0_13,r_0_14,r_0_15,r_0_16,r_0_17,r_0_18,r_0_19,r_0_20, r_0_21,r_0_22,r_0_23,r_0_24,r_0_25,r_0_26,r_0_27,r_0_28,r_0_29,r_0_30,r_0_31) = maj(a0 & weReg, r_0_0,r_0_1,r_0_2,r_0_3,r_0_4,r_0_5,r_0_6,r_0_7,r_0_8,r_0_9,r_0_10,r_0_11,r_0_12,r_0_13,r_0_14,r_0_15,r_0_16,r_0_17,r_0_18,r_0_19,r_0_20, r_0_21,r_0_22,r_0_23,r_0_24,r_0_25,r_0_26,r_0_27,r_0_28,r_0_29,r_0_30,r_0_31,d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20, d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31);
   (r_1_0,r_1_1,r_1_2,r_1_3,r_1_4,r_1_5,r_1_6,r_1_7,r_1_8,r_1_9,r_1_10,r_1_11,r_1_12,r_1_13,r_1_14,r_1_15,r_1_16,r_1_17,r_1_18,r_1_19,r_1_20, r_1_21,r_1_22,r_1_23,r_1_24,r_1_25,r_1_26,r_1_27,r_1_28,r_1_29,r_1_30,r_1_31) = maj(a1 & weReg, r_1_0,r_1_1,r_1_2,r_1_3,r_1_4,r_1_5,r_1_6,r_1_7,r_1_8,r_1_9,r_1_10,r_1_11,r_1_12,r_1_13,r_1_14,r_1_15,r_1_16,r_1_17,r_1_18,r_1_19,r_1_20, r_1_21,r_1_22,r_1_23,r_1_24,r_1_25,r_1_26,r_1_27,r_1_28,r_1_29,r_1_30,r_1_31,d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20, d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31);
