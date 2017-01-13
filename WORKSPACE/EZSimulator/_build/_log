@@ -1,0 +1,36 @@
+### Starting build.
+# Target: nls_compile.ml.depends, tags: { extension:ml, file:nls_compile.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules nls_compile.ml > nls_compile.ml.depends # cached
+# Target: netlist.ml.depends, tags: { extension:ml, file:netlist.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules netlist.ml > netlist.ml.depends # cached
+# Target: netlist_lexer.ml.depends, tags: { extension:ml, file:netlist_lexer.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules netlist_lexer.ml > netlist_lexer.ml.depends # cached
+# Target: netlist_parser.ml.depends, tags: { extension:ml, file:netlist_parser.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules netlist_parser.ml > netlist_parser.ml.depends # cached
+# Target: netlist_ast.ml.depends, tags: { extension:ml, file:netlist_ast.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules netlist_ast.ml > netlist_ast.ml.depends # cached
+# Target: netlist_ast.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:netlist_ast.cmo, file:netlist_ast.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o netlist_ast.cmo netlist_ast.ml # cached
+# Target: netlist_parser.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:netlist_parser.cmo, file:netlist_parser.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o netlist_parser.cmo netlist_parser.ml # cached
+# Target: netlist_lexer.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:netlist_lexer.cmo, file:netlist_lexer.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o netlist_lexer.cmo netlist_lexer.ml # cached
+# Target: netlist_printer.ml.depends, tags: { extension:ml, file:netlist_printer.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules netlist_printer.ml > netlist_printer.ml.depends # cached
+# Target: netlist_printer.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:netlist_printer.cmo, file:netlist_printer.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o netlist_printer.cmo netlist_printer.ml # cached
+# Target: netlist.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:netlist.cmo, file:netlist.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o netlist.cmo netlist.ml # cached
+# Target: scheduler.ml.depends, tags: { extension:ml, file:scheduler.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules scheduler.ml > scheduler.ml.depends # cached
+# Target: graph.ml.depends, tags: { extension:ml, file:graph.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules graph.ml > graph.ml.depends # cached
+# Target: graph.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:graph.cmo, file:graph.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o graph.cmo graph.ml # cached
+# Target: scheduler.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:scheduler.cmo, file:scheduler.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o scheduler.cmo scheduler.ml # cached
+# Target: nls_compile.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:nls_compile.cmo, file:nls_compile.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o nls_compile.cmo nls_compile.ml # cached
+# Target: nls_compile.byte, tags: { byte, dont_link_with, extension:byte, file:nls_compile.byte, link, ocaml, program, quiet }
+/usr/bin/ocamlc netlist_ast.cmo netlist_parser.cmo netlist_lexer.cmo netlist_printer.cmo netlist.cmo graph.cmo scheduler.cmo nls_compile.cmo -o nls_compile.byte # cached
+# Compilation successful.
