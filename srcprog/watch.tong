@@ -1,5 +1,7 @@
 .vars
 	time
+	time_old
+	time_new
 
 	century
 	year
@@ -10,43 +12,224 @@
 	second
 
 	is_bissext_res
+	days_in_month_res
 
+#	seconds_in_century_res
 	seconds_in_year_res
+	seconds_in_month_res
+
+	addr
 
 	div_a
-	div_b
 	div_q
-	div_r
 	
 .prgm	
+@ is_bissext
+	is_bissext_res = (((year & 3) = 0) & (century != 0)) | ((year = 0) & ((century & 3) = 0));
+
+#@ seconds_in_century
+#	? (century & 3) = 0
+#	{
+#	  seconds_in_century_res = 3155760000;
+#	}
+#	{
+#	  seconds_in_century_res = 3155673600;
+#	}
+
+@ seconds_in_year
+	> is_bissext;
+	? is_bissext_res 
+	{ 
+	  seconds_in_year_res = 31622400; 
+	} 
+	{ 
+	  seconds_in_year_res = 31536000; 
+	}
+
+@ days_in_month
+	? month = 1 
+	{ 
+	  days_in_month_res = 28 + is_bissext_res; 
+	} 
+	{
+	  ? month < 7 
+	  { 
+	    days_in_month_res = 31 - (month & 1); 
+	  } 
+	  {
+	    days_in_month_res = 30 + (month & 1); 
+	  }
+	}
+
+@ seconds_in_month
+	? month = 1 
+	{ 
+	  ? is_bissext_res 
+	  { 
+	    seconds_in_month_res = 2505600; 
+	  } 
+	  {
+            seconds_in_month_res = 2419200; 
+	  } 
+	} 
+	{
+	  ? month < 7 
+	  { 
+	    ? month & 1 
+	    {
+	      days_in_month_res = 2592000; 
+	    } 
+	    {
+	      days_in_month_res = 2678400; 
+	    } 
+	  } 
+	  {
+	    ? month & 1 
+	    {
+	      days_in_month_res = 2678400; 
+	    } 
+	    {
+	      days_in_month_res = 2592000; 
+	    } 
+	  }
+	}
+
+@ div
+	! div_a > 9
+	{
+	  div_a = div_a - 10;
+	  div_q = div_q + 1;
+	}
+
+
+@ draw_int # draw div_a at addr and addr+1
+	> div;
+	> draw addr div_q;
+	> draw (addr + 1) div_a;
+	
+@ draw_time
+	addr = 0;
+	div_a = century;
+	> draw_int;
+
+	addr = 2;
+	div_a = year;
+	> draw_int;
+
+	addr = 4;
+	div_a = month + 1;
+	> draw_int;
+
+	addr = 7;
+	div_a = day + 1;
+	> draw_int;
+	
+	addr = 10;
+	div_a = hour;
+	> draw_int;
+
+	addr = 13;
+	div_a = minute;
+	> draw_int;
+
+	addr = 16;
+	div_a = second;
+	> draw_int;
+
 @ main
+	time_old = time;
+
 	century = 19;
 	year = 70;
 	month = 0;
 	day = 0;
 	hour = 0;
 	minute = 0;
-	second = time;
+	second = time_old;
 
 	> seconds_in_year;
-	! time >= seconds_in_year_res
+	! second >= seconds_in_year_res
 	{
-	  
+	  year = year + 1;
+	  ? year = 100
+	  {
+	    year = 0;
+	    century = century + 1;
+	  }
+
+	  second = second - seconds_in_year_res;
+	  > seconds_in_year;
 	}
 
-@ is_bissext
-	is_bissext_res = (((year & 3) = 0) & (century != 0)) | ((year = 0) & ((century & 3) = 0));
-
-@seconds_in_year
-	> is_bissext;
-	if is_bissext_res { seconds_in_year_res = 31622400; } { seconds_in_year_res = 31536000; }
-	
-@ div
-	div_q = 0;
-	div_r = 0;
-	! div_a >= div_b
+	> seconds_in_month;
+	! second >= seconds_in_month_res
 	{
-	  div_a = div_a - div_b;
-	  div_q = div_q + 1;
+	  month = month + 1;
+	  second = second - seconds_in_month_res;
+	  > seconds_in_month;
 	}
-	div_r = div_a;
+
+	! second >= 86400
+	{
+	  day = day + 1;
+	  second = second - 86400;
+	}
+
+	! second >= 3600
+	{
+	  hour = hour + 1;
+	  second = second - 3600;
+	}
+
+	! second >= 60
+	{
+	  minute = minute + 1;
+	  second = second - 60;
+	}
+
+	! 1
+	{
+	  time_new = time;
+
+	  second = second + time_new - time_old;
+	  time_old = time_new;
+
+	  ? second >= 60
+	  {
+	    second = second - 60;
+	    minute = minute + 1;
+
+	    ? minute = 60
+	    {
+	      minute = 0;
+	      hour = hour + 1;
+
+	      ? hour = 24
+	      {
+	        hour = 0;
+	        day = day + 1;
+
+		> days_in_month;
+	        ? day = days_in_month_res
+	        {
+	          day = 0;
+	          month = month + 1;
+
+	          ? month = 12
+	          {
+	            month = 0;
+	            year = year + 1;
+
+	            ? year = 100
+	            {
+	              year = 0;
+	              century = century + 1;
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }
+
+	  > draw_time;
+	}
