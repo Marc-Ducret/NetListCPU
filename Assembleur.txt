@@ -101,3 +101,6 @@ Opcodes :
 ... (inutilisés pour l'instant)
 26 à 28 : registre 1 (qui contiendra le résultat)
 29 à 31 : registre 2
+
+
+RAM(read_address[17], write_enable, write_address[17], data[32])
