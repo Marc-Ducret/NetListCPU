@@ -1,0 +1,29 @@
+ACCESSING THE BUILD SCRIPTS
+
+Building scripts are located under: "MasterBuilder".
+If any permission issues with scripts are encountered, run:
+	chmod u+x execPerm; ./execPerm
+in this folder.
+
+USING THE SCRIPTS
+
+-> buildTools 
+	builds all the static tools (namely: EZSimulator, TongCompiler, SimulatorEnv)
+
+usage: ./buildTools	
+
+-> buildProc [file]
+	Takes a .mj file (without the extension) and compiles the associated net list, c code and finally executable (proc.exe)
+	
+usage: ./buildProc main
+
+-> build [file]
+	runs buildTools then buildProc
+	
+usage: ./build main
+
+-> runProc [file] [width] [height]
+	compiles the specified Tong source file (without .tong) into rom then runs the processor on this rom.
+	Uses width and height as screen sizes.
+	
+usage: ./runProc prgm 32 16

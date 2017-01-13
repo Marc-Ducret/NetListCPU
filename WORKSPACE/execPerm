@@ -4,6 +4,7 @@ chmod u+x MasterBuilder/build
 chmod u+x MasterBuilder/buildProc
 chmod u+x MasterBuilder/buildTools
 chmod u+x MasterBuilder/runProc
+chmod u+x MasterBuilder/clean
 chmod u+x minijazz/mjc.byte
 chmod u+x SimulatorEnv/env
 chmod u+x SimulatorEnv/make
