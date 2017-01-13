@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p genSrc
+mkdir -p bin
 ./../minijazz/mjc.byte src/$1.mj
 cp src/$1.net genSrc/$1.net
 rm src/$1.net
