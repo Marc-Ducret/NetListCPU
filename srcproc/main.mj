@@ -214,31 +214,32 @@ main() = (pc:[17],o:[32], r1:[32]) where
   
   (*Instruction*)
   o = rom<17,32>(pc);
+
   imm = o[0]; notImm = not imm;
-  jumpOp = o[1]; 
-  wReg = o[2];
-  juncOp = o[3]; 
+  weReg = o[1];
+  ramOp = o[2];
+  weRamOp = o[3]; 
   jzOp = o[4]; 
-  branchOp = o[5]; 
-  addOp = o[6]; 
-  subOp = o[7];
-  compOp = o[8] & notImm; 
-  ltOp = o[9] & notImm; op9 = o[9];
-  op10 = o[10]; op11 = o[11]; 
-  eqOp = op10 & notImm; negOp = op11 & notImm; 
-  op12 = o[12]; op13 = o[13]; 
-  shiftOp = op12 & notImm; lrOp = op13 & notImm; 
-  op14 = o[14]; movOp = op14 & notImm; 
-  op15 = o[15];  op16 = o[16]; 
-  orOp = o[15] & notImm; 
-  xorOp = o[16] & notImm; 
-  op17 = o[17]; 
-  andOp = o[17] & notImm;
-  op18 = o[18]; op19 = o[19]; 
-  weRamOp = o[18] & notImm; ramOp = o[19] & notImm;
-  op20 = o[20]; op21 = o[21]; op22 = o[22]; 
-  op23 = o[23]; op24 = o[24]; 
-  
+  jnzOp = o[5];
+  branchOp = o[6]; 
+  addOp = o[7]; 
+  subOp = o[8];
+  op9 = o[9]; compOp = op9 & notImm; 
+  op10 = o[10]; ltOp = op10 & notImm;
+  op11 = o[11]; eqOp = op11 & notImm; 
+  op12 = o[12]; negOp = op12 & notImm; 
+  op13 = o[13]; shiftOp = op13 & notImm; 
+  op14 = o[14]; lrOp = op14 & notImm; 
+  op15 = o[15]; movOp = op15 & notImm; 
+  op16 = o[16]; orOp = op16 & notImm; 
+  op17 = o[17]; xorOp = op17 & notImm; 
+  op18 = o[18]; andOp = op18 & notImm;
+  op19 = o[19]; 
+  op20 = o[20]; 
+  op21 = o[21]; 
+  op22 = o[22]; 
+  op23 = o[23]; 
+  op24 = o[24]; 
   op25 = o[25];  
 
   (*adresses des registres*)
@@ -271,59 +272,102 @@ main() = (pc:[17],o:[32], r1:[32]) where
   (*Exécution de l'alu*)
   (dataAlu,zf,of,sf) = alu(addOp,subOp,andOp,orOp,xorOp,compOp,ltOp,eqOp,negOp,shiftOp, lrOp, reg1,reg2);
   
+  dataComputed = mux_32(movOp, reg2, dataAlu);
+  (*Récupération des données*)
+  dImm0 = notImm & dataComputed[0];
+  dImm1 = notImm & dataComputed[1];
+  dImm2 = notImm & dataComputed[2];
+  dImm3 = notImm & dataComputed[3];
+  dImm4 = notImm & dataComputed[4];
+  dImm5 = notImm & dataComputed[5];
+  dImm6 = notImm & dataComputed[6];
+  dImm7 = notImm & dataComputed[7];
+  dImm8 = notImm & dataComputed[8];
+  dImm9 = notImm & dataComputed[9];
+  dImm10 = notImm & dataComputed[10];
+  dImm11 = notImm & dataComputed[11];
+  dImm12 = notImm & dataComputed[12];
+  dImm13 = notImm & dataComputed[13];
+  dImm14 = notImm & dataComputed[14];
+  dImm15 = mux(imm,op9,dataComputed[15]);
+  dImm16 = mux(imm,op10,dataComputed[16]);
+  dImm17 = mux(imm,op11,dataComputed[17]);
+  dImm18 = mux(imm,op12,dataComputed[18]);
+  dImm19 = mux(imm,op13,dataComputed[19]);
+  dImm20 = mux(imm,op14,dataComputed[20]);
+  dImm21 = mux(imm,op15,dataComputed[21]);
+  dImm22 = mux(imm,op16,dataComputed[22]);
+  dImm23 = mux(imm,op17,dataComputed[23]);
+  dImm24 = mux(imm,op18,dataComputed[24]);
+  dImm25 = mux(imm,op19,dataComputed[25]);
+  dImm26 = mux(imm,op20,dataComputed[26]);
+  dImm27 = mux(imm,op21,dataComputed[27]);
+  dImm28 = mux(imm,op22,dataComputed[28]);
+  dImm29 = mux(imm,op23,dataComputed[29]);
+  dImm30 = mux(imm,op24,dataComputed[30]);
+  dImm31 = mux(imm,op25,dataComputed[31]);
+  
+  dataImm = dImm0.dImm1.dImm2.dImm3.dImm4.dImm5.dImm6.dImm7.dImm8.dImm9.dImm10.dImm11.dImm12.
+            dImm13.dImm14.dImm15.dImm16.dImm17.dImm18.dImm19.dImm20.dImm21.dImm22.
+            dImm23.dImm24.dImm25.dImm26.dImm27.dImm28.dImm29.dImm30.dImm31;
+  
   (*Appel de la RAM*)
-  ra = reg2[15..31];
+  ra = dImm15.dImm16.dImm17.dImm18.dImm19.dImm20.dImm21.dImm22.
+       dImm23.dImm24.dImm25.dImm26.dImm27.dImm28.dImm29.dImm30.dImm31;
   wa = ra;
   dataRamIn = reg1;
   weRam = ramOp and weRamOp;
   dataRamOut = ram<17,32>(ra,weRam,wa,dataRamIn);
+
+  (* Selection de la data *)
+  dataReg = mux_32(ramOp, dataRamOut, dataImm);
   
-  d = mux_32(ramOp, dataRamOut, mux_32(movOp, reg2, dataAlu));
-  (*Récupération des données*)
-  d0 = notImm & d[0];
-  d1 = notImm & d[1];
-  d2 = notImm & d[2];
-  d3 = notImm & d[3];
-  d4 = notImm & d[4];
-  d5 = notImm & d[5];
-  d6 = notImm & d[6];
-  d7 = notImm & d[7];
-  d8 = notImm & d[8];
-  d9 = notImm & d[9];
-  d10 = notImm & d[10];
-  d11 = notImm & d[11];
-  d12 = notImm & d[12];
-  d13 = notImm & d[13];
-  d14 = notImm & d[14];
-  d15 = mux(imm,op9,d[15]);
-  d16 = mux(imm,op10,d[16]);
-  d17 = mux(imm,op11,d[17]);
-  d18 = mux(imm,op12,d[18]);
-  d19 = mux(imm,op13,d[19]);
-  d20 = mux(imm,op14,d[20]);
-  d21 = mux(imm,op15,d[21]);
-  d22 = mux(imm,op16,d[22]);
-  d23 = mux(imm,op17,d[23]);
-  d24 = mux(imm,op18,d[24]);
-  d25 = mux(imm,op19,d[25]);
-  d26 = mux(imm,op20,d[26]);
-  d27 = mux(imm,op21,d[27]);
-  d28 = mux(imm,op22,d[28]);
-  d29 = mux(imm,op23,d[29]);
-  d30 = mux(imm,op24,d[30]);
-  d31 = mux(imm,op25,d[31]);
+  (* On passe a des fils *)
+  d0 = dataReg[0];
+  d1 = dataReg[1];
+  d2 = dataReg[2];
+  d3 = dataReg[3];
+  d4 = dataReg[4];
+  d5 = dataReg[5];
+  d6 = dataReg[6];
+  d7 = dataReg[7];
+  d8 = dataReg[8];
+  d9 = dataReg[9];
+  d10 = dataReg[10];
+  d11 = dataReg[11];
+  d12 = dataReg[12];
+  d13 = dataReg[13];
+  d14 = dataReg[14];
+  d15 = dataReg[15];
+  d16 = dataReg[16];
+  d17 = dataReg[17];
+  d18 = dataReg[18];
+  d19 = dataReg[19];
+  d20 = dataReg[20];
+  d21 = dataReg[21];
+  d22 = dataReg[22];
+  d23 = dataReg[23];
+  d24 = dataReg[24];
+  d25 = dataReg[25];
+  d26 = dataReg[26];
+  d27 = dataReg[27];
+  d28 = dataReg[28];
+  d29 = dataReg[29];
+  d30 = dataReg[30];
+  d31 = dataReg[31];
 
   (*Mise à jour des registres*)
-  r0 = maj(r0, a_0 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r1 = maj(r1, a_1 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r2 = maj(r2, a_2 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r3 = maj(r3, a_3 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r4 = maj(r4, a_4 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r5 = maj(r5, a_5 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r6 = maj(r6, a_6 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
-  r7 = maj(r7, a_7 & wReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r0 = maj(r0, a_0 & weReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r1 = maj(r1, a_1 & weReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r2 = maj(r2, a_2 & weReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r3 = maj(r3, a_3 & weReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r4 = maj(r4, a_4 & weReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r5 = maj(r5, a_5 & weReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r6 = maj(r6, a_6 & weReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
+  r7 = maj(r7, a_7 & weReg, d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, d19, d20, d21, d22, d23, d24, d25, d26, d27, d28, d29, d30, d31);
   
-  jump = jumpOp & ((jzOp ^ (mux(branchOp, zf, reg zf))) or juncOp);
+  flagJump = mux(branchOp, zf, reg zf);
+  jump = (flagJump & jzOp) + ((not flagJump) & jnzOp); 
   (addPC,osef) = add<17>(pc,zero16.1,0);
   addr = d15.d16.d17.d18.d19.d20.d21.d22.d23.d24.d25.d26.d27.d28.d29.d30.d31;
   newPC = mux_17(jump,addr,addPC);
