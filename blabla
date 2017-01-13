@@ -1,0 +1,30 @@
+masterbuilder
+src 
+mettre le mj
+
+
+masterbuilder
+terminal
+buildthenrun main (taille écran -> ) 10 1 (largeur puis hauteur)
+
+
+pour la rom
+masterbuikder bin
+
+
+
+Programme :
+li 1 000
+add 001 000
+j 1
+
+Puis par hex(...)
+C0000040
+41000008
+8C000040
+
+
+
+
+
+
