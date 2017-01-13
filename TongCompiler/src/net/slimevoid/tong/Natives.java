@@ -18,7 +18,7 @@ public class Natives {
 	private static Procedure buildRedraw() {
 		List<Instr> instrs = new ArrayList<>();
 		Register addr = Register.allocReg();
-		instrs.add(new InstrI(addr, 0x10000));
+		instrs.add(new InstrR(Op.LI, 0x10000, addr));
 		instrs.add(new InstrR(Op.SW, addr, addr));
 		addr.free();
 		return new Procedure("redraw", instrs);
@@ -27,7 +27,7 @@ public class Natives {
 	private static Procedure buildExit() {
 		List<Instr> instrs = new ArrayList<>();
 		Register addr = Register.allocReg();
-		instrs.add(new InstrI(addr, 0x10001));
+		instrs.add(new InstrR(Op.LI, 0x10001, addr));
 		instrs.add(new InstrR(Op.SW, addr, addr));
 		addr.free();
 		return new Procedure("exit", instrs);
@@ -35,14 +35,11 @@ public class Natives {
 	
 	private static Procedure buildDraw() {
 		List<Instr> instrs = new ArrayList<>();
-//		Register x = Register.allocReg(); TODO add x and y args
-//		Register y = Register.allocReg();
+		Register x = Register.allocReg(); //TODO add x and y args
 		Register c = Register.allocReg();
-		Register addr = Register.allocReg();
-		instrs.add(new InstrI(addr, 0x0));
-		instrs.add(new InstrR(Op.SW, c, addr));
+		instrs.add(new InstrR(Op.SW, c, x));
 		c.free();
-		addr.free();
+		x.free();
 		return new Procedure("draw", instrs);
 	}
 }

@@ -96,7 +96,8 @@ public class Compiler {
 		}
 		for(Procedure p : procs.values()) {
 			System.out.println("proc: "+p.name);
-			for(Instr instr : p.instrs) System.out.println("\t"+instr);		
+			int ct = 0;
+			for(Instr instr : p.instrs) System.out.println(Integer.toHexString(ct++)+"\t"+instr);		
 		}
 		if(!procs.containsKey("main")) error("No main procedure");
 		for(Instr instr : procs.get("main").instrs) out.writeInt(instr.toAsm(this));
@@ -129,16 +130,44 @@ public class Compiler {
 			for(Register r : args) r.free();
 			instrs.addAll(procs.get(func).instrs);
 		} else if(tok.equals("?")) {
-			//TODO
+			Register out = Register.allocReg();
+			Register zero = Register.allocReg();
+			instrs.add(new InstrR(Op.LI, 0x0, zero));
+			computeExpr(out, instrs);
+			int start = instrs.size();
+			out.free();
+			zero.free();
+			if(!nextToken().equals("{")) error("Missing {");
+			while(!nextToken().equals("}")) {
+				prevToken();
+				if(!nextInstr(instrs)) error("Missing }");
+			}
+			instrs.add(start, new InstrR(Op.BEQI, instrs.size()+1, out, zero));
+			return true;
 		} else if(tok.equals("!")) {
-			//TODO
+			int start = instrs.size();
+			Register out = Register.allocReg();
+			Register zero = Register.allocReg();
+			instrs.add(new InstrR(Op.LI, 0x0, zero));
+			computeExpr(out, instrs);
+			int jmp = instrs.size();
+			out.free();
+			zero.free();
+			if(!nextToken().equals("{")) error("Missing {");
+			while(!nextToken().equals("}")) {
+				prevToken();
+				if(!nextInstr(instrs)) error("Missing }");
+			}
+			instrs.add(new InstrR(Op.JI, start));
+			instrs.add(jmp, new InstrR(Op.BEQI, instrs.size()+1, out, zero));
+			return true;
 		} else if(isIdent(tok)) {
 			if(!vars.containsKey(tok)) error("Unknown variable "+tok);
 			if(!nextToken().equals("=")) error("Missing =");
 			Register out = Register.allocReg();
 			computeExpr(out, instrs);
 			Register addr = Register.allocReg();
-			instrs.add(new InstrI(addr, vars.get(tok)));
+			instrs.add(new InstrR(Op.LI, vars.get(tok), addr));
 			instrs.add(new InstrR(Op.SW, out, addr));
 			out.free();
 			addr.free();
@@ -154,12 +183,12 @@ public class Compiler {
 			if(!nextToken().equals(")")) error("Missing )");
 		} else if(isIdent(tok)) {
 			Register addr = Register.allocReg();
-			instrs.add(new InstrI(addr, vars.get(tok)));
+			instrs.add(new InstrR(Op.LI, vars.get(tok), addr));
 			instrs.add(new InstrR(Op.LW, addr, out));
 			addr.free();
 		} else if(isNumber(tok)) {
 			int i = tok.startsWith("0x") ? Integer.parseInt(tok.substring(2), 16): Integer.parseInt(tok);
-			instrs.add(new InstrI(out, i));
+			instrs.add(new InstrR(Op.LI, i, out));
 		} else if(tok.equals("-")) {
 			computeExpr(out, instrs);
 			//... do
@@ -206,7 +235,7 @@ public class Compiler {
 			default:
 				break;
 			}
-			instrs.add(new InstrR(o, tmp, out));
+			instrs.add(new InstrR(o, out, tmp));
 			tmp.free();
 		}
 	}

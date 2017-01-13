@@ -1,8 +1,14 @@
-.vars
+.vars x y
 .prgm
 @main
-	>draw 65;
-	>redraw;
-	>draw 66;
+	x = 65;
+	>draw (x-65)+1 33;
+	>draw 2 (x-65)+33;
+	y = 4;
+	>draw y 97;
+	#! x {
+	#	x = x - 1;
+	#	>draw x x;
+	#}
 	>redraw;
 	>exit;
