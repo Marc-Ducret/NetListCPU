@@ -17,19 +17,13 @@ public class Natives {
 	
 	private static Procedure buildRedraw() {
 		List<Instr> instrs = new ArrayList<>();
-		Register addr = Register.allocReg();
-		instrs.add(new InstrR(Op.LI, 0x10000, addr));
-		instrs.add(new InstrR(Op.SW, addr, addr));
-		addr.free();
+		instrs.add(new InstrR(Op.SWI, 0x10000, Register.R0));;
 		return new Procedure("redraw", instrs);
 	}
 	
 	private static Procedure buildExit() {
 		List<Instr> instrs = new ArrayList<>();
-		Register addr = Register.allocReg();
-		instrs.add(new InstrR(Op.LI, 0x10001, addr));
-		instrs.add(new InstrR(Op.SW, addr, addr));
-		addr.free();
+		instrs.add(new InstrR(Op.SWI, 0x10001, Register.R0));
 		return new Procedure("exit", instrs);
 	}
 	

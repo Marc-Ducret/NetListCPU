@@ -130,11 +130,12 @@ public class Compiler {
 			for(Register r : args) r.free();
 			instrs.addAll(procs.get(func).instrs);
 		} else if(tok.equals("?")) {
-			Register out = Register.allocReg();
 			Register zero = Register.allocReg();
 			instrs.add(new InstrR(Op.LI, 0x0, zero));
+			Register out = Register.allocReg();
 			computeExpr(out, instrs);
 			int start = instrs.size();
+			instrs.add(null);
 			out.free();
 			zero.free();
 			if(!nextToken().equals("{")) error("Missing {");
@@ -142,15 +143,16 @@ public class Compiler {
 				prevToken();
 				if(!nextInstr(instrs)) error("Missing }");
 			}
-			instrs.add(start, new InstrR(Op.BEQI, instrs.size()+1, out, zero));
+			instrs.set(start, new InstrR(Op.BEQI, instrs.size(), out, zero));
 			return true;
 		} else if(tok.equals("!")) {
 			int start = instrs.size();
-			Register out = Register.allocReg();
 			Register zero = Register.allocReg();
 			instrs.add(new InstrR(Op.LI, 0x0, zero));
+			Register out = Register.allocReg();
 			computeExpr(out, instrs);
 			int jmp = instrs.size();
+			instrs.add(null);
 			out.free();
 			zero.free();
 			if(!nextToken().equals("{")) error("Missing {");
@@ -159,7 +161,7 @@ public class Compiler {
 				if(!nextInstr(instrs)) error("Missing }");
 			}
 			instrs.add(new InstrR(Op.JI, start));
-			instrs.add(jmp, new InstrR(Op.BEQI, instrs.size()+1, out, zero));
+			instrs.set(jmp, new InstrR(Op.BEQI, instrs.size(), out, zero));
 			return true;
 		} else if(isIdent(tok)) {
 			if(!vars.containsKey(tok)) error("Unknown variable "+tok);
