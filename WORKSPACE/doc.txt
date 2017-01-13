@@ -24,9 +24,12 @@ usage: ./buildProc main
 	
 usage: ./build main
 
--> run [file] [width] [height]
+-> run [file] [width] [height] <-console> <-debug>
 	compiles the specified Tong source file (without .tong) into rom then runs the processor on this rom.
 	Uses width and height as screen sizes.
-	The file must be located in the src folder
+	The file must be located in the src folder.
+	-console uses the console as screen
+	-debug displays the error stream from the processor
 	
 usage: ./run prgm 32 16
+	   ./run prgm 32 16 -console -debug

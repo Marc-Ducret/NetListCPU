@@ -1,0 +1,8 @@
+.vars x y
+.prgm
+@ main
+	x = 0;
+	! x < 0x400 {
+		x = x + 1;
+	}
+	>exit;

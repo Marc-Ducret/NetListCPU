@@ -14,11 +14,14 @@ public class FrameScreen implements Screen {
 	private char[] buff;
 	private JPanel pan;
 	private Font font;
+	
+	private boolean sizeInit = false;
 
 	public void init(int w, int h) {
 		JFrame frame = new JFrame("TongScreen");
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+		frame.setSize(256, 256);
 		font = new Font(Font.MONOSPACED, Font.PLAIN, FONT_SIZE);
 		pan = new JPanel() {
 			private static final long serialVersionUID = 1L;
@@ -37,7 +40,9 @@ public class FrameScreen implements Screen {
 						g.drawString(builder.toString(), 5, FONT_SIZE+y*FONT_SIZE);
 						builder.setLength(0);
 					}
-				} else {
+				}
+				if(!sizeInit) {
+					sizeInit = true;
 					frame.setSize(metrics.stringWidth(".") * w + 10, FONT_SIZE * h + 10);
 				}
 			}

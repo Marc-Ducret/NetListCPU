@@ -13,17 +13,22 @@ import java.util.List;
 public class SimulatorEnv {
 	
 	public static final int EXIT = 0, CHAR = 1, REDRAW = 2;
-	public static final boolean DEBUG = false;
+	public static boolean debugMode = false;
 
 	public static void main(String[] args) throws IOException {
 		if(args.length >= 4) {
 			int sW = Integer.parseInt(args[0]);
 			int sH = Integer.parseInt(args[1]);
 			Process p = Runtime.getRuntime().exec(args[2]);
-			new SimulatorEnv(sW, sH).run(p.getInputStream(), p.getOutputStream(), p.getErrorStream(), 
+			boolean console = false;
+			for(String s : args) {
+				if(s.equals("-console")) console = true;
+				if(s.equals("-debug")) debugMode = true;
+			}
+			new SimulatorEnv(sW, sH, console).run(p.getInputStream(), p.getOutputStream(), p.getErrorStream(), 
 											new FileInputStream(new File(args[3])));
 		} else {
-			System.err.println("Args format: [width] [height] [simulator] [ROM]");
+			System.err.println("Args format: [width] [height] [simulator] [ROM] <-console>");
 			System.exit(-1);
 		}
 	}
@@ -33,12 +38,12 @@ public class SimulatorEnv {
 	private final char[] buff;
 	private final Screen screen;
 
-	private SimulatorEnv(int w, int h) {
+	private SimulatorEnv(int w, int h, boolean console) {
 		this.w = w;
 		this.h = h;
 		buff = new char[w*h];
 		for(int i = 0; i < buff.length; i ++) buff[i] = '.';
-		screen = new FrameScreen();
+		screen = console ? new ConsoleScreen() : new FrameScreen();
 		screen.init(w, h);
 	}
 
@@ -53,7 +58,7 @@ public class SimulatorEnv {
 					try {
 						int r;
 						while((r = debug.read()) >= 0) {
-							if(DEBUG) System.err.print((char) r);
+							if(debugMode) System.err.print((char) r);
 						}
 					} catch (IOException e) {
 						System.err.println("Program terminated ("+e.getMessage()+")");

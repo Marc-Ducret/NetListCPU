@@ -1,0 +1,1656 @@
+
+xorCond(cond,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31) where
+  o0 = (a0 ^ cond);
+  o1 = (a1 ^ cond);
+  o2 = (a2 ^ cond);
+  o3 = (a3 ^ cond);
+  o4 = (a4 ^ cond);
+  o5 = (a5 ^ cond);
+  o6 = (a6 ^ cond);
+  o7 = (a7 ^ cond);
+  o8 = (a8 ^ cond);
+  o9 = (a9 ^ cond);
+  o10 = (a10 ^ cond);
+  o11 = (a11 ^ cond);
+  o12 = (a12 ^ cond);
+  o13 = (a13 ^ cond);
+  o14 = (a14 ^ cond);
+  o15 = (a15 ^ cond);
+  o16 = (a16 ^ cond);
+  o17 = (a17 ^ cond);
+  o18 = (a18 ^ cond);
+  o19 = (a19 ^ cond);
+  o20 = (a20 ^ cond);
+  o21 = (a21 ^ cond);
+  o22 = (a22 ^ cond);
+  o23 = (a23 ^ cond);
+  o24 = (a24 ^ cond);
+  o25 = (a25 ^ cond);
+  o26 = (a26 ^ cond);
+  o27 = (a27 ^ cond);
+  o28 = (a28 ^ cond);
+  o29 = (a29 ^ cond);
+  o30 = (a30 ^ cond);
+  o31 = (a31 ^ cond);
+end where
+
+orTot32(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31) = (o) where
+  r_16_0 = a0 + a1;
+  r_16_1 = a2 + a3;
+  r_16_2 = a4 + a5;
+  r_16_3 = a6 + a7;
+  r_16_4 = a8 + a9;
+  r_16_5 = a10 + a11;
+  r_16_6 = a12 + a13;
+  r_16_7 = a14 + a15;
+  r_16_8 = a16 + a17;
+  r_16_9 = a18 + a19;
+  r_16_10 = a20 + a21;
+  r_16_11 = a22 + a23;
+  r_16_12 = a24 + a25;
+  r_16_13 = a26 + a27;
+  r_16_14 = a28 + a29;
+  r_16_15 = a30 + a31;
+  r_8_0 = r_16_0 + r_16_1;
+  r_8_1 = r_16_2 + r_16_3;
+  r_8_2 = r_16_4 + r_16_5;
+  r_8_3 = r_16_6 + r_16_7;
+  r_8_4 = r_16_8 + r_16_9;
+  r_8_5 = r_16_10 + r_16_11;
+  r_8_6 = r_16_12 + r_16_13;
+  r_8_7 = r_16_14 + r_16_15;
+  r_4_0 = r_8_0 + r_8_1;
+  r_4_1 = r_8_2 + r_8_3;
+  r_4_2 = r_8_4 + r_8_5;
+  r_4_3 = r_8_6 + r_8_7;
+  r_2_0 = r_4_0 + r_4_1;
+  r_2_1 = r_4_2 + r_4_3;
+  o = r_2_0 + r_2_1;
+end where
+
+orTot27(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26) = (o) where
+  m_1_0 = a0 + a1;
+  m_1_1 = a2 + a3;
+  m_1_2 = a4 + a5;
+  m_1_3 = a6 + a7;
+  m_1_4 = a8 + a9;
+  m_1_5 = a10 + a11;
+  m_1_6 = a12 + a13;
+  m_1_7 = a14 + a15;
+  m_1_8 = a16 + a17;
+  m_1_9 = a18 + a19;
+  m_1_10 = a20 + a21;
+  m_1_11 = a22 + a23;
+  m_1_12 = a24 + a25 + a26;
+  m_2_0 = m_1_0 + m_1_1;
+  m_2_1 = m_1_2 + m_1_3;
+  m_2_2 = m_1_4 + m_1_5;
+  m_2_3 = m_1_6 + m_1_7;
+  m_2_4 = m_1_8 + m_1_9;
+  m_2_5 = m_1_10 + m_1_11 + m_1_12;
+  m_3_0 = m_2_0 + m_2_1;
+  m_3_1 = m_2_2 + m_2_3;
+  m_3_2 = m_2_4 + m_2_5;
+  o = m_3_0 + m_3_1 + m_3_2;
+end where
+
+not32(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31) where
+  o0 = not a0;
+  o1 = not a1;
+  o2 = not a2;
+  o3 = not a3;
+  o4 = not a4;
+  o5 = not a5;
+  o6 = not a6;
+  o7 = not a7;
+  o8 = not a8;
+  o9 = not a9;
+  o10 = not a10;
+  o11 = not a11;
+  o12 = not a12;
+  o13 = not a13;
+  o14 = not a14;
+  o15 = not a15;
+  o16 = not a16;
+  o17 = not a17;
+  o18 = not a18;
+  o19 = not a19;
+  o20 = not a20;
+  o21 = not a21;
+  o22 = not a22;
+  o23 = not a23;
+  o24 = not a24;
+  o25 = not a25;
+  o26 = not a26;
+  o27 = not a27;
+  o28 = not a28;
+  o29 = not a29;
+  o30 = not a30;
+  o31 = not a31;
+end where
+
+or32(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31, b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31) where
+  o0 = (a0 + b0);
+  o1 = (a1 + b1);
+  o2 = (a2 + b2);
+  o3 = (a3 + b3);
+  o4 = (a4 + b4);
+  o5 = (a5 + b5);
+  o6 = (a6 + b6);
+  o7 = (a7 + b7);
+  o8 = (a8 + b8);
+  o9 = (a9 + b9);
+  o10 = (a10 + b10);
+  o11 = (a11 + b11);
+  o12 = (a12 + b12);
+  o13 = (a13 + b13);
+  o14 = (a14 + b14);
+  o15 = (a15 + b15);
+  o16 = (a16 + b16);
+  o17 = (a17 + b17);
+  o18 = (a18 + b18);
+  o19 = (a19 + b19);
+  o20 = (a20 + b20);
+  o21 = (a21 + b21);
+  o22 = (a22 + b22);
+  o23 = (a23 + b23);
+  o24 = (a24 + b24);
+  o25 = (a25 + b25);
+  o26 = (a26 + b26);
+  o27 = (a27 + b27);
+  o28 = (a28 + b28);
+  o29 = (a29 + b29);
+  o30 = (a30 + b30);
+  o31 = (a31 + b31);
+end where
+
+and32(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31, b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31) where
+  o0 = (a0 & b0);
+  o1 = (a1 & b1);
+  o2 = (a2 & b2);
+  o3 = (a3 & b3);
+  o4 = (a4 & b4);
+  o5 = (a5 & b5);
+  o6 = (a6 & b6);
+  o7 = (a7 & b7);
+  o8 = (a8 & b8);
+  o9 = (a9 & b9);
+  o10 = (a10 & b10);
+  o11 = (a11 & b11);
+  o12 = (a12 & b12);
+  o13 = (a13 & b13);
+  o14 = (a14 & b14);
+  o15 = (a15 & b15);
+  o16 = (a16 & b16);
+  o17 = (a17 & b17);
+  o18 = (a18 & b18);
+  o19 = (a19 & b19);
+  o20 = (a20 & b20);
+  o21 = (a21 & b21);
+  o22 = (a22 & b22);
+  o23 = (a23 & b23);
+  o24 = (a24 & b24);
+  o25 = (a25 & b25);
+  o26 = (a26 & b26);
+  o27 = (a27 & b27);
+  o28 = (a28 & b28);
+  o29 = (a29 & b29);
+  o30 = (a30 & b30);
+  o31 = (a31 & b31);
+end where
+
+xor32(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31, b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31) where
+  o0 = (a0 ^ b0);
+  o1 = (a1 ^ b1);
+  o2 = (a2 ^ b2);
+  o3 = (a3 ^ b3);
+  o4 = (a4 ^ b4);
+  o5 = (a5 ^ b5);
+  o6 = (a6 ^ b6);
+  o7 = (a7 ^ b7);
+  o8 = (a8 ^ b8);
+  o9 = (a9 ^ b9);
+  o10 = (a10 ^ b10);
+  o11 = (a11 ^ b11);
+  o12 = (a12 ^ b12);
+  o13 = (a13 ^ b13);
+  o14 = (a14 ^ b14);
+  o15 = (a15 ^ b15);
+  o16 = (a16 ^ b16);
+  o17 = (a17 ^ b17);
+  o18 = (a18 ^ b18);
+  o19 = (a19 ^ b19);
+  o20 = (a20 ^ b20);
+  o21 = (a21 ^ b21);
+  o22 = (a22 ^ b22);
+  o23 = (a23 ^ b23);
+  o24 = (a24 ^ b24);
+  o25 = (a25 ^ b25);
+  o26 = (a26 ^ b26);
+  o27 = (a27 ^ b27);
+  o28 = (a28 ^ b28);
+  o29 = (a29 ^ b29);
+  o30 = (a30 ^ b30);
+  o31 = (a31 ^ b31);
+end where
+
+filtre32(cond,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31) where
+  o0 = a0 & cond;
+  o1 = a1 & cond;
+  o2 = a2 & cond;
+  o3 = a3 & cond;
+  o4 = a4 & cond;
+  o5 = a5 & cond;
+  o6 = a6 & cond;
+  o7 = a7 & cond;
+  o8 = a8 & cond;
+  o9 = a9 & cond;
+  o10 = a10 & cond;
+  o11 = a11 & cond;
+  o12 = a12 & cond;
+  o13 = a13 & cond;
+  o14 = a14 & cond;
+  o15 = a15 & cond;
+  o16 = a16 & cond;
+  o17 = a17 & cond;
+  o18 = a18 & cond;
+  o19 = a19 & cond;
+  o20 = a20 & cond;
+  o21 = a21 & cond;
+  o22 = a22 & cond;
+  o23 = a23 & cond;
+  o24 = a24 & cond;
+  o25 = a25 & cond;
+  o26 = a26 & cond;
+  o27 = a27 & cond;
+  o28 = a28 & cond;
+  o29 = a29 & cond;
+  o30 = a30 & cond;
+  o31 = a31 & cond;
+end where
+
+filtre16(cond,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15) where
+  o0 = a0 & cond;
+  o1 = a1 & cond;
+  o2 = a2 & cond;
+  o3 = a3 & cond;
+  o4 = a4 & cond;
+  o5 = a5 & cond;
+  o6 = a6 & cond;
+  o7 = a7 & cond;
+  o8 = a8 & cond;
+  o9 = a9 & cond;
+  o10 = a10 & cond;
+  o11 = a11 & cond;
+  o12 = a12 & cond;
+  o13 = a13 & cond;
+  o14 = a14 & cond;
+  o15 = a15 & cond;
+end where
+
+filtre15(cond,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14) where
+  o0 = a0 & cond;
+  o1 = a1 & cond;
+  o2 = a2 & cond;
+  o3 = a3 & cond;
+  o4 = a4 & cond;
+  o5 = a5 & cond;
+  o6 = a6 & cond;
+  o7 = a7 & cond;
+  o8 = a8 & cond;
+  o9 = a9 & cond;
+  o10 = a10 & cond;
+  o11 = a11 & cond;
+  o12 = a12 & cond;
+  o13 = a13 & cond;
+  o14 = a14 & cond;
+end where
+
+filtre8(cond,a0,a1,a2,a3,a4,a5,a6,a7) = (o0,o1,o2,o3,o4,o5,o6,o7) where
+  o0 = a0 & cond;
+  o1 = a1 & cond;
+  o2 = a2 & cond;
+  o3 = a3 & cond;
+  o4 = a4 & cond;
+  o5 = a5 & cond;
+  o6 = a6 & cond;
+  o7 = a7 & cond;
+end where
+
+filtre4(cond,a0,a1,a2,a3) = (o0,o1,o2,o3) where
+  o0 = a0 & cond;
+  o1 = a1 & cond;
+  o2 = a2 & cond;
+  o3 = a3 & cond;
+end where
+
+filtre2(cond,a0,a1) = (o0,o1) where
+  o0 = a0 & cond;
+  o1 = a1 & cond;
+end where
+
+
+
+
+mux32(cond,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31, b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31) where
+  o0 = mux(cond, a0, b0);
+  o1 = mux(cond, a1, b1);
+  o2 = mux(cond, a2, b2);
+  o3 = mux(cond, a3, b3);
+  o4 = mux(cond, a4, b4);
+  o5 = mux(cond, a5, b5);
+  o6 = mux(cond, a6, b6);
+  o7 = mux(cond, a7, b7);
+  o8 = mux(cond, a8, b8);
+  o9 = mux(cond, a9, b9);
+  o10 = mux(cond, a10, b10);
+  o11 = mux(cond, a11, b11);
+  o12 = mux(cond, a12, b12);
+  o13 = mux(cond, a13, b13);
+  o14 = mux(cond, a14, b14);
+  o15 = mux(cond, a15, b15);
+  o16 = mux(cond, a16, b16);
+  o17 = mux(cond, a17, b17);
+  o18 = mux(cond, a18, b18);
+  o19 = mux(cond, a19, b19);
+  o20 = mux(cond, a20, b20);
+  o21 = mux(cond, a21, b21);
+  o22 = mux(cond, a22, b22);
+  o23 = mux(cond, a23, b23);
+  o24 = mux(cond, a24, b24);
+  o25 = mux(cond, a25, b25);
+  o26 = mux(cond, a26, b26);
+  o27 = mux(cond, a27, b27);
+  o28 = mux(cond, a28, b28);
+  o29 = mux(cond, a29, b29);
+  o30 = mux(cond, a30, b30);
+  o31 = mux(cond, a31, b31);
+end where
+
+mux31(cond,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30, b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30) where
+  o0 = mux(cond, a0, b0);
+  o1 = mux(cond, a1, b1);
+  o2 = mux(cond, a2, b2);
+  o3 = mux(cond, a3, b3);
+  o4 = mux(cond, a4, b4);
+  o5 = mux(cond, a5, b5);
+  o6 = mux(cond, a6, b6);
+  o7 = mux(cond, a7, b7);
+  o8 = mux(cond, a8, b8);
+  o9 = mux(cond, a9, b9);
+  o10 = mux(cond, a10, b10);
+  o11 = mux(cond, a11, b11);
+  o12 = mux(cond, a12, b12);
+  o13 = mux(cond, a13, b13);
+  o14 = mux(cond, a14, b14);
+  o15 = mux(cond, a15, b15);
+  o16 = mux(cond, a16, b16);
+  o17 = mux(cond, a17, b17);
+  o18 = mux(cond, a18, b18);
+  o19 = mux(cond, a19, b19);
+  o20 = mux(cond, a20, b20);
+  o21 = mux(cond, a21, b21);
+  o22 = mux(cond, a22, b22);
+  o23 = mux(cond, a23, b23);
+  o24 = mux(cond, a24, b24);
+  o25 = mux(cond, a25, b25);
+  o26 = mux(cond, a26, b26);
+  o27 = mux(cond, a27, b27);
+  o28 = mux(cond, a28, b28);
+  o29 = mux(cond, a29, b29);
+  o30 = mux(cond, a30, b30);
+end where
+
+mux30(cond,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29, b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29) where
+  o0 = mux(cond, a0, b0);
+  o1 = mux(cond, a1, b1);
+  o2 = mux(cond, a2, b2);
+  o3 = mux(cond, a3, b3);
+  o4 = mux(cond, a4, b4);
+  o5 = mux(cond, a5, b5);
+  o6 = mux(cond, a6, b6);
+  o7 = mux(cond, a7, b7);
+  o8 = mux(cond, a8, b8);
+  o9 = mux(cond, a9, b9);
+  o10 = mux(cond, a10, b10);
+  o11 = mux(cond, a11, b11);
+  o12 = mux(cond, a12, b12);
+  o13 = mux(cond, a13, b13);
+  o14 = mux(cond, a14, b14);
+  o15 = mux(cond, a15, b15);
+  o16 = mux(cond, a16, b16);
+  o17 = mux(cond, a17, b17);
+  o18 = mux(cond, a18, b18);
+  o19 = mux(cond, a19, b19);
+  o20 = mux(cond, a20, b20);
+  o21 = mux(cond, a21, b21);
+  o22 = mux(cond, a22, b22);
+  o23 = mux(cond, a23, b23);
+  o24 = mux(cond, a24, b24);
+  o25 = mux(cond, a25, b25);
+  o26 = mux(cond, a26, b26);
+  o27 = mux(cond, a27, b27);
+  o28 = mux(cond, a28, b28);
+  o29 = mux(cond, a29, b29);
+end where
+
+mux28(cond,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27, b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27) where
+  o0 = mux(cond, a0, b0);
+  o1 = mux(cond, a1, b1);
+  o2 = mux(cond, a2, b2);
+  o3 = mux(cond, a3, b3);
+  o4 = mux(cond, a4, b4);
+  o5 = mux(cond, a5, b5);
+  o6 = mux(cond, a6, b6);
+  o7 = mux(cond, a7, b7);
+  o8 = mux(cond, a8, b8);
+  o9 = mux(cond, a9, b9);
+  o10 = mux(cond, a10, b10);
+  o11 = mux(cond, a11, b11);
+  o12 = mux(cond, a12, b12);
+  o13 = mux(cond, a13, b13);
+  o14 = mux(cond, a14, b14);
+  o15 = mux(cond, a15, b15);
+  o16 = mux(cond, a16, b16);
+  o17 = mux(cond, a17, b17);
+  o18 = mux(cond, a18, b18);
+  o19 = mux(cond, a19, b19);
+  o20 = mux(cond, a20, b20);
+  o21 = mux(cond, a21, b21);
+  o22 = mux(cond, a22, b22);
+  o23 = mux(cond, a23, b23);
+  o24 = mux(cond, a24, b24);
+  o25 = mux(cond, a25, b25);
+  o26 = mux(cond, a26, b26);
+  o27 = mux(cond, a27, b27);
+end where
+
+mux24(cond,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23, b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23) where
+  o0 = mux(cond, a0, b0);
+  o1 = mux(cond, a1, b1);
+  o2 = mux(cond, a2, b2);
+  o3 = mux(cond, a3, b3);
+  o4 = mux(cond, a4, b4);
+  o5 = mux(cond, a5, b5);
+  o6 = mux(cond, a6, b6);
+  o7 = mux(cond, a7, b7);
+  o8 = mux(cond, a8, b8);
+  o9 = mux(cond, a9, b9);
+  o10 = mux(cond, a10, b10);
+  o11 = mux(cond, a11, b11);
+  o12 = mux(cond, a12, b12);
+  o13 = mux(cond, a13, b13);
+  o14 = mux(cond, a14, b14);
+  o15 = mux(cond, a15, b15);
+  o16 = mux(cond, a16, b16);
+  o17 = mux(cond, a17, b17);
+  o18 = mux(cond, a18, b18);
+  o19 = mux(cond, a19, b19);
+  o20 = mux(cond, a20, b20);
+  o21 = mux(cond, a21, b21);
+  o22 = mux(cond, a22, b22);
+  o23 = mux(cond, a23, b23);
+end where
+
+mux17(cond,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16) where
+  o0 = mux(cond, a0, b0);
+  o1 = mux(cond, a1, b1);
+  o2 = mux(cond, a2, b2);
+  o3 = mux(cond, a3, b3);
+  o4 = mux(cond, a4, b4);
+  o5 = mux(cond, a5, b5);
+  o6 = mux(cond, a6, b6);
+  o7 = mux(cond, a7, b7);
+  o8 = mux(cond, a8, b8);
+  o9 = mux(cond, a9, b9);
+  o10 = mux(cond, a10, b10);
+  o11 = mux(cond, a11, b11);
+  o12 = mux(cond, a12, b12);
+  o13 = mux(cond, a13, b13);
+  o14 = mux(cond, a14, b14);
+  o15 = mux(cond, a15, b15);
+  o16 = mux(cond, a16, b16);
+end where
+
+mux16(cond,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15) where
+  o0 = mux(cond, a0, b0);
+  o1 = mux(cond, a1, b1);
+  o2 = mux(cond, a2, b2);
+  o3 = mux(cond, a3, b3);
+  o4 = mux(cond, a4, b4);
+  o5 = mux(cond, a5, b5);
+  o6 = mux(cond, a6, b6);
+  o7 = mux(cond, a7, b7);
+  o8 = mux(cond, a8, b8);
+  o9 = mux(cond, a9, b9);
+  o10 = mux(cond, a10, b10);
+  o11 = mux(cond, a11, b11);
+  o12 = mux(cond, a12, b12);
+  o13 = mux(cond, a13, b13);
+  o14 = mux(cond, a14, b14);
+  o15 = mux(cond, a15, b15);
+end where
+
+
+
+reg32(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31) where
+  o0 = reg(a0);
+  o1 = reg(a1);
+  o2 = reg(a2);
+  o3 = reg(a3);
+  o4 = reg(a4);
+  o5 = reg(a5);
+  o6 = reg(a6);
+  o7 = reg(a7);
+  o8 = reg(a8);
+  o9 = reg(a9);
+  o10 = reg(a10);
+  o11 = reg(a11);
+  o12 = reg(a12);
+  o13 = reg(a13);
+  o14 = reg(a14);
+  o15 = reg(a15);
+  o16 = reg(a16);
+  o17 = reg(a17);
+  o18 = reg(a18);
+  o19 = reg(a19);
+  o20 = reg(a20);
+  o21 = reg(a21);
+  o22 = reg(a22);
+  o23 = reg(a23);
+  o24 = reg(a24);
+  o25 = reg(a25);
+  o26 = reg(a26);
+  o27 = reg(a27);
+  o28 = reg(a28);
+  o29 = reg(a29);
+  o30 = reg(a30);
+  o31 = reg(a31);
+end where
+
+reg17(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16) where
+  o0 = reg(a0);
+  o1 = reg(a1);
+  o2 = reg(a2);
+  o3 = reg(a3);
+  o4 = reg(a4);
+  o5 = reg(a5);
+  o6 = reg(a6);
+  o7 = reg(a7);
+  o8 = reg(a8);
+  o9 = reg(a9);
+  o10 = reg(a10);
+  o11 = reg(a11);
+  o12 = reg(a12);
+  o13 = reg(a13);
+  o14 = reg(a14);
+  o15 = reg(a15);
+  o16 = reg(a16);
+end where
+
+regNappe(p:[17]) = (o:[17]) where
+  o = reg(p[0]) . reg(p[1]) . reg(p[2]) . reg(p[3]) . reg(p[4]) . reg(p[5]) . reg(p[6]) . reg(p[7]) . reg(p[8]) . reg(p[9]) . reg(p[10]) . reg(p[11]) . reg(p[12]) . reg(p[13]) . reg(p[14]) . reg(p[15]) . reg(p[16]);
+end where
+
+filtreReg32(cond,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31) where
+  o0 = reg(a0) & cond;
+  o1 = reg(a1) & cond;
+  o2 = reg(a2) & cond;
+  o3 = reg(a3) & cond;
+  o4 = reg(a4) & cond;
+  o5 = reg(a5) & cond;
+  o6 = reg(a6) & cond;
+  o7 = reg(a7) & cond;
+  o8 = reg(a8) & cond;
+  o9 = reg(a9) & cond;
+  o10 = reg(a10) & cond;
+  o11 = reg(a11) & cond;
+  o12 = reg(a12) & cond;
+  o13 = reg(a13) & cond;
+  o14 = reg(a14) & cond;
+  o15 = reg(a15) & cond;
+  o16 = reg(a16) & cond;
+  o17 = reg(a17) & cond;
+  o18 = reg(a18) & cond;
+  o19 = reg(a19) & cond;
+  o20 = reg(a20) & cond;
+  o21 = reg(a21) & cond;
+  o22 = reg(a22) & cond;
+  o23 = reg(a23) & cond;
+  o24 = reg(a24) & cond;
+  o25 = reg(a25) & cond;
+  o26 = reg(a26) & cond;
+  o27 = reg(a27) & cond;
+  o28 = reg(a28) & cond;
+  o29 = reg(a29) & cond;
+  o30 = reg(a30) & cond;
+  o31 = reg(a31) & cond;
+end where
+
+
+
+
+
+fulladder(a,b,c) = (s, r) where
+  s = (a ^ b) ^ c;
+  r = (a & b) + ((a ^ b) & c);
+end where
+
+add1(a0,b0) = (o0) where
+  (o0, c0) = fulladder(a0, b0, 0);
+end where
+
+add2(a0,a1,b0,b1) = (o0,o1) where
+  (o1, c1) = fulladder(a1, b1, 0);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add3(a0,a1,a2,b0,b1,b2) = (o0,o1,o2) where
+  (o2, c2) = fulladder(a2, b2, 0);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add4(a0,a1,a2,a3,b0,b1,b2,b3) = (o0,o1,o2,o3) where
+  (o3, c3) = fulladder(a3, b3, 0);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add5(a0,a1,a2,a3,a4,b0,b1,b2,b3,b4) = (o0,o1,o2,o3,o4) where
+  (o4, c4) = fulladder(a4, b4, 0);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add6(a0,a1,a2,a3,a4,a5,b0,b1,b2,b3,b4,b5) = (o0,o1,o2,o3,o4,o5) where
+  (o5, c5) = fulladder(a5, b5, 0);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add7(a0,a1,a2,a3,a4,a5,a6,
+  b0,b1,b2,b3,b4,b5,b6) = (o0,o1,o2,o3,o4,o5,o6) where
+  (o6, c6) = fulladder(a6, b6, 0);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add8(a0,a1,a2,a3,a4,a5,a6,a7,
+  b0,b1,b2,b3,b4,b5,b6,b7) = (o0,o1,o2,o3,o4,o5,o6,o7) where
+  (o7, c7) = fulladder(a7, b7, 0);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add9(a0,a1,a2,a3,a4,a5,a6,a7,a8,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8) = (o0,o1,o2,o3,o4,o5,o6,o7,o8) where
+  (o8, c8) = fulladder(a8, b8, 0);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add10(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9) where
+  (o9, c9) = fulladder(a9, b9, 0);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add11(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10) where
+  (o10, c10) = fulladder(a10, b10, 0);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add12(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11) where
+  (o11, c11) = fulladder(a11, b11, 0);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add13(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12) where
+  (o12, c12) = fulladder(a12, b12, 0);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add14(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13) where
+  (o13, c13) = fulladder(a13, b13, 0);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add15(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14) where
+  (o14, c14) = fulladder(a14, b14, 0);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add16(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15) where
+  (o15, c15) = fulladder(a15, b15, 0);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add17(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16) where
+  (o16, c16) = fulladder(a16, b16, 0);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add18(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17) where
+  (o17, c17) = fulladder(a17, b17, 0);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add19(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18) where
+  (o18, c18) = fulladder(a18, b18, 0);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add20(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19) where
+  (o19, c19) = fulladder(a19, b19, 0);
+  (o18, c18) = fulladder(a18, b18, c19);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add21(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20) where
+  (o20, c20) = fulladder(a20, b20, 0);
+  (o19, c19) = fulladder(a19, b19, c20);
+  (o18, c18) = fulladder(a18, b18, c19);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add22(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21) where
+  (o21, c21) = fulladder(a21, b21, 0);
+  (o20, c20) = fulladder(a20, b20, c21);
+  (o19, c19) = fulladder(a19, b19, c20);
+  (o18, c18) = fulladder(a18, b18, c19);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add23(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22) where
+  (o22, c22) = fulladder(a22, b22, 0);
+  (o21, c21) = fulladder(a21, b21, c22);
+  (o20, c20) = fulladder(a20, b20, c21);
+  (o19, c19) = fulladder(a19, b19, c20);
+  (o18, c18) = fulladder(a18, b18, c19);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add24(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23) where
+  (o23, c23) = fulladder(a23, b23, 0);
+  (o22, c22) = fulladder(a22, b22, c23);
+  (o21, c21) = fulladder(a21, b21, c22);
+  (o20, c20) = fulladder(a20, b20, c21);
+  (o19, c19) = fulladder(a19, b19, c20);
+  (o18, c18) = fulladder(a18, b18, c19);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add25(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24) where
+  (o24, c24) = fulladder(a24, b24, 0);
+  (o23, c23) = fulladder(a23, b23, c24);
+  (o22, c22) = fulladder(a22, b22, c23);
+  (o21, c21) = fulladder(a21, b21, c22);
+  (o20, c20) = fulladder(a20, b20, c21);
+  (o19, c19) = fulladder(a19, b19, c20);
+  (o18, c18) = fulladder(a18, b18, c19);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add26(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25) where
+  (o25, c25) = fulladder(a25, b25, 0);
+  (o24, c24) = fulladder(a24, b24, c25);
+  (o23, c23) = fulladder(a23, b23, c24);
+  (o22, c22) = fulladder(a22, b22, c23);
+  (o21, c21) = fulladder(a21, b21, c22);
+  (o20, c20) = fulladder(a20, b20, c21);
+  (o19, c19) = fulladder(a19, b19, c20);
+  (o18, c18) = fulladder(a18, b18, c19);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add27(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26) where
+  (o26, c26) = fulladder(a26, b26, 0);
+  (o25, c25) = fulladder(a25, b25, c26);
+  (o24, c24) = fulladder(a24, b24, c25);
+  (o23, c23) = fulladder(a23, b23, c24);
+  (o22, c22) = fulladder(a22, b22, c23);
+  (o21, c21) = fulladder(a21, b21, c22);
+  (o20, c20) = fulladder(a20, b20, c21);
+  (o19, c19) = fulladder(a19, b19, c20);
+  (o18, c18) = fulladder(a18, b18, c19);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add28(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27) where
+  (o27, c27) = fulladder(a27, b27, 0);
+  (o26, c26) = fulladder(a26, b26, c27);
+  (o25, c25) = fulladder(a25, b25, c26);
+  (o24, c24) = fulladder(a24, b24, c25);
+  (o23, c23) = fulladder(a23, b23, c24);
+  (o22, c22) = fulladder(a22, b22, c23);
+  (o21, c21) = fulladder(a21, b21, c22);
+  (o20, c20) = fulladder(a20, b20, c21);
+  (o19, c19) = fulladder(a19, b19, c20);
+  (o18, c18) = fulladder(a18, b18, c19);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add29(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28) where
+  (o28, c28) = fulladder(a28, b28, 0);
+  (o27, c27) = fulladder(a27, b27, c28);
+  (o26, c26) = fulladder(a26, b26, c27);
+  (o25, c25) = fulladder(a25, b25, c26);
+  (o24, c24) = fulladder(a24, b24, c25);
+  (o23, c23) = fulladder(a23, b23, c24);
+  (o22, c22) = fulladder(a22, b22, c23);
+  (o21, c21) = fulladder(a21, b21, c22);
+  (o20, c20) = fulladder(a20, b20, c21);
+  (o19, c19) = fulladder(a19, b19, c20);
+  (o18, c18) = fulladder(a18, b18, c19);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add30(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29) where
+  (o29, c29) = fulladder(a29, b29, 0);
+  (o28, c28) = fulladder(a28, b28, c29);
+  (o27, c27) = fulladder(a27, b27, c28);
+  (o26, c26) = fulladder(a26, b26, c27);
+  (o25, c25) = fulladder(a25, b25, c26);
+  (o24, c24) = fulladder(a24, b24, c25);
+  (o23, c23) = fulladder(a23, b23, c24);
+  (o22, c22) = fulladder(a22, b22, c23);
+  (o21, c21) = fulladder(a21, b21, c22);
+  (o20, c20) = fulladder(a20, b20, c21);
+  (o19, c19) = fulladder(a19, b19, c20);
+  (o18, c18) = fulladder(a18, b18, c19);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add31(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30) where
+  (o30, c30) = fulladder(a30, b30, 0);
+  (o29, c29) = fulladder(a29, b29, c30);
+  (o28, c28) = fulladder(a28, b28, c29);
+  (o27, c27) = fulladder(a27, b27, c28);
+  (o26, c26) = fulladder(a26, b26, c27);
+  (o25, c25) = fulladder(a25, b25, c26);
+  (o24, c24) = fulladder(a24, b24, c25);
+  (o23, c23) = fulladder(a23, b23, c24);
+  (o22, c22) = fulladder(a22, b22, c23);
+  (o21, c21) = fulladder(a21, b21, c22);
+  (o20, c20) = fulladder(a20, b20, c21);
+  (o19, c19) = fulladder(a19, b19, c20);
+  (o18, c18) = fulladder(a18, b18, c19);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+add32(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31, c32) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31, c0) where
+  (o31, c31) = fulladder(a31, b31, c32);
+  (o30, c30) = fulladder(a30, b30, c31);
+  (o29, c29) = fulladder(a29, b29, c30);
+  (o28, c28) = fulladder(a28, b28, c29);
+  (o27, c27) = fulladder(a27, b27, c28);
+  (o26, c26) = fulladder(a26, b26, c27);
+  (o25, c25) = fulladder(a25, b25, c26);
+  (o24, c24) = fulladder(a24, b24, c25);
+  (o23, c23) = fulladder(a23, b23, c24);
+  (o22, c22) = fulladder(a22, b22, c23);
+  (o21, c21) = fulladder(a21, b21, c22);
+  (o20, c20) = fulladder(a20, b20, c21);
+  (o19, c19) = fulladder(a19, b19, c20);
+  (o18, c18) = fulladder(a18, b18, c19);
+  (o17, c17) = fulladder(a17, b17, c18);
+  (o16, c16) = fulladder(a16, b16, c17);
+  (o15, c15) = fulladder(a15, b15, c16);
+  (o14, c14) = fulladder(a14, b14, c15);
+  (o13, c13) = fulladder(a13, b13, c14);
+  (o12, c12) = fulladder(a12, b12, c13);
+  (o11, c11) = fulladder(a11, b11, c12);
+  (o10, c10) = fulladder(a10, b10, c11);
+  (o9, c9) = fulladder(a9, b9, c10);
+  (o8, c8) = fulladder(a8, b8, c9);
+  (o7, c7) = fulladder(a7, b7, c8);
+  (o6, c6) = fulladder(a6, b6, c7);
+  (o5, c5) = fulladder(a5, b5, c6);
+  (o4, c4) = fulladder(a4, b4, c5);
+  (o3, c3) = fulladder(a3, b3, c4);
+  (o2, c2) = fulladder(a2, b2, c3);
+  (o1, c1) = fulladder(a1, b1, c2);
+  (o0, c0) = fulladder(a0, b0, c1);
+end where
+
+
+
+(*Multiplication*)
+
+mul(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31, b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31) = 
+(o_31_0,o_31_1,o_31_2,o_31_3,o_31_4,o_31_5,o_31_6,o_31_7,o_31_8,o_31_9,o_31_10,o_31_11,o_31_12,o_31_13,o_31_14,o_31_15,o_31_16,o_31_17,o_31_18,o_31_19,o_31_20, o_31_21,o_31_22,o_31_23,o_31_24,o_31_25,o_31_26,o_31_27,o_31_28,o_31_29,o_31_30,o_31_31) where
+
+  o_0_0 = a0 & b31;
+
+  o_1_1 = a1 & b31;
+  (o_1_0) = add1(a1&b30, o_0_0);
+
+  o_2_2 = a2 & b31;
+  (o_2_0,o_2_1) = add2(a2&b29,a2&b30, o_1_0,o_1_1);
+
+  o_3_3 = a3 & b31;
+  (o_3_0,o_3_1,o_3_2) = add3(a3&b28,a3&b29,a3&b30, o_2_0,o_2_1,o_2_2);
+
+  o_4_4 = a4 & b31;
+  (o_4_0,o_4_1,o_4_2,o_4_3) = add4(a4&b27,a4&b28,a4&b29,a4&b30, o_3_0,o_3_1,o_3_2,o_3_3);
+
+  o_5_5 = a5 & b31;
+  (o_5_0,o_5_1,o_5_2,o_5_3,o_5_4) = add5(a5&b26,a5&b27,a5&b28,a5&b29,a5&b30, o_4_0,o_4_1,o_4_2,o_4_3,o_4_4);
+
+  o_6_6 = a6 & b31;
+  (o_6_0,o_6_1,o_6_2,o_6_3,o_6_4,o_6_5) = add6(a6&b25,a6&b26,a6&b27,a6&b28,a6&b29,a6&b30, o_5_0,o_5_1,o_5_2,o_5_3,o_5_4,o_5_5);
+
+  o_7_7 = a7 & b31;
+  (o_7_0,o_7_1,o_7_2,o_7_3,o_7_4,o_7_5,o_7_6) = add7(a7&b24,a7&b25,a7&b26,a7&b27,a7&b28,a7&b29,a7&b30, o_6_0,o_6_1,o_6_2,o_6_3,o_6_4,o_6_5,o_6_6);
+
+  o_8_8 = a8 & b31;
+  (o_8_0,o_8_1,o_8_2,o_8_3,o_8_4,o_8_5,o_8_6,o_8_7) = add8(a8&b23,a8&b24,a8&b25,a8&b26,a8&b27,a8&b28,a8&b29,a8&b30, o_7_0,o_7_1,o_7_2,o_7_3,o_7_4,o_7_5,o_7_6,o_7_7);
+
+  o_9_9 = a9 & b31;
+  (o_9_0,o_9_1,o_9_2,o_9_3,o_9_4,o_9_5,o_9_6,o_9_7,o_9_8) = add9(a9&b22,a9&b23,a9&b24,a9&b25,a9&b26,a9&b27,a9&b28,a9&b29,a9&b30, o_8_0,o_8_1,o_8_2,o_8_3,o_8_4,o_8_5,o_8_6,o_8_7,o_8_8);
+
+  o_10_10 = a10 & b31;
+  (o_10_0,o_10_1,o_10_2,o_10_3,o_10_4,o_10_5,o_10_6,o_10_7,o_10_8,o_10_9) = add10(a10&b21,a10&b22,a10&b23,a10&b24,a10&b25,a10&b26,a10&b27,a10&b28,a10&b29,a10&b30, o_9_0,o_9_1,o_9_2,o_9_3,o_9_4,o_9_5,o_9_6,o_9_7,o_9_8,o_9_9);
+
+  o_11_11 = a11 & b31;
+  (o_11_0,o_11_1,o_11_2,o_11_3,o_11_4,o_11_5,o_11_6,o_11_7,o_11_8,o_11_9,o_11_10) = add11(a11&b20,a11&b21,a11&b22,a11&b23,a11&b24,a11&b25,a11&b26,a11&b27,a11&b28,a11&b29,a11&b30, o_10_0,o_10_1,o_10_2,o_10_3,o_10_4,o_10_5,o_10_6,o_10_7,o_10_8,o_10_9,o_10_10);
+
+  o_12_12 = a12 & b31;
+  (o_12_0,o_12_1,o_12_2,o_12_3,o_12_4,o_12_5,o_12_6,o_12_7,o_12_8,o_12_9,o_12_10,o_12_11) = add12(a12&b19,a12&b20,a12&b21,a12&b22,a12&b23,a12&b24,a12&b25,a12&b26,a12&b27,a12&b28,a12&b29,a12&b30, o_11_0,o_11_1,o_11_2,o_11_3,o_11_4,o_11_5,o_11_6,o_11_7,o_11_8,o_11_9,o_11_10,o_11_11);
+
+  o_13_13 = a13 & b31;
+  (o_13_0,o_13_1,o_13_2,o_13_3,o_13_4,o_13_5,o_13_6,o_13_7,o_13_8,o_13_9,o_13_10,o_13_11,o_13_12) = add13(a13&b18,a13&b19,a13&b20,a13&b21,a13&b22,a13&b23,a13&b24,a13&b25,a13&b26,a13&b27,a13&b28,a13&b29,a13&b30, o_12_0,o_12_1,o_12_2,o_12_3,o_12_4,o_12_5,o_12_6,o_12_7,o_12_8,o_12_9,o_12_10,o_12_11,o_12_12);
+
+  o_14_14 = a14 & b31;
+  (o_14_0,o_14_1,o_14_2,o_14_3,o_14_4,o_14_5,o_14_6,o_14_7,o_14_8,o_14_9,o_14_10,o_14_11,o_14_12,o_14_13) = add14(a14&b17,a14&b18,a14&b19,a14&b20,a14&b21,a14&b22,a14&b23,a14&b24,a14&b25,a14&b26,a14&b27,a14&b28,a14&b29,a14&b30, o_13_0,o_13_1,o_13_2,o_13_3,o_13_4,o_13_5,o_13_6,o_13_7,o_13_8,o_13_9,o_13_10,o_13_11,o_13_12,o_13_13);
+
+  o_15_15 = a15 & b31;
+  (o_15_0,o_15_1,o_15_2,o_15_3,o_15_4,o_15_5,o_15_6,o_15_7,o_15_8,o_15_9,o_15_10,o_15_11,o_15_12,o_15_13,o_15_14) = add15(a15&b16,a15&b17,a15&b18,a15&b19,a15&b20,a15&b21,a15&b22,a15&b23,a15&b24,a15&b25,a15&b26,a15&b27,a15&b28,a15&b29,a15&b30, o_14_0,o_14_1,o_14_2,o_14_3,o_14_4,o_14_5,o_14_6,o_14_7,o_14_8,o_14_9,o_14_10,o_14_11,o_14_12,o_14_13,o_14_14);
+
+  o_16_16 = a16 & b31;
+  (o_16_0,o_16_1,o_16_2,o_16_3,o_16_4,o_16_5,o_16_6,o_16_7,o_16_8,o_16_9,o_16_10,o_16_11,o_16_12,o_16_13,o_16_14,o_16_15) = add16(a16&b15,a16&b16,a16&b17,a16&b18,a16&b19,a16&b20,a16&b21,a16&b22,a16&b23,a16&b24,a16&b25,a16&b26,a16&b27,a16&b28,a16&b29,a16&b30, o_15_0,o_15_1,o_15_2,o_15_3,o_15_4,o_15_5,o_15_6,o_15_7,o_15_8,o_15_9,o_15_10,o_15_11,o_15_12,o_15_13,o_15_14,o_15_15);
+
+  o_17_17 = a17 & b31;
+  (o_17_0,o_17_1,o_17_2,o_17_3,o_17_4,o_17_5,o_17_6,o_17_7,o_17_8,o_17_9,o_17_10,o_17_11,o_17_12,o_17_13,o_17_14,o_17_15,o_17_16) = add17(a17&b14,a17&b15,a17&b16,a17&b17,a17&b18,a17&b19,a17&b20,a17&b21,a17&b22,a17&b23,a17&b24,a17&b25,a17&b26,a17&b27,a17&b28,a17&b29,a17&b30, o_16_0,o_16_1,o_16_2,o_16_3,o_16_4,o_16_5,o_16_6,o_16_7,o_16_8,o_16_9,o_16_10,o_16_11,o_16_12,o_16_13,o_16_14,o_16_15,o_16_16);
+
+  o_18_18 = a18 & b31;
+  (o_18_0,o_18_1,o_18_2,o_18_3,o_18_4,o_18_5,o_18_6,o_18_7,o_18_8,o_18_9,o_18_10,o_18_11,o_18_12,o_18_13,o_18_14,o_18_15,o_18_16,o_18_17) = add18(a18&b13,a18&b14,a18&b15,a18&b16,a18&b17,a18&b18,a18&b19,a18&b20,a18&b21,a18&b22,a18&b23,a18&b24,a18&b25,a18&b26,a18&b27,a18&b28,a18&b29,a18&b30, o_17_0,o_17_1,o_17_2,o_17_3,o_17_4,o_17_5,o_17_6,o_17_7,o_17_8,o_17_9,o_17_10,o_17_11,o_17_12,o_17_13,o_17_14,o_17_15,o_17_16,o_17_17);
+
+  o_19_19 = a19 & b31;
+  (o_19_0,o_19_1,o_19_2,o_19_3,o_19_4,o_19_5,o_19_6,o_19_7,o_19_8,o_19_9,o_19_10,o_19_11,o_19_12,o_19_13,o_19_14,o_19_15,o_19_16,o_19_17,o_19_18) = add19(a19&b12,a19&b13,a19&b14,a19&b15,a19&b16,a19&b17,a19&b18,a19&b19,a19&b20,a19&b21,a19&b22,a19&b23,a19&b24,a19&b25,a19&b26,a19&b27,a19&b28,a19&b29,a19&b30, o_18_0,o_18_1,o_18_2,o_18_3,o_18_4,o_18_5,o_18_6,o_18_7,o_18_8,o_18_9,o_18_10,o_18_11,o_18_12,o_18_13,o_18_14,o_18_15,o_18_16,o_18_17,o_18_18);
+
+  o_20_20 = a20 & b31;
+  (o_20_0,o_20_1,o_20_2,o_20_3,o_20_4,o_20_5,o_20_6,o_20_7,o_20_8,o_20_9,o_20_10,o_20_11,o_20_12,o_20_13,o_20_14,o_20_15,o_20_16,o_20_17,o_20_18,o_20_19) = add20(a20&b11,a20&b12,a20&b13,a20&b14,a20&b15,a20&b16,a20&b17,a20&b18,a20&b19,a20&b20,a20&b21,a20&b22,a20&b23,a20&b24,a20&b25,a20&b26,a20&b27,a20&b28,a20&b29,a20&b30, o_19_0,o_19_1,o_19_2,o_19_3,o_19_4,o_19_5,o_19_6,o_19_7,o_19_8,o_19_9,o_19_10,o_19_11,o_19_12,o_19_13,o_19_14,o_19_15,o_19_16,o_19_17,o_19_18,o_19_19);
+
+  o_21_21 = a21 & b31;
+  (o_21_0,o_21_1,o_21_2,o_21_3,o_21_4,o_21_5,o_21_6,o_21_7,o_21_8,o_21_9,o_21_10,o_21_11,o_21_12,o_21_13,o_21_14,o_21_15,o_21_16,o_21_17,o_21_18,o_21_19,o_21_20) = add21(a21&b10,a21&b11,a21&b12,a21&b13,a21&b14,a21&b15,a21&b16,a21&b17,a21&b18,a21&b19,a21&b20,a21&b21,a21&b22,a21&b23,a21&b24,a21&b25,a21&b26,a21&b27,a21&b28,a21&b29,a21&b30, o_20_0,o_20_1,o_20_2,o_20_3,o_20_4,o_20_5,o_20_6,o_20_7,o_20_8,o_20_9,o_20_10,o_20_11,o_20_12,o_20_13,o_20_14,o_20_15,o_20_16,o_20_17,o_20_18,o_20_19,o_20_20);
+
+  o_22_22 = a22 & b31;
+  (o_22_0,o_22_1,o_22_2,o_22_3,o_22_4,o_22_5,o_22_6,o_22_7,o_22_8,o_22_9,o_22_10,o_22_11,o_22_12,o_22_13,o_22_14,o_22_15,o_22_16,o_22_17,o_22_18,o_22_19,o_22_20,o_22_21) = add22(a22&b9,a22&b10,a22&b11,a22&b12,a22&b13,a22&b14,a22&b15,a22&b16,a22&b17,a22&b18,a22&b19,a22&b20,a22&b21,a22&b22,a22&b23,a22&b24,a22&b25,a22&b26,a22&b27,a22&b28,a22&b29,a22&b30, o_21_0,o_21_1,o_21_2,o_21_3,o_21_4,o_21_5,o_21_6,o_21_7,o_21_8,o_21_9,o_21_10,o_21_11,o_21_12,o_21_13,o_21_14,o_21_15,o_21_16,o_21_17,o_21_18,o_21_19,o_21_20,o_21_21);
+
+  o_23_23 = a23 & b31;
+  (o_23_0,o_23_1,o_23_2,o_23_3,o_23_4,o_23_5,o_23_6,o_23_7,o_23_8,o_23_9,o_23_10,o_23_11,o_23_12,o_23_13,o_23_14,o_23_15,o_23_16,o_23_17,o_23_18,o_23_19,o_23_20,o_23_21,o_23_22) = add23(a23&b8,a23&b9,a23&b10,a23&b11,a23&b12,a23&b13,a23&b14,a23&b15,a23&b16,a23&b17,a23&b18,a23&b19,a23&b20,a23&b21,a23&b22,a23&b23,a23&b24,a23&b25,a23&b26,a23&b27,a23&b28,a23&b29,a23&b30, o_22_0,o_22_1,o_22_2,o_22_3,o_22_4,o_22_5,o_22_6,o_22_7,o_22_8,o_22_9,o_22_10,o_22_11,o_22_12,o_22_13,o_22_14,o_22_15,o_22_16,o_22_17,o_22_18,o_22_19,o_22_20,o_22_21,o_22_22);
+
+  o_24_24 = a24 & b31;
+  (o_24_0,o_24_1,o_24_2,o_24_3,o_24_4,o_24_5,o_24_6,o_24_7,o_24_8,o_24_9,o_24_10,o_24_11,o_24_12,o_24_13,o_24_14,o_24_15,o_24_16,o_24_17,o_24_18,o_24_19,o_24_20,o_24_21,o_24_22,o_24_23) = add24(a24&b7,a24&b8,a24&b9,a24&b10,a24&b11,a24&b12,a24&b13,a24&b14,a24&b15,a24&b16,a24&b17,a24&b18,a24&b19,a24&b20,a24&b21,a24&b22,a24&b23,a24&b24,a24&b25,a24&b26,a24&b27,a24&b28,a24&b29,a24&b30, o_23_0,o_23_1,o_23_2,o_23_3,o_23_4,o_23_5,o_23_6,o_23_7,o_23_8,o_23_9,o_23_10,o_23_11,o_23_12,o_23_13,o_23_14,o_23_15,o_23_16,o_23_17,o_23_18,o_23_19,o_23_20,o_23_21,o_23_22,o_23_23);
+
+  o_25_25 = a25 & b31;
+  (o_25_0,o_25_1,o_25_2,o_25_3,o_25_4,o_25_5,o_25_6,o_25_7,o_25_8,o_25_9,o_25_10,o_25_11,o_25_12,o_25_13,o_25_14,o_25_15,o_25_16,o_25_17,o_25_18,o_25_19,o_25_20,o_25_21,o_25_22,o_25_23,o_25_24) = add25(a25&b6,a25&b7,a25&b8,a25&b9,a25&b10,a25&b11,a25&b12,a25&b13,a25&b14,a25&b15,a25&b16,a25&b17,a25&b18,a25&b19,a25&b20,a25&b21,a25&b22,a25&b23,a25&b24,a25&b25,a25&b26,a25&b27,a25&b28,a25&b29,a25&b30, o_24_0,o_24_1,o_24_2,o_24_3,o_24_4,o_24_5,o_24_6,o_24_7,o_24_8,o_24_9,o_24_10,o_24_11,o_24_12,o_24_13,o_24_14,o_24_15,o_24_16,o_24_17,o_24_18,o_24_19,o_24_20,o_24_21,o_24_22,o_24_23,o_24_24);
+
+  o_26_26 = a26 & b31;
+  (o_26_0,o_26_1,o_26_2,o_26_3,o_26_4,o_26_5,o_26_6,o_26_7,o_26_8,o_26_9,o_26_10,o_26_11,o_26_12,o_26_13,o_26_14,o_26_15,o_26_16,o_26_17,o_26_18,o_26_19,o_26_20,o_26_21,o_26_22,o_26_23,o_26_24,o_26_25) = add26(a26&b5,a26&b6,a26&b7,a26&b8,a26&b9,a26&b10,a26&b11,a26&b12,a26&b13,a26&b14,a26&b15,a26&b16,a26&b17,a26&b18,a26&b19,a26&b20,a26&b21,a26&b22,a26&b23,a26&b24,a26&b25,a26&b26,a26&b27,a26&b28,a26&b29,a26&b30, o_25_0,o_25_1,o_25_2,o_25_3,o_25_4,o_25_5,o_25_6,o_25_7,o_25_8,o_25_9,o_25_10,o_25_11,o_25_12,o_25_13,o_25_14,o_25_15,o_25_16,o_25_17,o_25_18,o_25_19,o_25_20,o_25_21,o_25_22,o_25_23,o_25_24,o_25_25);
+
+  o_27_27 = a27 & b31;
+  (o_27_0,o_27_1,o_27_2,o_27_3,o_27_4,o_27_5,o_27_6,o_27_7,o_27_8,o_27_9,o_27_10,o_27_11,o_27_12,o_27_13,o_27_14,o_27_15,o_27_16,o_27_17,o_27_18,o_27_19,o_27_20,o_27_21,o_27_22,o_27_23,o_27_24,o_27_25,o_27_26) = add27(a27&b4,a27&b5,a27&b6,a27&b7,a27&b8,a27&b9,a27&b10,a27&b11,a27&b12,a27&b13,a27&b14,a27&b15,a27&b16,a27&b17,a27&b18,a27&b19,a27&b20,a27&b21,a27&b22,a27&b23,a27&b24,a27&b25,a27&b26,a27&b27,a27&b28,a27&b29,a27&b30, o_26_0,o_26_1,o_26_2,o_26_3,o_26_4,o_26_5,o_26_6,o_26_7,o_26_8,o_26_9,o_26_10,o_26_11,o_26_12,o_26_13,o_26_14,o_26_15,o_26_16,o_26_17,o_26_18,o_26_19,o_26_20,o_26_21,o_26_22,o_26_23,o_26_24,o_26_25,o_26_26);
+
+  o_28_28 = a28 & b31;
+  (o_28_0,o_28_1,o_28_2,o_28_3,o_28_4,o_28_5,o_28_6,o_28_7,o_28_8,o_28_9,o_28_10,o_28_11,o_28_12,o_28_13,o_28_14,o_28_15,o_28_16,o_28_17,o_28_18,o_28_19,o_28_20,o_28_21,o_28_22,o_28_23,o_28_24,o_28_25,o_28_26,o_28_27) = add28(a28&b3,a28&b4,a28&b5,a28&b6,a28&b7,a28&b8,a28&b9,a28&b10,a28&b11,a28&b12,a28&b13,a28&b14,a28&b15,a28&b16,a28&b17,a28&b18,a28&b19,a28&b20,a28&b21,a28&b22,a28&b23,a28&b24,a28&b25,a28&b26,a28&b27,a28&b28,a28&b29,a28&b30, o_27_0,o_27_1,o_27_2,o_27_3,o_27_4,o_27_5,o_27_6,o_27_7,o_27_8,o_27_9,o_27_10,o_27_11,o_27_12,o_27_13,o_27_14,o_27_15,o_27_16,o_27_17,o_27_18,o_27_19,o_27_20,o_27_21,o_27_22,o_27_23,o_27_24,o_27_25,o_27_26,o_27_27);
+
+  o_29_29 = a29 & b31;
+  (o_29_0,o_29_1,o_29_2,o_29_3,o_29_4,o_29_5,o_29_6,o_29_7,o_29_8,o_29_9,o_29_10,o_29_11,o_29_12,o_29_13,o_29_14,o_29_15,o_29_16,o_29_17,o_29_18,o_29_19,o_29_20,o_29_21,o_29_22,o_29_23,o_29_24,o_29_25,o_29_26,o_29_27,o_29_28) = add29(a29&b2,a29&b3,a29&b4,a29&b5,a29&b6,a29&b7,a29&b8,a29&b9,a29&b10,a29&b11,a29&b12,a29&b13,a29&b14,a29&b15,a29&b16,a29&b17,a29&b18,a29&b19,a29&b20,a29&b21,a29&b22,a29&b23,a29&b24,a29&b25,a29&b26,a29&b27,a29&b28,a29&b29,a29&b30, o_28_0,o_28_1,o_28_2,o_28_3,o_28_4,o_28_5,o_28_6,o_28_7,o_28_8,o_28_9,o_28_10,o_28_11,o_28_12,o_28_13,o_28_14,o_28_15,o_28_16,o_28_17,o_28_18,o_28_19,o_28_20,o_28_21,o_28_22,o_28_23,o_28_24,o_28_25,o_28_26,o_28_27,o_28_28);
+
+  o_30_30 = a30 & b31;
+  (o_30_0,o_30_1,o_30_2,o_30_3,o_30_4,o_30_5,o_30_6,o_30_7,o_30_8,o_30_9,o_30_10,o_30_11,o_30_12,o_30_13,o_30_14,o_30_15,o_30_16,o_30_17,o_30_18,o_30_19,o_30_20,o_30_21,o_30_22,o_30_23,o_30_24,o_30_25,o_30_26,o_30_27,o_30_28,o_30_29) = add30(a30&b1,a30&b2,a30&b3,a30&b4,a30&b5,a30&b6,a30&b7,a30&b8,a30&b9,a30&b10,a30&b11,a30&b12,a30&b13,a30&b14,a30&b15,a30&b16,a30&b17,a30&b18,a30&b19,a30&b20,a30&b21,a30&b22,a30&b23,a30&b24,a30&b25,a30&b26,a30&b27,a30&b28,a30&b29,a30&b30, o_29_0,o_29_1,o_29_2,o_29_3,o_29_4,o_29_5,o_29_6,o_29_7,o_29_8,o_29_9,o_29_10,o_29_11,o_29_12,o_29_13,o_29_14,o_29_15,o_29_16,o_29_17,o_29_18,o_29_19,o_29_20,o_29_21,o_29_22,o_29_23,o_29_24,o_29_25,o_29_26,o_29_27,o_29_28,o_29_29);
+
+  o_31_31 = a31 & b31;
+  (o_31_0,o_31_1,o_31_2,o_31_3,o_31_4,o_31_5,o_31_6,o_31_7,o_31_8,o_31_9,o_31_10,o_31_11,o_31_12,o_31_13,o_31_14,o_31_15,o_31_16,o_31_17,o_31_18,o_31_19,o_31_20,o_31_21,o_31_22,o_31_23,o_31_24,o_31_25,o_31_26,o_31_27,o_31_28,o_31_29,o_31_30) = add31(a31&b0,a31&b1,a31&b2,a31&b3,a31&b4,a31&b5,a31&b6,a31&b7,a31&b8,a31&b9,a31&b10,a31&b11,a31&b12,a31&b13,a31&b14,a31&b15,a31&b16,a31&b17,a31&b18,a31&b19,a31&b20,a31&b21,a31&b22,a31&b23,a31&b24,a31&b25,a31&b26,a31&b27,a31&b28,a31&b29,a31&b30, o_30_0,o_30_1,o_30_2,o_30_3,o_30_4,o_30_5,o_30_6,o_30_7,o_30_8,o_30_9,o_30_10,o_30_11,o_30_12,o_30_13,o_30_14,o_30_15,o_30_16,o_30_17,o_30_18,o_30_19,o_30_20,o_30_21,o_30_22,o_30_23,o_30_24,o_30_25,o_30_26,o_30_27,o_30_28,o_30_29,o_30_30);
+
+end where
+
+
+
+(*Fin de l'ALU*)
+
+lsl5(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31, x0,x1,x2,x3,x4) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31) where
+
+  (m_0_0,m_0_1,m_0_2,m_0_3,m_0_4,m_0_5,m_0_6,m_0_7,m_0_8,m_0_9,m_0_10,m_0_11,m_0_12,m_0_13,m_0_14,m_0_15) = mux16(x0, a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31, a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15);
+  (m_0_16,m_0_17,m_0_18,m_0_19,m_0_20,m_0_21,m_0_22,m_0_23,m_0_24,m_0_25,m_0_26,m_0_27,m_0_28,m_0_29,m_0_30,m_0_31) = filtre16(not x0, a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15);
+  (m_1_0,m_1_1,m_1_2,m_1_3,m_1_4,m_1_5,m_1_6,m_1_7,m_1_8,m_1_9,m_1_10,m_1_11,m_1_12,m_1_13,m_1_14,m_1_15,m_1_16,m_1_17,m_1_18,m_1_19,m_1_20,m_1_21,m_1_22,m_1_23) = mux24(x1, m_0_8,m_0_9,m_0_10,m_0_11,m_0_12,m_0_13,m_0_14,m_0_15,m_0_16,m_0_17,m_0_18,m_0_19,m_0_20,m_0_21,m_0_22,m_0_23,m_0_24,m_0_25,m_0_26,m_0_27,m_0_28,m_0_29,m_0_30,m_0_31, m_0_0,m_0_1,m_0_2,m_0_3,m_0_4,m_0_5,m_0_6,m_0_7,m_0_8,m_0_9,m_0_10,m_0_11,m_0_12,m_0_13,m_0_14,m_0_15,m_0_16,m_0_17,m_0_18,m_0_19,m_0_20,m_0_21,m_0_22,m_0_23);
+  (m_1_24,m_1_25,m_1_26,m_1_27,m_1_28,m_1_29,m_1_30,m_1_31) = filtre8(not x1, m_0_24,m_0_25,m_0_26,m_0_27,m_0_28,m_0_29,m_0_30,m_0_31);
+  (m_2_0,m_2_1,m_2_2,m_2_3,m_2_4,m_2_5,m_2_6,m_2_7,m_2_8,m_2_9,m_2_10,m_2_11,m_2_12,m_2_13,m_2_14,m_2_15,m_2_16,m_2_17,m_2_18,m_2_19,m_2_20,m_2_21,m_2_22,m_2_23,m_2_24,m_2_25,m_2_26,m_2_27) = mux28(x2, m_1_4,m_1_5,m_1_6,m_1_7,m_1_8,m_1_9,m_1_10,m_1_11,m_1_12,m_1_13,m_1_14,m_1_15,m_1_16,m_1_17,m_1_18,m_1_19,m_1_20,m_1_21,m_1_22,m_1_23,m_1_24,m_1_25,m_1_26,m_1_27,m_1_28,m_1_29,m_1_30,m_1_31, m_1_0,m_1_1,m_1_2,m_1_3,m_1_4,m_1_5,m_1_6,m_1_7,m_1_8,m_1_9,m_1_10,m_1_11,m_1_12,m_1_13,m_1_14,m_1_15,m_1_16,m_1_17,m_1_18,m_1_19,m_1_20,m_1_21,m_1_22,m_1_23,m_1_24,m_1_25,m_1_26,m_1_27);
+  (m_2_28,m_2_29,m_2_30,m_2_31) = filtre4(not x2, m_1_28,m_1_29,m_1_30,m_1_31);
+  (m_3_0,m_3_1,m_3_2,m_3_3,m_3_4,m_3_5,m_3_6,m_3_7,m_3_8,m_3_9,m_3_10,m_3_11,m_3_12,m_3_13,m_3_14,m_3_15,m_3_16,m_3_17,m_3_18,m_3_19,m_3_20,m_3_21,m_3_22,m_3_23,m_3_24,m_3_25,m_3_26,m_3_27,m_3_28,m_3_29) = mux30(x3, m_2_2,m_2_3,m_2_4,m_2_5,m_2_6,m_2_7,m_2_8,m_2_9,m_2_10,m_2_11,m_2_12,m_2_13,m_2_14,m_2_15,m_2_16,m_2_17,m_2_18,m_2_19,m_2_20,m_2_21,m_2_22,m_2_23,m_2_24,m_2_25,m_2_26,m_2_27,m_2_28,m_2_29,m_2_30,m_2_31, m_2_0,m_2_1,m_2_2,m_2_3,m_2_4,m_2_5,m_2_6,m_2_7,m_2_8,m_2_9,m_2_10,m_2_11,m_2_12,m_2_13,m_2_14,m_2_15,m_2_16,m_2_17,m_2_18,m_2_19,m_2_20,m_2_21,m_2_22,m_2_23,m_2_24,m_2_25,m_2_26,m_2_27,m_2_28,m_2_29);
+  (m_3_30,m_3_31) = filtre2(not x3, m_2_30,m_2_31);
+  (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30) = mux31(x4, m_3_1,m_3_2,m_3_3,m_3_4,m_3_5,m_3_6,m_3_7,m_3_8,m_3_9,m_3_10,m_3_11,m_3_12,m_3_13,m_3_14,m_3_15,m_3_16,m_3_17,m_3_18,m_3_19,m_3_20,m_3_21,m_3_22,m_3_23,m_3_24,m_3_25,m_3_26,m_3_27,m_3_28,m_3_29,m_3_30,m_3_31, m_3_0,m_3_1,m_3_2,m_3_3,m_3_4,m_3_5,m_3_6,m_3_7,m_3_8,m_3_9,m_3_10,m_3_11,m_3_12,m_3_13,m_3_14,m_3_15,m_3_16,m_3_17,m_3_18,m_3_19,m_3_20,m_3_21,m_3_22,m_3_23,m_3_24,m_3_25,m_3_26,m_3_27,m_3_28,m_3_29,m_3_30);
+ o31 = (not x4) & m_3_31;
+
+end where;
+
+lsr5(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31, x0,x1,x2,x3,x4) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31) where
+
+  (m_0_16,m_0_17,m_0_18,m_0_19,m_0_20,m_0_21,m_0_22,m_0_23,m_0_24,m_0_25,m_0_26,m_0_27,m_0_28,m_0_29,m_0_30,m_0_31) = mux16(x0, a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15, a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31);
+  (m_0_0,m_0_1,m_0_2,m_0_3,m_0_4,m_0_5,m_0_6,m_0_7,m_0_8,m_0_9,m_0_10,m_0_11,m_0_12,m_0_13,m_0_14,m_0_15) = filtre16(not x0, a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15);
+  (m_1_8,m_1_9,m_1_10,m_1_11,m_1_12,m_1_13,m_1_14,m_1_15,m_1_16,m_1_17,m_1_18,m_1_19,m_1_20,m_1_21,m_1_22,m_1_23,m_1_24,m_1_25,m_1_26,m_1_27,m_1_28,m_1_29,m_1_30,m_1_31) = mux24(x1, m_0_0,m_0_1,m_0_2,m_0_3,m_0_4,m_0_5,m_0_6,m_0_7,m_0_8,m_0_9,m_0_10,m_0_11,m_0_12,m_0_13,m_0_14,m_0_15,m_0_16,m_0_17,m_0_18,m_0_19,m_0_20,m_0_21,m_0_22,m_0_23, m_0_8,m_0_9,m_0_10,m_0_11,m_0_12,m_0_13,m_0_14,m_0_15,m_0_16,m_0_17,m_0_18,m_0_19,m_0_20,m_0_21,m_0_22,m_0_23,m_0_24,m_0_25,m_0_26,m_0_27,m_0_28,m_0_29,m_0_30,m_0_31);
+  (m_1_0,m_1_1,m_1_2,m_1_3,m_1_4,m_1_5,m_1_6,m_1_7) = filtre8(not x1, m_0_0,m_0_1,m_0_2,m_0_3,m_0_4,m_0_5,m_0_6,m_0_7);
+  (m_2_4,m_2_5,m_2_6,m_2_7,m_2_8,m_2_9,m_2_10,m_2_11,m_2_12,m_2_13,m_2_14,m_2_15,m_2_16,m_2_17,m_2_18,m_2_19,m_2_20,m_2_21,m_2_22,m_2_23,m_2_24,m_2_25,m_2_26,m_2_27,m_2_28,m_2_29,m_2_30,m_2_31) = mux28(x2, m_1_0,m_1_1,m_1_2,m_1_3,m_1_4,m_1_5,m_1_6,m_1_7,m_1_8,m_1_9,m_1_10,m_1_11,m_1_12,m_1_13,m_1_14,m_1_15,m_1_16,m_1_17,m_1_18,m_1_19,m_1_20,m_1_21,m_1_22,m_1_23,m_1_24,m_1_25,m_1_26,m_1_27, m_1_4,m_1_5,m_1_6,m_1_7,m_1_8,m_1_9,m_1_10,m_1_11,m_1_12,m_1_13,m_1_14,m_1_15,m_1_16,m_1_17,m_1_18,m_1_19,m_1_20,m_1_21,m_1_22,m_1_23,m_1_24,m_1_25,m_1_26,m_1_27,m_1_28,m_1_29,m_1_30,m_1_31);
+  (m_2_0,m_2_1,m_2_2,m_2_3) = filtre4(not x2, m_1_0,m_1_1,m_1_2,m_1_3);
+  (m_3_2,m_3_3,m_3_4,m_3_5,m_3_6,m_3_7,m_3_8,m_3_9,m_3_10,m_3_11,m_3_12,m_3_13,m_3_14,m_3_15,m_3_16,m_3_17,m_3_18,m_3_19,m_3_20,m_3_21,m_3_22,m_3_23,m_3_24,m_3_25,m_3_26,m_3_27,m_3_28,m_3_29,m_3_30,m_3_31) = mux30(x3, m_2_0,m_2_1,m_2_2,m_2_3,m_2_4,m_2_5,m_2_6,m_2_7,m_2_8,m_2_9,m_2_10,m_2_11,m_2_12,m_2_13,m_2_14,m_2_15,m_2_16,m_2_17,m_2_18,m_2_19,m_2_20,m_2_21,m_2_22,m_2_23,m_2_24,m_2_25,m_2_26,m_2_27,m_2_28,m_2_29, m_2_2,m_2_3,m_2_4,m_2_5,m_2_6,m_2_7,m_2_8,m_2_9,m_2_10,m_2_11,m_2_12,m_2_13,m_2_14,m_2_15,m_2_16,m_2_17,m_2_18,m_2_19,m_2_20,m_2_21,m_2_22,m_2_23,m_2_24,m_2_25,m_2_26,m_2_27,m_2_28,m_2_29,m_2_30,m_2_31);
+  (m_3_0,m_3_1) = filtre2(not x3, m_2_0,m_2_1);
+  (o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31) = mux31(x4, m_3_0,m_3_1,m_3_2,m_3_3,m_3_4,m_3_5,m_3_6,m_3_7,m_3_8,m_3_9,m_3_10,m_3_11,m_3_12,m_3_13,m_3_14,m_3_15,m_3_16,m_3_17,m_3_18,m_3_19,m_3_20,m_3_21,m_3_22,m_3_23,m_3_24,m_3_25,m_3_26,m_3_27,m_3_28,m_3_29,m_3_30, m_3_1,m_3_2,m_3_3,m_3_4,m_3_5,m_3_6,m_3_7,m_3_8,m_3_9,m_3_10,m_3_11,m_3_12,m_3_13,m_3_14,m_3_15,m_3_16,m_3_17,m_3_18,m_3_19,m_3_20,m_3_21,m_3_22,m_3_23,m_3_24,m_3_25,m_3_26,m_3_27,m_3_28,m_3_29,m_3_30,m_3_31);
+ o0 = (not x4) & m_3_0;
+
+end where;
+
+
+
+alu(addOp, subOp, andOp, orOp, xorOp, compOp, ltOp, eqOp, neqOp, shiftOp, lrOp, a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31) = (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31,zf,of,sf) where
+
+  (x_0,x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9,x_10,x_11,x_12,x_13,x_14,x_15,x_16,x_17,x_18,x_19,x_20,
+x_21,x_22,x_23,x_24,x_25,x_26,x_27,x_28,x_29,x_30,x_31) = xorCond(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31, subOp);
+
+  (sf,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31,of) = add32(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31, x_0,x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9,x_10,x_11,x_12,x_13,x_14,x_15,x_16,x_17,x_18,x_19,x_20,
+x_21,x_22,x_23,x_24,x_25,x_26,x_27,x_28,x_29,x_30,x_31, subOp);
+
+  zf = not orTot32(sf,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31);
+
+  (aR0,aR1,aR2,aR3,aR4,aR5,aR6,aR7,aR8,aR9,aR10,aR11,aR12,aR13,aR14,aR15,aR16,aR17,aR18,aR19,aR20,
+aR21,aR22,aR23,aR24,aR25,aR26,aR27,aR28,aR29,aR30,aR31) = and32(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31);
+
+  (oR0,oR1,oR2,oR3,oR4,oR5,oR6,oR7,oR8,oR9,oR10,oR11,oR12,oR13,oR14,oR15,oR16,oR17,oR18,oR19,oR20,
+oR21,oR22,oR23,oR24,oR25,oR26,oR27,oR28,oR29,oR30,oR31) = or32(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31);
+
+  (xR0,xR1,xR2,xR3,xR4,xR5,xR6,xR7,xR8,xR9,xR10,xR11,xR12,xR13,xR14,xR15,xR16,xR17,xR18,xR19,xR20,
+xR21,xR22,xR23,xR24,xR25,xR26,xR27,xR28,xR29,xR30,xR31) = xor32(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31,
+  b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26,b27,b28,b29,b30,b31);
+
+  x = ((sf & ltOp) + (zf & eqOp)) ^ neqOp;
+
+  shiftZero = orTot27(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24,b25,b26);
+
+  (lsr_0,lsr_1,lsr_2,lsr_3,lsr_4,lsr_5,lsr_6,lsr_7,lsr_8,lsr_9,lsr_10,lsr_11,lsr_12,lsr_13,lsr_14,lsr_15,lsr_16,lsr_17,lsr_18,lsr_19,lsr_20,
+lsr_21,lsr_22,lsr_23,lsr_24,lsr_25,lsr_26,lsr_27,lsr_28,lsr_29,lsr_30,lsr_31) = lsr5(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31, b27,b28,b29,b30,b31);
+
+  (rSh0,rSh1,rSh2,rSh3,rSh4,rSh5,rSh6,rSh7,rSh8,rSh9,rSh10,rSh11,rSh12,rSh13,rSh14,rSh15,rSh16,rSh17,rSh18,rSh19,rSh20,
+rSh21,rSh22,rSh23,rSh24,rSh25,rSh26,rSh27,rSh28,rSh29,rSh30,rSh31) = mux32(shiftZero, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, lsr_0,lsr_1,lsr_2,lsr_3,lsr_4,lsr_5,lsr_6,lsr_7,lsr_8,lsr_9,lsr_10,lsr_11,lsr_12,lsr_13,lsr_14,lsr_15,lsr_16,lsr_17,lsr_18,lsr_19,lsr_20,
+lsr_21,lsr_22,lsr_23,lsr_24,lsr_25,lsr_26,lsr_27,lsr_28,lsr_29,lsr_30,lsr_31);
+
+  (lsl_0,lsl_1,lsl_2,lsl_3,lsl_4,lsl_5,lsl_6,lsl_7,lsl_8,lsl_9,lsl_10,lsl_11,lsl_12,lsl_13,lsl_14,lsl_15,lsl_16,lsl_17,lsl_18,lsl_19,lsl_20,
+lsl_21,lsl_22,lsl_23,lsl_24,lsl_25,lsl_26,lsl_27,lsl_28,lsl_29,lsl_30,lsl_31) = lsl5(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19,a20,a21,a22,a23,a24,a25,a26,a27,a28,a29,a30,a31, b27,b28,b29,b30,b31);
+
+  (lSh0,lSh1,lSh2,lSh3,lSh4,lSh5,lSh6,lSh7,lSh8,lSh9,lSh10,lSh11,lSh12,lSh13,lSh14,lSh15,lSh16,lSh17,lSh18,lSh19,lSh20,
+lSh21,lSh22,lSh23,lSh24,lSh25,lSh26,lSh27,lSh28,lSh29,lSh30,lSh31) = mux32(shiftZero, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, lsl_0,lsl_1,lsl_2,lsl_3,lsl_4,lsl_5,lsl_6,lsl_7,lsl_8,lsl_9,lsl_10,lsl_11,lsl_12,lsl_13,lsl_14,lsl_15,lsl_16,lsl_17,lsl_18,lsl_19,lsl_20,
+lsl_21,lsl_22,lsl_23,lsl_24,lsl_25,lsl_26,lsl_27,lsl_28,lsl_29,lsl_30,lsl_31);
+
+  (res0,res1,res2,res3,res4,res5,res6,res7,res8,res9,res10,res11,res12,res13,res14,res15,res16,res17,res18,res19,res20,
+res21,res22,res23,res24,res25,res26,res27,res28,res29,res30,res31) = mux32(compOp, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,x, sf,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31);
+
+  (oa0,oa1,oa2,oa3,oa4,oa5,oa6,oa7,oa8,oa9,oa10,oa11,oa12,oa13,oa14,oa15,oa16,oa17,oa18,oa19,oa20,
+oa21,oa22,oa23,oa24,oa25,oa26,oa27,oa28,oa29,oa30,oa31) = mux32(orOp, oR0,oR1,oR2,oR3,oR4,oR5,oR6,oR7,oR8,oR9,oR10,oR11,oR12,oR13,oR14,oR15,oR16,oR17,oR18,oR19,oR20,oR21,oR22,oR23,oR24,oR25,oR26,oR27,oR28,oR29,oR30,oR31, aR0,aR1,aR2,aR3,aR4,aR5,aR6,aR7,aR8,aR9,aR10,aR11,aR12,aR13,aR14,aR15,aR16,aR17,aR18,aR19,aR20,aR21,aR22,aR23,aR24,aR25,aR26,aR27,aR28,aR29,aR30,aR31);
+
+  (binop0,binop1,binop2,binop3,binop4,binop5,binop6,binop7,binop8,binop9,binop10,binop11,binop12,binop13,binop14,binop15,binop16,binop17,
+binop18,binop19,binop20,binop21,binop22,binop23,binop24,binop25,binop26,binop27,binop28,binop29,binop30,binop31) = mux32(xorOp, xR0,xR1,xR2,xR3,xR4,xR5,xR6,xR7,xR8,xR9,xR10,xR11,xR12,xR13,xR14,xR15,xR16,xR17,xR18,xR19,xR20,xR21,xR22,xR23,xR24,xR25,xR26,xR27,xR28,xR29,xR30,xR31, oa0,oa1,oa2,oa3,oa4,oa5,oa6,oa7,oa8,oa9,oa10,oa11,oa12,oa13,oa14,oa15,oa16,oa17,oa18,oa19,oa20,oa21,oa22,oa23,oa24,oa25,oa26,oa27,oa28,oa29,oa30,oa31);
+
+  (r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23,r24,r25,r26,r27,r28,r29,r30,r31) = mux32(addOp, res0,res1,res2,res3,res4,res5,res6,res7,res8,res9,res10,res11,res12,res13,res14,res15,res16,res17,res18,res19,res20,
+res21,res22,res23,res24,res25,res26,res27,res28,res29,res30,res31, binop0,binop1,binop2,binop3,binop4,binop5,binop6,binop7,binop8,binop9,binop10,binop11,binop12,binop13,binop14,binop15,binop16,binop17,
+binop18,binop19,binop20,binop21,binop22,binop23,binop24,binop25,binop26,binop27,binop28,binop29,binop30,binop31);
+
+  (s0,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20,s21,s22,s23,s24,s25,s26,s27,s28,s29,s30,s31) = mux32(lrOp, rSh0,rSh1,rSh2,rSh3,rSh4,rSh5,rSh6,rSh7,rSh8,rSh9,rSh10,rSh11,rSh12,rSh13,rSh14,rSh15,rSh16,rSh17,rSh18,rSh19,rSh20,
+rSh21,rSh22,rSh23,rSh24,rSh25,rSh26,rSh27,rSh28,rSh29,rSh30,rSh31, lSh0,lSh1,lSh2,lSh3,lSh4,lSh5,lSh6,lSh7,lSh8,lSh9,lSh10,lSh11,lSh12,lSh13,lSh14,lSh15,lSh16,lSh17,lSh18,lSh19,lSh20,
+lSh21,lSh22,lSh23,lSh24,lSh25,lSh26,lSh27,lSh28,lSh29,lSh30,lSh31);
+
+  (o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16,o17,o18,o19,o20,o21,o22,o23,o24,o25,o26,o27,o28,o29,o30,o31) = mux32(shiftOp, s0,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20,s21,s22,s23,s24,s25,s26,s27,s28,s29,s30,s31, r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23,r24,r25,r26,r27,r28,r29,r30,r31);
+  
+end where
+
+
+
+maj(cond, r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23,r24,r25,r26,r27,r28,r29,r30,r31, d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31) = (s0,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20,s21,s22,s23,s24,s25,s26,s27,s28,s29,s30,s31) where
+  s0 = mux(cond, d0, reg(r0));
+  s1 = mux(cond, d1, reg(r1));
+  s2 = mux(cond, d2, reg(r2));
+  s3 = mux(cond, d3, reg(r3));
+  s4 = mux(cond, d4, reg(r4));
+  s5 = mux(cond, d5, reg(r5));
+  s6 = mux(cond, d6, reg(r6));
+  s7 = mux(cond, d7, reg(r7));
+  s8 = mux(cond, d8, reg(r8));
+  s9 = mux(cond, d9, reg(r9));
+  s10 = mux(cond, d10, reg(r10));
+  s11 = mux(cond, d11, reg(r11));
+  s12 = mux(cond, d12, reg(r12));
+  s13 = mux(cond, d13, reg(r13));
+  s14 = mux(cond, d14, reg(r14));
+  s15 = mux(cond, d15, reg(r15));
+  s16 = mux(cond, d16, reg(r16));
+  s17 = mux(cond, d17, reg(r17));
+  s18 = mux(cond, d18, reg(r18));
+  s19 = mux(cond, d19, reg(r19));
+  s20 = mux(cond, d20, reg(r20));
+  s21 = mux(cond, d21, reg(r21));
+  s22 = mux(cond, d22, reg(r22));
+  s23 = mux(cond, d23, reg(r23));
+  s24 = mux(cond, d24, reg(r24));
+  s25 = mux(cond, d25, reg(r25));
+  s26 = mux(cond, d26, reg(r26));
+  s27 = mux(cond, d27, reg(r27));
+  s28 = mux(cond, d28, reg(r28));
+  s29 = mux(cond, d29, reg(r29));
+  s30 = mux(cond, d30, reg(r30));
+  s31 = mux(cond, d31, reg(r31));
+end where
+
+
+
+
+main() = (pc:[17]) where
+
+  (pc0,pc1,pc2,pc3,pc4,pc5,pc6,pc7,pc8,pc9,pc10,pc11,pc12,pc13,pc14,pc15,pc16) = reg17(nPC0,nPC1,nPC2,nPC3,nPC4,nPC5,nPC6,nPC7,nPC8,nPC9,nPC10,nPC11,nPC12,nPC13,nPC14,nPC15,nPC16);
+
+  pc = pc0.pc1.pc2.pc3.pc4.pc5.pc6.pc7.pc8.pc9.pc10.pc11.pc12.pc13.pc14.pc15.pc16;
+
+  o = rom<17,32>(pc);
+
+  imm = o[0]; notImm = not imm;
+  weReg = o[1];
+  ramOp = o[2];
+  weRamOp = o[3]; 
+  jzOp = o[4]; 
+  jnzOp = o[5];
+  branchOp = o[6]; 
+  addOp = o[7]; 
+  subOp = o[8];
+  op9 = o[9]; compOp = op9 & notImm; 
+  op10 = o[10]; ltOp = op10 & notImm;
+  op11 = o[11]; eqOp = op11 & notImm; 
+  op12 = o[12]; negOp = op12 & notImm; 
+  op13 = o[13]; shiftOp = op13 & notImm; 
+  op14 = o[14]; lrOp = op14 & notImm; 
+  op15 = o[15]; movOp = op15 & notImm; 
+  op16 = o[16]; orOp = op16 & notImm; 
+  op17 = o[17]; xorOp = op17 & notImm; 
+  op18 = o[18]; andOp = op18 & notImm;
+  op19 = o[19]; 
+  op20 = o[20]; 
+  op21 = o[21]; 
+  op22 = o[22]; 
+  op23 = o[23]; 
+  op24 = o[24]; 
+  op25 = o[25];  
+
+  aAddr0 = o[28]; aAddr1 = o[27]; aAddr2 = o[26]; aAddrn0 = not aAddr0; aAddrn1 = not aAddr1; aAddrn2 = not aAddr2;
+  zAddr0 = o[31]; zAddr1 = o[30]; zAddr2 = o[29]; zAddrn0 = not zAddr0; zAddrn1 = not zAddr1; zAddrn2 = not zAddr2;
+  
+  a01 = aAddr1 & aAddr0; a0n1 = aAddrn1 & aAddr0; an01 = aAddr1 & aAddrn0; an0n1 = aAddrn1 & aAddrn0;
+  z01 = zAddr1 & zAddr0; z0n1 = zAddrn1 & zAddr0; zn01 = zAddr1 & zAddrn0; zn0n1 = zAddrn1 & zAddrn0;
+
+  a0 = an0n1 & aAddrn2; a1 = a0n1 & aAddrn2; a2 = an01 & aAddrn2; a3 = a01 & aAddrn2;
+  a4 = an0n1 & aAddr2; a5 = a0n1 & aAddr2; a6 = an01 & aAddr2; a7 = a01 & aAddr2;
+  z0 = zn0n1 & zAddrn2; z1 = z0n1 & zAddrn2; z2 = zn01 & zAddrn2; z3 = z01 & zAddrn2; 
+  z4 = zn0n1 & zAddr2; z5 = z0n1 & zAddr2; z6 = zn01 & zAddr2; z7 = z01 & zAddr2;
+
+  (fa_0_0,fa_0_1,fa_0_2,fa_0_3,fa_0_4,fa_0_5,fa_0_6,fa_0_7,fa_0_8,fa_0_9,fa_0_10,fa_0_11,fa_0_12,fa_0_13,fa_0_14,fa_0_15,fa_0_16,fa_0_17,fa_0_18,fa_0_19,fa_0_20, fa_0_21,fa_0_22,fa_0_23,fa_0_24,fa_0_25,fa_0_26,fa_0_27,fa_0_28,fa_0_29,fa_0_30,fa_0_31) = filtreReg32(a0, r_0_0,r_0_1,r_0_2,r_0_3,r_0_4,r_0_5,r_0_6,r_0_7,r_0_8,r_0_9,r_0_10,r_0_11,r_0_12,r_0_13,r_0_14,r_0_15,r_0_16,r_0_17,r_0_18,r_0_19,r_0_20, r_0_21,r_0_22,r_0_23,r_0_24,r_0_25,r_0_26,r_0_27,r_0_28,r_0_29,r_0_30,r_0_31);
+  (fa_1_0,fa_1_1,fa_1_2,fa_1_3,fa_1_4,fa_1_5,fa_1_6,fa_1_7,fa_1_8,fa_1_9,fa_1_10,fa_1_11,fa_1_12,fa_1_13,fa_1_14,fa_1_15,fa_1_16,fa_1_17,fa_1_18,fa_1_19,fa_1_20, fa_1_21,fa_1_22,fa_1_23,fa_1_24,fa_1_25,fa_1_26,fa_1_27,fa_1_28,fa_1_29,fa_1_30,fa_1_31) = filtreReg32(a1, r_1_0,r_1_1,r_1_2,r_1_3,r_1_4,r_1_5,r_1_6,r_1_7,r_1_8,r_1_9,r_1_10,r_1_11,r_1_12,r_1_13,r_1_14,r_1_15,r_1_16,r_1_17,r_1_18,r_1_19,r_1_20, r_1_21,r_1_22,r_1_23,r_1_24,r_1_25,r_1_26,r_1_27,r_1_28,r_1_29,r_1_30,r_1_31);
+  (a_0_0,a_0_1,a_0_2,a_0_3,a_0_4,a_0_5,a_0_6,a_0_7,a_0_8,a_0_9,a_0_10,a_0_11,a_0_12,a_0_13,a_0_14,a_0_15,a_0_16,a_0_17,a_0_18,a_0_19,a_0_20, a_0_21,a_0_22,a_0_23,a_0_24,a_0_25,a_0_26,a_0_27,a_0_28,a_0_29,a_0_30,a_0_31) = or32(fa_0_0,fa_0_1,fa_0_2,fa_0_3,fa_0_4,fa_0_5,fa_0_6,fa_0_7,fa_0_8,fa_0_9,fa_0_10,fa_0_11,fa_0_12,fa_0_13,fa_0_14,fa_0_15,fa_0_16,fa_0_17,fa_0_18,fa_0_19,fa_0_20, fa_0_21,fa_0_22,fa_0_23,fa_0_24,fa_0_25,fa_0_26,fa_0_27,fa_0_28,fa_0_29,fa_0_30,fa_0_31, fa_1_0,fa_1_1,fa_1_2,fa_1_3,fa_1_4,fa_1_5,fa_1_6,fa_1_7,fa_1_8,fa_1_9,fa_1_10,fa_1_11,fa_1_12,fa_1_13,fa_1_14,fa_1_15,fa_1_16,fa_1_17,fa_1_18,fa_1_19,fa_1_20, fa_1_21,fa_1_22,fa_1_23,fa_1_24,fa_1_25,fa_1_26,fa_1_27,fa_1_28,fa_1_29,fa_1_30,fa_1_31);
+  (fa_2_0,fa_2_1,fa_2_2,fa_2_3,fa_2_4,fa_2_5,fa_2_6,fa_2_7,fa_2_8,fa_2_9,fa_2_10,fa_2_11,fa_2_12,fa_2_13,fa_2_14,fa_2_15,fa_2_16,fa_2_17,fa_2_18,fa_2_19,fa_2_20, fa_2_21,fa_2_22,fa_2_23,fa_2_24,fa_2_25,fa_2_26,fa_2_27,fa_2_28,fa_2_29,fa_2_30,fa_2_31) = filtreReg32(a2, r_2_0,r_2_1,r_2_2,r_2_3,r_2_4,r_2_5,r_2_6,r_2_7,r_2_8,r_2_9,r_2_10,r_2_11,r_2_12,r_2_13,r_2_14,r_2_15,r_2_16,r_2_17,r_2_18,r_2_19,r_2_20, r_2_21,r_2_22,r_2_23,r_2_24,r_2_25,r_2_26,r_2_27,r_2_28,r_2_29,r_2_30,r_2_31);
+  (fa_3_0,fa_3_1,fa_3_2,fa_3_3,fa_3_4,fa_3_5,fa_3_6,fa_3_7,fa_3_8,fa_3_9,fa_3_10,fa_3_11,fa_3_12,fa_3_13,fa_3_14,fa_3_15,fa_3_16,fa_3_17,fa_3_18,fa_3_19,fa_3_20, fa_3_21,fa_3_22,fa_3_23,fa_3_24,fa_3_25,fa_3_26,fa_3_27,fa_3_28,fa_3_29,fa_3_30,fa_3_31) = filtreReg32(a3, r_3_0,r_3_1,r_3_2,r_3_3,r_3_4,r_3_5,r_3_6,r_3_7,r_3_8,r_3_9,r_3_10,r_3_11,r_3_12,r_3_13,r_3_14,r_3_15,r_3_16,r_3_17,r_3_18,r_3_19,r_3_20, r_3_21,r_3_22,r_3_23,r_3_24,r_3_25,r_3_26,r_3_27,r_3_28,r_3_29,r_3_30,r_3_31);
+  (a_1_0,a_1_1,a_1_2,a_1_3,a_1_4,a_1_5,a_1_6,a_1_7,a_1_8,a_1_9,a_1_10,a_1_11,a_1_12,a_1_13,a_1_14,a_1_15,a_1_16,a_1_17,a_1_18,a_1_19,a_1_20, a_1_21,a_1_22,a_1_23,a_1_24,a_1_25,a_1_26,a_1_27,a_1_28,a_1_29,a_1_30,a_1_31) = or32(fa_2_0,fa_2_1,fa_2_2,fa_2_3,fa_2_4,fa_2_5,fa_2_6,fa_2_7,fa_2_8,fa_2_9,fa_2_10,fa_2_11,fa_2_12,fa_2_13,fa_2_14,fa_2_15,fa_2_16,fa_2_17,fa_2_18,fa_2_19,fa_2_20, fa_2_21,fa_2_22,fa_2_23,fa_2_24,fa_2_25,fa_2_26,fa_2_27,fa_2_28,fa_2_29,fa_2_30,fa_2_31, fa_3_0,fa_3_1,fa_3_2,fa_3_3,fa_3_4,fa_3_5,fa_3_6,fa_3_7,fa_3_8,fa_3_9,fa_3_10,fa_3_11,fa_3_12,fa_3_13,fa_3_14,fa_3_15,fa_3_16,fa_3_17,fa_3_18,fa_3_19,fa_3_20, fa_3_21,fa_3_22,fa_3_23,fa_3_24,fa_3_25,fa_3_26,fa_3_27,fa_3_28,fa_3_29,fa_3_30,fa_3_31);
+  (fa_4_0,fa_4_1,fa_4_2,fa_4_3,fa_4_4,fa_4_5,fa_4_6,fa_4_7,fa_4_8,fa_4_9,fa_4_10,fa_4_11,fa_4_12,fa_4_13,fa_4_14,fa_4_15,fa_4_16,fa_4_17,fa_4_18,fa_4_19,fa_4_20, fa_4_21,fa_4_22,fa_4_23,fa_4_24,fa_4_25,fa_4_26,fa_4_27,fa_4_28,fa_4_29,fa_4_30,fa_4_31) = filtreReg32(a4, r_4_0,r_4_1,r_4_2,r_4_3,r_4_4,r_4_5,r_4_6,r_4_7,r_4_8,r_4_9,r_4_10,r_4_11,r_4_12,r_4_13,r_4_14,r_4_15,r_4_16,r_4_17,r_4_18,r_4_19,r_4_20, r_4_21,r_4_22,r_4_23,r_4_24,r_4_25,r_4_26,r_4_27,r_4_28,r_4_29,r_4_30,r_4_31);
+  (fa_5_0,fa_5_1,fa_5_2,fa_5_3,fa_5_4,fa_5_5,fa_5_6,fa_5_7,fa_5_8,fa_5_9,fa_5_10,fa_5_11,fa_5_12,fa_5_13,fa_5_14,fa_5_15,fa_5_16,fa_5_17,fa_5_18,fa_5_19,fa_5_20, fa_5_21,fa_5_22,fa_5_23,fa_5_24,fa_5_25,fa_5_26,fa_5_27,fa_5_28,fa_5_29,fa_5_30,fa_5_31) = filtreReg32(a5, r_5_0,r_5_1,r_5_2,r_5_3,r_5_4,r_5_5,r_5_6,r_5_7,r_5_8,r_5_9,r_5_10,r_5_11,r_5_12,r_5_13,r_5_14,r_5_15,r_5_16,r_5_17,r_5_18,r_5_19,r_5_20, r_5_21,r_5_22,r_5_23,r_5_24,r_5_25,r_5_26,r_5_27,r_5_28,r_5_29,r_5_30,r_5_31);
+  (a_2_0,a_2_1,a_2_2,a_2_3,a_2_4,a_2_5,a_2_6,a_2_7,a_2_8,a_2_9,a_2_10,a_2_11,a_2_12,a_2_13,a_2_14,a_2_15,a_2_16,a_2_17,a_2_18,a_2_19,a_2_20, a_2_21,a_2_22,a_2_23,a_2_24,a_2_25,a_2_26,a_2_27,a_2_28,a_2_29,a_2_30,a_2_31) = or32(fa_4_0,fa_4_1,fa_4_2,fa_4_3,fa_4_4,fa_4_5,fa_4_6,fa_4_7,fa_4_8,fa_4_9,fa_4_10,fa_4_11,fa_4_12,fa_4_13,fa_4_14,fa_4_15,fa_4_16,fa_4_17,fa_4_18,fa_4_19,fa_4_20, fa_4_21,fa_4_22,fa_4_23,fa_4_24,fa_4_25,fa_4_26,fa_4_27,fa_4_28,fa_4_29,fa_4_30,fa_4_31, fa_5_0,fa_5_1,fa_5_2,fa_5_3,fa_5_4,fa_5_5,fa_5_6,fa_5_7,fa_5_8,fa_5_9,fa_5_10,fa_5_11,fa_5_12,fa_5_13,fa_5_14,fa_5_15,fa_5_16,fa_5_17,fa_5_18,fa_5_19,fa_5_20, fa_5_21,fa_5_22,fa_5_23,fa_5_24,fa_5_25,fa_5_26,fa_5_27,fa_5_28,fa_5_29,fa_5_30,fa_5_31);
+  (fa_6_0,fa_6_1,fa_6_2,fa_6_3,fa_6_4,fa_6_5,fa_6_6,fa_6_7,fa_6_8,fa_6_9,fa_6_10,fa_6_11,fa_6_12,fa_6_13,fa_6_14,fa_6_15,fa_6_16,fa_6_17,fa_6_18,fa_6_19,fa_6_20, fa_6_21,fa_6_22,fa_6_23,fa_6_24,fa_6_25,fa_6_26,fa_6_27,fa_6_28,fa_6_29,fa_6_30,fa_6_31) = filtreReg32(a6, r_6_0,r_6_1,r_6_2,r_6_3,r_6_4,r_6_5,r_6_6,r_6_7,r_6_8,r_6_9,r_6_10,r_6_11,r_6_12,r_6_13,r_6_14,r_6_15,r_6_16,r_6_17,r_6_18,r_6_19,r_6_20, r_6_21,r_6_22,r_6_23,r_6_24,r_6_25,r_6_26,r_6_27,r_6_28,r_6_29,r_6_30,r_6_31);
+  (fa_7_0,fa_7_1,fa_7_2,fa_7_3,fa_7_4,fa_7_5,fa_7_6,fa_7_7,fa_7_8,fa_7_9,fa_7_10,fa_7_11,fa_7_12,fa_7_13,fa_7_14,fa_7_15,fa_7_16,fa_7_17,fa_7_18,fa_7_19,fa_7_20, fa_7_21,fa_7_22,fa_7_23,fa_7_24,fa_7_25,fa_7_26,fa_7_27,fa_7_28,fa_7_29,fa_7_30,fa_7_31) = filtreReg32(a7, r_7_0,r_7_1,r_7_2,r_7_3,r_7_4,r_7_5,r_7_6,r_7_7,r_7_8,r_7_9,r_7_10,r_7_11,r_7_12,r_7_13,r_7_14,r_7_15,r_7_16,r_7_17,r_7_18,r_7_19,r_7_20, r_7_21,r_7_22,r_7_23,r_7_24,r_7_25,r_7_26,r_7_27,r_7_28,r_7_29,r_7_30,r_7_31);
+  (a_3_0,a_3_1,a_3_2,a_3_3,a_3_4,a_3_5,a_3_6,a_3_7,a_3_8,a_3_9,a_3_10,a_3_11,a_3_12,a_3_13,a_3_14,a_3_15,a_3_16,a_3_17,a_3_18,a_3_19,a_3_20, a_3_21,a_3_22,a_3_23,a_3_24,a_3_25,a_3_26,a_3_27,a_3_28,a_3_29,a_3_30,a_3_31) = or32(fa_6_0,fa_6_1,fa_6_2,fa_6_3,fa_6_4,fa_6_5,fa_6_6,fa_6_7,fa_6_8,fa_6_9,fa_6_10,fa_6_11,fa_6_12,fa_6_13,fa_6_14,fa_6_15,fa_6_16,fa_6_17,fa_6_18,fa_6_19,fa_6_20, fa_6_21,fa_6_22,fa_6_23,fa_6_24,fa_6_25,fa_6_26,fa_6_27,fa_6_28,fa_6_29,fa_6_30,fa_6_31, fa_7_0,fa_7_1,fa_7_2,fa_7_3,fa_7_4,fa_7_5,fa_7_6,fa_7_7,fa_7_8,fa_7_9,fa_7_10,fa_7_11,fa_7_12,fa_7_13,fa_7_14,fa_7_15,fa_7_16,fa_7_17,fa_7_18,fa_7_19,fa_7_20, fa_7_21,fa_7_22,fa_7_23,fa_7_24,fa_7_25,fa_7_26,fa_7_27,fa_7_28,fa_7_29,fa_7_30,fa_7_31);
+  (a_4_0,a_4_1,a_4_2,a_4_3,a_4_4,a_4_5,a_4_6,a_4_7,a_4_8,a_4_9,a_4_10,a_4_11,a_4_12,a_4_13,a_4_14,a_4_15,a_4_16,a_4_17,a_4_18,a_4_19,a_4_20, a_4_21,a_4_22,a_4_23,a_4_24,a_4_25,a_4_26,a_4_27,a_4_28,a_4_29,a_4_30,a_4_31) = or32( a_0_0,a_0_1,a_0_2,a_0_3,a_0_4,a_0_5,a_0_6,a_0_7,a_0_8,a_0_9,a_0_10,a_0_11,a_0_12,a_0_13,a_0_14,a_0_15,a_0_16,a_0_17,a_0_18,a_0_19,a_0_20, a_0_21,a_0_22,a_0_23,a_0_24,a_0_25,a_0_26,a_0_27,a_0_28,a_0_29,a_0_30,a_0_31, a_1_0,a_1_1,a_1_2,a_1_3,a_1_4,a_1_5,a_1_6,a_1_7,a_1_8,a_1_9,a_1_10,a_1_11,a_1_12,a_1_13,a_1_14,a_1_15,a_1_16,a_1_17,a_1_18,a_1_19,a_1_20, a_1_21,a_1_22,a_1_23,a_1_24,a_1_25,a_1_26,a_1_27,a_1_28,a_1_29,a_1_30,a_1_31);
+(a_5_0,a_5_1,a_5_2,a_5_3,a_5_4,a_5_5,a_5_6,a_5_7,a_5_8,a_5_9,a_5_10,a_5_11,a_5_12,a_5_13,a_5_14,a_5_15,a_5_16,a_5_17,a_5_18,a_5_19,a_5_20, a_5_21,a_5_22,a_5_23,a_5_24,a_5_25,a_5_26,a_5_27,a_5_28,a_5_29,a_5_30,a_5_31) = or32( a_2_0,a_2_1,a_2_2,a_2_3,a_2_4,a_2_5,a_2_6,a_2_7,a_2_8,a_2_9,a_2_10,a_2_11,a_2_12,a_2_13,a_2_14,a_2_15,a_2_16,a_2_17,a_2_18,a_2_19,a_2_20, a_2_21,a_2_22,a_2_23,a_2_24,a_2_25,a_2_26,a_2_27,a_2_28,a_2_29,a_2_30,a_2_31, a_3_0,a_3_1,a_3_2,a_3_3,a_3_4,a_3_5,a_3_6,a_3_7,a_3_8,a_3_9,a_3_10,a_3_11,a_3_12,a_3_13,a_3_14,a_3_15,a_3_16,a_3_17,a_3_18,a_3_19,a_3_20, a_3_21,a_3_22,a_3_23,a_3_24,a_3_25,a_3_26,a_3_27,a_3_28,a_3_29,a_3_30,a_3_31);
+  (r1_0,r1_1,r1_2,r1_3,r1_4,r1_5,r1_6,r1_7,r1_8,r1_9,r1_10,r1_11,r1_12,r1_13,r1_14,r1_15,r1_16,r1_17,r1_18,r1_19,r1_20, r1_21,r1_22,r1_23,r1_24,r1_25,r1_26,r1_27,r1_28,r1_29,r1_30,r1_31) = or32( a_4_0,a_4_1,a_4_2,a_4_3,a_4_4,a_4_5,a_4_6,a_4_7,a_4_8,a_4_9,a_4_10,a_4_11,a_4_12,a_4_13,a_4_14,a_4_15,a_4_16,a_4_17,a_4_18,a_4_19,a_4_20, a_4_21,a_4_22,a_4_23,a_4_24,a_4_25,a_4_26,a_4_27,a_4_28,a_4_29,a_4_30,a_4_31, a_5_0,a_5_1,a_5_2,a_5_3,a_5_4,a_5_5,a_5_6,a_5_7,a_5_8,a_5_9,a_5_10,a_5_11,a_5_12,a_5_13,a_5_14,a_5_15,a_5_16,a_5_17,a_5_18,a_5_19,a_5_20, a_5_21,a_5_22,a_5_23,a_5_24,a_5_25,a_5_26,a_5_27,a_5_28,a_5_29,a_5_30,a_5_31);
+
+
+  (fz_0_0,fz_0_1,fz_0_2,fz_0_3,fz_0_4,fz_0_5,fz_0_6,fz_0_7,fz_0_8,fz_0_9,fz_0_10,fz_0_11,fz_0_12,fz_0_13,fz_0_14,fz_0_15,fz_0_16,fz_0_17,fz_0_18,fz_0_19,fz_0_20, fz_0_21,fz_0_22,fz_0_23,fz_0_24,fz_0_25,fz_0_26,fz_0_27,fz_0_28,fz_0_29,fz_0_30,fz_0_31) = filtreReg32(z0, r_0_0,r_0_1,r_0_2,r_0_3,r_0_4,r_0_5,r_0_6,r_0_7,r_0_8,r_0_9,r_0_10,r_0_11,r_0_12,r_0_13,r_0_14,r_0_15,r_0_16,r_0_17,r_0_18,r_0_19,r_0_20, r_0_21,r_0_22,r_0_23,r_0_24,r_0_25,r_0_26,r_0_27,r_0_28,r_0_29,r_0_30,r_0_31);
+  (fz_1_0,fz_1_1,fz_1_2,fz_1_3,fz_1_4,fz_1_5,fz_1_6,fz_1_7,fz_1_8,fz_1_9,fz_1_10,fz_1_11,fz_1_12,fz_1_13,fz_1_14,fz_1_15,fz_1_16,fz_1_17,fz_1_18,fz_1_19,fz_1_20, fz_1_21,fz_1_22,fz_1_23,fz_1_24,fz_1_25,fz_1_26,fz_1_27,fz_1_28,fz_1_29,fz_1_30,fz_1_31) = filtreReg32(z1, r_1_0,r_1_1,r_1_2,r_1_3,r_1_4,r_1_5,r_1_6,r_1_7,r_1_8,r_1_9,r_1_10,r_1_11,r_1_12,r_1_13,r_1_14,r_1_15,r_1_16,r_1_17,r_1_18,r_1_19,r_1_20, r_1_21,r_1_22,r_1_23,r_1_24,r_1_25,r_1_26,r_1_27,r_1_28,r_1_29,r_1_30,r_1_31);
+  (z_0_0,z_0_1,z_0_2,z_0_3,z_0_4,z_0_5,z_0_6,z_0_7,z_0_8,z_0_9,z_0_10,z_0_11,z_0_12,z_0_13,z_0_14,z_0_15,z_0_16,z_0_17,z_0_18,z_0_19,z_0_20, z_0_21,z_0_22,z_0_23,z_0_24,z_0_25,z_0_26,z_0_27,z_0_28,z_0_29,z_0_30,z_0_31) = or32(fz_0_0,fz_0_1,fz_0_2,fz_0_3,fz_0_4,fz_0_5,fz_0_6,fz_0_7,fz_0_8,fz_0_9,fz_0_10,fz_0_11,fz_0_12,fz_0_13,fz_0_14,fz_0_15,fz_0_16,fz_0_17,fz_0_18,fz_0_19,fz_0_20, fz_0_21,fz_0_22,fz_0_23,fz_0_24,fz_0_25,fz_0_26,fz_0_27,fz_0_28,fz_0_29,fz_0_30,fz_0_31, fz_1_0,fz_1_1,fz_1_2,fz_1_3,fz_1_4,fz_1_5,fz_1_6,fz_1_7,fz_1_8,fz_1_9,fz_1_10,fz_1_11,fz_1_12,fz_1_13,fz_1_14,fz_1_15,fz_1_16,fz_1_17,fz_1_18,fz_1_19,fz_1_20, fz_1_21,fz_1_22,fz_1_23,fz_1_24,fz_1_25,fz_1_26,fz_1_27,fz_1_28,fz_1_29,fz_1_30,fz_1_31);
+  (fz_2_0,fz_2_1,fz_2_2,fz_2_3,fz_2_4,fz_2_5,fz_2_6,fz_2_7,fz_2_8,fz_2_9,fz_2_10,fz_2_11,fz_2_12,fz_2_13,fz_2_14,fz_2_15,fz_2_16,fz_2_17,fz_2_18,fz_2_19,fz_2_20, fz_2_21,fz_2_22,fz_2_23,fz_2_24,fz_2_25,fz_2_26,fz_2_27,fz_2_28,fz_2_29,fz_2_30,fz_2_31) = filtreReg32(z2, r_2_0,r_2_1,r_2_2,r_2_3,r_2_4,r_2_5,r_2_6,r_2_7,r_2_8,r_2_9,r_2_10,r_2_11,r_2_12,r_2_13,r_2_14,r_2_15,r_2_16,r_2_17,r_2_18,r_2_19,r_2_20, r_2_21,r_2_22,r_2_23,r_2_24,r_2_25,r_2_26,r_2_27,r_2_28,r_2_29,r_2_30,r_2_31);
+  (fz_3_0,fz_3_1,fz_3_2,fz_3_3,fz_3_4,fz_3_5,fz_3_6,fz_3_7,fz_3_8,fz_3_9,fz_3_10,fz_3_11,fz_3_12,fz_3_13,fz_3_14,fz_3_15,fz_3_16,fz_3_17,fz_3_18,fz_3_19,fz_3_20, fz_3_21,fz_3_22,fz_3_23,fz_3_24,fz_3_25,fz_3_26,fz_3_27,fz_3_28,fz_3_29,fz_3_30,fz_3_31) = filtreReg32(z3, r_3_0,r_3_1,r_3_2,r_3_3,r_3_4,r_3_5,r_3_6,r_3_7,r_3_8,r_3_9,r_3_10,r_3_11,r_3_12,r_3_13,r_3_14,r_3_15,r_3_16,r_3_17,r_3_18,r_3_19,r_3_20, r_3_21,r_3_22,r_3_23,r_3_24,r_3_25,r_3_26,r_3_27,r_3_28,r_3_29,r_3_30,r_3_31);
+  (z_1_0,z_1_1,z_1_2,z_1_3,z_1_4,z_1_5,z_1_6,z_1_7,z_1_8,z_1_9,z_1_10,z_1_11,z_1_12,z_1_13,z_1_14,z_1_15,z_1_16,z_1_17,z_1_18,z_1_19,z_1_20, z_1_21,z_1_22,z_1_23,z_1_24,z_1_25,z_1_26,z_1_27,z_1_28,z_1_29,z_1_30,z_1_31) = or32(fz_2_0,fz_2_1,fz_2_2,fz_2_3,fz_2_4,fz_2_5,fz_2_6,fz_2_7,fz_2_8,fz_2_9,fz_2_10,fz_2_11,fz_2_12,fz_2_13,fz_2_14,fz_2_15,fz_2_16,fz_2_17,fz_2_18,fz_2_19,fz_2_20, fz_2_21,fz_2_22,fz_2_23,fz_2_24,fz_2_25,fz_2_26,fz_2_27,fz_2_28,fz_2_29,fz_2_30,fz_2_31, fz_3_0,fz_3_1,fz_3_2,fz_3_3,fz_3_4,fz_3_5,fz_3_6,fz_3_7,fz_3_8,fz_3_9,fz_3_10,fz_3_11,fz_3_12,fz_3_13,fz_3_14,fz_3_15,fz_3_16,fz_3_17,fz_3_18,fz_3_19,fz_3_20, fz_3_21,fz_3_22,fz_3_23,fz_3_24,fz_3_25,fz_3_26,fz_3_27,fz_3_28,fz_3_29,fz_3_30,fz_3_31);
+  (fz_4_0,fz_4_1,fz_4_2,fz_4_3,fz_4_4,fz_4_5,fz_4_6,fz_4_7,fz_4_8,fz_4_9,fz_4_10,fz_4_11,fz_4_12,fz_4_13,fz_4_14,fz_4_15,fz_4_16,fz_4_17,fz_4_18,fz_4_19,fz_4_20, fz_4_21,fz_4_22,fz_4_23,fz_4_24,fz_4_25,fz_4_26,fz_4_27,fz_4_28,fz_4_29,fz_4_30,fz_4_31) = filtreReg32(z4, r_4_0,r_4_1,r_4_2,r_4_3,r_4_4,r_4_5,r_4_6,r_4_7,r_4_8,r_4_9,r_4_10,r_4_11,r_4_12,r_4_13,r_4_14,r_4_15,r_4_16,r_4_17,r_4_18,r_4_19,r_4_20, r_4_21,r_4_22,r_4_23,r_4_24,r_4_25,r_4_26,r_4_27,r_4_28,r_4_29,r_4_30,r_4_31);
+  (fz_5_0,fz_5_1,fz_5_2,fz_5_3,fz_5_4,fz_5_5,fz_5_6,fz_5_7,fz_5_8,fz_5_9,fz_5_10,fz_5_11,fz_5_12,fz_5_13,fz_5_14,fz_5_15,fz_5_16,fz_5_17,fz_5_18,fz_5_19,fz_5_20, fz_5_21,fz_5_22,fz_5_23,fz_5_24,fz_5_25,fz_5_26,fz_5_27,fz_5_28,fz_5_29,fz_5_30,fz_5_31) = filtreReg32(z5, r_5_0,r_5_1,r_5_2,r_5_3,r_5_4,r_5_5,r_5_6,r_5_7,r_5_8,r_5_9,r_5_10,r_5_11,r_5_12,r_5_13,r_5_14,r_5_15,r_5_16,r_5_17,r_5_18,r_5_19,r_5_20, r_5_21,r_5_22,r_5_23,r_5_24,r_5_25,r_5_26,r_5_27,r_5_28,r_5_29,r_5_30,r_5_31);
+  (z_2_0,z_2_1,z_2_2,z_2_3,z_2_4,z_2_5,z_2_6,z_2_7,z_2_8,z_2_9,z_2_10,z_2_11,z_2_12,z_2_13,z_2_14,z_2_15,z_2_16,z_2_17,z_2_18,z_2_19,z_2_20, z_2_21,z_2_22,z_2_23,z_2_24,z_2_25,z_2_26,z_2_27,z_2_28,z_2_29,z_2_30,z_2_31) = or32(fz_4_0,fz_4_1,fz_4_2,fz_4_3,fz_4_4,fz_4_5,fz_4_6,fz_4_7,fz_4_8,fz_4_9,fz_4_10,fz_4_11,fz_4_12,fz_4_13,fz_4_14,fz_4_15,fz_4_16,fz_4_17,fz_4_18,fz_4_19,fz_4_20, fz_4_21,fz_4_22,fz_4_23,fz_4_24,fz_4_25,fz_4_26,fz_4_27,fz_4_28,fz_4_29,fz_4_30,fz_4_31, fz_5_0,fz_5_1,fz_5_2,fz_5_3,fz_5_4,fz_5_5,fz_5_6,fz_5_7,fz_5_8,fz_5_9,fz_5_10,fz_5_11,fz_5_12,fz_5_13,fz_5_14,fz_5_15,fz_5_16,fz_5_17,fz_5_18,fz_5_19,fz_5_20, fz_5_21,fz_5_22,fz_5_23,fz_5_24,fz_5_25,fz_5_26,fz_5_27,fz_5_28,fz_5_29,fz_5_30,fz_5_31);
+  (fz_6_0,fz_6_1,fz_6_2,fz_6_3,fz_6_4,fz_6_5,fz_6_6,fz_6_7,fz_6_8,fz_6_9,fz_6_10,fz_6_11,fz_6_12,fz_6_13,fz_6_14,fz_6_15,fz_6_16,fz_6_17,fz_6_18,fz_6_19,fz_6_20, fz_6_21,fz_6_22,fz_6_23,fz_6_24,fz_6_25,fz_6_26,fz_6_27,fz_6_28,fz_6_29,fz_6_30,fz_6_31) = filtreReg32(z6, r_6_0,r_6_1,r_6_2,r_6_3,r_6_4,r_6_5,r_6_6,r_6_7,r_6_8,r_6_9,r_6_10,r_6_11,r_6_12,r_6_13,r_6_14,r_6_15,r_6_16,r_6_17,r_6_18,r_6_19,r_6_20, r_6_21,r_6_22,r_6_23,r_6_24,r_6_25,r_6_26,r_6_27,r_6_28,r_6_29,r_6_30,r_6_31);
+  (fz_7_0,fz_7_1,fz_7_2,fz_7_3,fz_7_4,fz_7_5,fz_7_6,fz_7_7,fz_7_8,fz_7_9,fz_7_10,fz_7_11,fz_7_12,fz_7_13,fz_7_14,fz_7_15,fz_7_16,fz_7_17,fz_7_18,fz_7_19,fz_7_20, fz_7_21,fz_7_22,fz_7_23,fz_7_24,fz_7_25,fz_7_26,fz_7_27,fz_7_28,fz_7_29,fz_7_30,fz_7_31) = filtreReg32(z7, r_7_0,r_7_1,r_7_2,r_7_3,r_7_4,r_7_5,r_7_6,r_7_7,r_7_8,r_7_9,r_7_10,r_7_11,r_7_12,r_7_13,r_7_14,r_7_15,r_7_16,r_7_17,r_7_18,r_7_19,r_7_20, r_7_21,r_7_22,r_7_23,r_7_24,r_7_25,r_7_26,r_7_27,r_7_28,r_7_29,r_7_30,r_7_31);
+  (z_3_0,z_3_1,z_3_2,z_3_3,z_3_4,z_3_5,z_3_6,z_3_7,z_3_8,z_3_9,z_3_10,z_3_11,z_3_12,z_3_13,z_3_14,z_3_15,z_3_16,z_3_17,z_3_18,z_3_19,z_3_20, z_3_21,z_3_22,z_3_23,z_3_24,z_3_25,z_3_26,z_3_27,z_3_28,z_3_29,z_3_30,z_3_31) = or32(fz_6_0,fz_6_1,fz_6_2,fz_6_3,fz_6_4,fz_6_5,fz_6_6,fz_6_7,fz_6_8,fz_6_9,fz_6_10,fz_6_11,fz_6_12,fz_6_13,fz_6_14,fz_6_15,fz_6_16,fz_6_17,fz_6_18,fz_6_19,fz_6_20, fz_6_21,fz_6_22,fz_6_23,fz_6_24,fz_6_25,fz_6_26,fz_6_27,fz_6_28,fz_6_29,fz_6_30,fz_6_31, fz_7_0,fz_7_1,fz_7_2,fz_7_3,fz_7_4,fz_7_5,fz_7_6,fz_7_7,fz_7_8,fz_7_9,fz_7_10,fz_7_11,fz_7_12,fz_7_13,fz_7_14,fz_7_15,fz_7_16,fz_7_17,fz_7_18,fz_7_19,fz_7_20, fz_7_21,fz_7_22,fz_7_23,fz_7_24,fz_7_25,fz_7_26,fz_7_27,fz_7_28,fz_7_29,fz_7_30,fz_7_31);
+  (z_4_0,z_4_1,z_4_2,z_4_3,z_4_4,z_4_5,z_4_6,z_4_7,z_4_8,z_4_9,z_4_10,z_4_11,z_4_12,z_4_13,z_4_14,z_4_15,z_4_16,z_4_17,z_4_18,z_4_19,z_4_20, z_4_21,z_4_22,z_4_23,z_4_24,z_4_25,z_4_26,z_4_27,z_4_28,z_4_29,z_4_30,z_4_31) = or32( z_0_0,z_0_1,z_0_2,z_0_3,z_0_4,z_0_5,z_0_6,z_0_7,z_0_8,z_0_9,z_0_10,z_0_11,z_0_12,z_0_13,z_0_14,z_0_15,z_0_16,z_0_17,z_0_18,z_0_19,z_0_20, z_0_21,z_0_22,z_0_23,z_0_24,z_0_25,z_0_26,z_0_27,z_0_28,z_0_29,z_0_30,z_0_31, z_1_0,z_1_1,z_1_2,z_1_3,z_1_4,z_1_5,z_1_6,z_1_7,z_1_8,z_1_9,z_1_10,z_1_11,z_1_12,z_1_13,z_1_14,z_1_15,z_1_16,z_1_17,z_1_18,z_1_19,z_1_20, z_1_21,z_1_22,z_1_23,z_1_24,z_1_25,z_1_26,z_1_27,z_1_28,z_1_29,z_1_30,z_1_31);
+(z_5_0,z_5_1,z_5_2,z_5_3,z_5_4,z_5_5,z_5_6,z_5_7,z_5_8,z_5_9,z_5_10,z_5_11,z_5_12,z_5_13,z_5_14,z_5_15,z_5_16,z_5_17,z_5_18,z_5_19,z_5_20, z_5_21,z_5_22,z_5_23,z_5_24,z_5_25,z_5_26,z_5_27,z_5_28,z_5_29,z_5_30,z_5_31) = or32( z_2_0,z_2_1,z_2_2,z_2_3,z_2_4,z_2_5,z_2_6,z_2_7,z_2_8,z_2_9,z_2_10,z_2_11,z_2_12,z_2_13,z_2_14,z_2_15,z_2_16,z_2_17,z_2_18,z_2_19,z_2_20, z_2_21,z_2_22,z_2_23,z_2_24,z_2_25,z_2_26,z_2_27,z_2_28,z_2_29,z_2_30,z_2_31, z_3_0,z_3_1,z_3_2,z_3_3,z_3_4,z_3_5,z_3_6,z_3_7,z_3_8,z_3_9,z_3_10,z_3_11,z_3_12,z_3_13,z_3_14,z_3_15,z_3_16,z_3_17,z_3_18,z_3_19,z_3_20, z_3_21,z_3_22,z_3_23,z_3_24,z_3_25,z_3_26,z_3_27,z_3_28,z_3_29,z_3_30,z_3_31);
+  (r2_0,r2_1,r2_2,r2_3,r2_4,r2_5,r2_6,r2_7,r2_8,r2_9,r2_10,r2_11,r2_12,r2_13,r2_14,r2_15,r2_16,r2_17,r2_18,r2_19,r2_20, r2_21,r2_22,r2_23,r2_24,r2_25,r2_26,r2_27,r2_28,r2_29,r2_30,r2_31) = or32( z_4_0,z_4_1,z_4_2,z_4_3,z_4_4,z_4_5,z_4_6,z_4_7,z_4_8,z_4_9,z_4_10,z_4_11,z_4_12,z_4_13,z_4_14,z_4_15,z_4_16,z_4_17,z_4_18,z_4_19,z_4_20, z_4_21,z_4_22,z_4_23,z_4_24,z_4_25,z_4_26,z_4_27,z_4_28,z_4_29,z_4_30,z_4_31, z_5_0,z_5_1,z_5_2,z_5_3,z_5_4,z_5_5,z_5_6,z_5_7,z_5_8,z_5_9,z_5_10,z_5_11,z_5_12,z_5_13,z_5_14,z_5_15,z_5_16,z_5_17,z_5_18,z_5_19,z_5_20, z_5_21,z_5_22,z_5_23,z_5_24,z_5_25,z_5_26,z_5_27,z_5_28,z_5_29,z_5_30,z_5_31);
+
+  (*Exécution de l'alu*)
+
+  (alu0,alu1,alu2,alu3,alu4,alu5,alu6,alu7,alu8,alu9,alu10,alu11,alu12,alu13,alu14,alu15,alu16,alu17,alu18,alu19,alu20, alu21,alu22,alu23,alu24,alu25,alu26,alu27,alu28,alu29,alu30,alu31, zf,of,sf) = alu(addOp,subOp,andOp,orOp,xorOp,compOp,ltOp,eqOp,negOp,shiftOp, lrOp, r1_0,r1_1,r1_2,r1_3,r1_4,r1_5,r1_6,r1_7,r1_8,r1_9,r1_10,r1_11,r1_12,r1_13,r1_14,r1_15,r1_16,r1_17,r1_18,r1_19,r1_20, r1_21,r1_22,r1_23,r1_24,r1_25,r1_26,r1_27,r1_28,r1_29,r1_30,r1_31, 
+r2_0,r2_1,r2_2,r2_3,r2_4,r2_5,r2_6,r2_7,r2_8,r2_9,r2_10,r2_11,r2_12,r2_13,r2_14,r2_15,r2_16,r2_17,r2_18,r2_19,r2_20, r2_21,r2_22,r2_23,r2_24,r2_25,r2_26,r2_27,r2_28,r2_29,r2_30,r2_31);
+  
+  (dc0,dc1,dc2,dc3,dc4,dc5,dc6,dc7,dc8,dc9,dc10,dc11,dc12,dc13,dc14,dc15,dc16,dc17,dc18,dc19,dc20, dc21,dc22,dc23,dc24,dc25,dc26,dc27,dc28,dc29,dc30,dc31) = mux32(movOp, r2_0,r2_1,r2_2,r2_3,r2_4,r2_5,r2_6,r2_7,r2_8,r2_9,r2_10,r2_11,r2_12,r2_13,r2_14,r2_15,r2_16,r2_17,r2_18,r2_19,r2_20, r2_21,r2_22,r2_23,r2_24,r2_25,r2_26,r2_27,r2_28,r2_29,r2_30,r2_31, alu0,alu1,alu2,alu3,alu4,alu5,alu6,alu7,alu8,alu9,alu10,alu11,alu12,alu13,alu14,alu15,alu16,alu17,alu18,alu19,alu20, alu21,alu22,alu23,alu24,alu25,alu26,alu27,alu28,alu29,alu30,alu31);
+
+
+  (*Récupération des données*)
+
+  (di0,di1,di2,di3,di4,di5,di6,di7,di8,di9,di10,di11,di12,di13,di14) = filtre15(notImm, dc0,dc1,dc2,dc3,dc4,dc5,dc6,dc7,dc8,dc9,dc10,dc11,dc12,dc13,dc14);
+
+  (di15,di16,di17,di18,di19,di20,di21,di22,di23,di24,di25,di26,di27,di28,di29,di30,di31) = mux17(imm, op9,op10,op11,op12,op13,op14,op15,op16,op17,op18,op19,op20,op21,op22,op23,op24,op25, dc15,dc16,dc17,dc18,dc19,dc20,dc21,dc22,dc23,dc24,dc25,dc26,dc27,dc28,dc29,dc30,dc31);
+  
+  (*Appel de la RAM*)
+
+  rwa = di15.di16.di17.di18.di19.di20.di21.di22.di23.di24.di25.di26.di27.di28.di29.di30.di31;
+  dataRamIn = r1_0.r1_1.r1_2.r1_3.r1_4.r1_5.r1_6.r1_7.r1_8.r1_9.r1_10.r1_11.r1_12.r1_13.r1_14.r1_15.r1_16.r1_17.r1_18.r1_19.r1_20. r1_21.r1_22.r1_23.r1_24.r1_25.r1_26.r1_27.r1_28.r1_29.r1_30.r1_31;
+  weRam = ramOp and weRamOp;
+  dOut = ram<17,32>(rwa,weRam,rwa,dataRamIn);
+
+  (d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20, d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31) = mux32(ramOp, dOut[0],dOut[1],dOut[2],dOut[3],dOut[4],dOut[5],dOut[6],dOut[7],dOut[8],dOut[9],dOut[10],dOut[11],dOut[12],dOut[13],dOut[14],dOut[15],dOut[16],dOut[17],dOut[18],dOut[19],dOut[20],dOut[21],dOut[22],dOut[23],dOut[24],dOut[25],dOut[26],dOut[27],dOut[28],dOut[29],dOut[30],dOut[31], di0,di1,di2,di3,di4,di5,di6,di7,di8,di9,di10,di11,di12,di13,di14,di15,di16,di17,di18,di19,di20, di21,di22,di23,di24,di25,di26,di27,di28,di29,di30,di31);
+
+  (r_0_0,r_0_1,r_0_2,r_0_3,r_0_4,r_0_5,r_0_6,r_0_7,r_0_8,r_0_9,r_0_10,r_0_11,r_0_12,r_0_13,r_0_14,r_0_15,r_0_16,r_0_17,r_0_18,r_0_19,r_0_20, r_0_21,r_0_22,r_0_23,r_0_24,r_0_25,r_0_26,r_0_27,r_0_28,r_0_29,r_0_30,r_0_31) = maj(a0 & weReg, r_0_0,r_0_1,r_0_2,r_0_3,r_0_4,r_0_5,r_0_6,r_0_7,r_0_8,r_0_9,r_0_10,r_0_11,r_0_12,r_0_13,r_0_14,r_0_15,r_0_16,r_0_17,r_0_18,r_0_19,r_0_20, r_0_21,r_0_22,r_0_23,r_0_24,r_0_25,r_0_26,r_0_27,r_0_28,r_0_29,r_0_30,r_0_31,d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20, d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31);
+  (r_1_0,r_1_1,r_1_2,r_1_3,r_1_4,r_1_5,r_1_6,r_1_7,r_1_8,r_1_9,r_1_10,r_1_11,r_1_12,r_1_13,r_1_14,r_1_15,r_1_16,r_1_17,r_1_18,r_1_19,r_1_20, r_1_21,r_1_22,r_1_23,r_1_24,r_1_25,r_1_26,r_1_27,r_1_28,r_1_29,r_1_30,r_1_31) = maj(a1 & weReg, r_1_0,r_1_1,r_1_2,r_1_3,r_1_4,r_1_5,r_1_6,r_1_7,r_1_8,r_1_9,r_1_10,r_1_11,r_1_12,r_1_13,r_1_14,r_1_15,r_1_16,r_1_17,r_1_18,r_1_19,r_1_20, r_1_21,r_1_22,r_1_23,r_1_24,r_1_25,r_1_26,r_1_27,r_1_28,r_1_29,r_1_30,r_1_31,d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20, d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31);
+  (r_2_0,r_2_1,r_2_2,r_2_3,r_2_4,r_2_5,r_2_6,r_2_7,r_2_8,r_2_9,r_2_10,r_2_11,r_2_12,r_2_13,r_2_14,r_2_15,r_2_16,r_2_17,r_2_18,r_2_19,r_2_20, r_2_21,r_2_22,r_2_23,r_2_24,r_2_25,r_2_26,r_2_27,r_2_28,r_2_29,r_2_30,r_2_31) = maj(a2 & weReg, r_2_0,r_2_1,r_2_2,r_2_3,r_2_4,r_2_5,r_2_6,r_2_7,r_2_8,r_2_9,r_2_10,r_2_11,r_2_12,r_2_13,r_2_14,r_2_15,r_2_16,r_2_17,r_2_18,r_2_19,r_2_20, r_2_21,r_2_22,r_2_23,r_2_24,r_2_25,r_2_26,r_2_27,r_2_28,r_2_29,r_2_30,r_2_31,d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20, d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31);
+  (r_3_0,r_3_1,r_3_2,r_3_3,r_3_4,r_3_5,r_3_6,r_3_7,r_3_8,r_3_9,r_3_10,r_3_11,r_3_12,r_3_13,r_3_14,r_3_15,r_3_16,r_3_17,r_3_18,r_3_19,r_3_20, r_3_21,r_3_22,r_3_23,r_3_24,r_3_25,r_3_26,r_3_27,r_3_28,r_3_29,r_3_30,r_3_31) = maj(a3 & weReg, r_3_0,r_3_1,r_3_2,r_3_3,r_3_4,r_3_5,r_3_6,r_3_7,r_3_8,r_3_9,r_3_10,r_3_11,r_3_12,r_3_13,r_3_14,r_3_15,r_3_16,r_3_17,r_3_18,r_3_19,r_3_20, r_3_21,r_3_22,r_3_23,r_3_24,r_3_25,r_3_26,r_3_27,r_3_28,r_3_29,r_3_30,r_3_31,d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20, d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31);
+  (r_4_0,r_4_1,r_4_2,r_4_3,r_4_4,r_4_5,r_4_6,r_4_7,r_4_8,r_4_9,r_4_10,r_4_11,r_4_12,r_4_13,r_4_14,r_4_15,r_4_16,r_4_17,r_4_18,r_4_19,r_4_20, r_4_21,r_4_22,r_4_23,r_4_24,r_4_25,r_4_26,r_4_27,r_4_28,r_4_29,r_4_30,r_4_31) = maj(a4 & weReg, r_4_0,r_4_1,r_4_2,r_4_3,r_4_4,r_4_5,r_4_6,r_4_7,r_4_8,r_4_9,r_4_10,r_4_11,r_4_12,r_4_13,r_4_14,r_4_15,r_4_16,r_4_17,r_4_18,r_4_19,r_4_20, r_4_21,r_4_22,r_4_23,r_4_24,r_4_25,r_4_26,r_4_27,r_4_28,r_4_29,r_4_30,r_4_31,d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20, d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31);
+  (r_5_0,r_5_1,r_5_2,r_5_3,r_5_4,r_5_5,r_5_6,r_5_7,r_5_8,r_5_9,r_5_10,r_5_11,r_5_12,r_5_13,r_5_14,r_5_15,r_5_16,r_5_17,r_5_18,r_5_19,r_5_20, r_5_21,r_5_22,r_5_23,r_5_24,r_5_25,r_5_26,r_5_27,r_5_28,r_5_29,r_5_30,r_5_31) = maj(a5 & weReg, r_5_0,r_5_1,r_5_2,r_5_3,r_5_4,r_5_5,r_5_6,r_5_7,r_5_8,r_5_9,r_5_10,r_5_11,r_5_12,r_5_13,r_5_14,r_5_15,r_5_16,r_5_17,r_5_18,r_5_19,r_5_20, r_5_21,r_5_22,r_5_23,r_5_24,r_5_25,r_5_26,r_5_27,r_5_28,r_5_29,r_5_30,r_5_31,d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20, d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31);
+  (r_6_0,r_6_1,r_6_2,r_6_3,r_6_4,r_6_5,r_6_6,r_6_7,r_6_8,r_6_9,r_6_10,r_6_11,r_6_12,r_6_13,r_6_14,r_6_15,r_6_16,r_6_17,r_6_18,r_6_19,r_6_20, r_6_21,r_6_22,r_6_23,r_6_24,r_6_25,r_6_26,r_6_27,r_6_28,r_6_29,r_6_30,r_6_31) = maj(a6 & weReg, r_6_0,r_6_1,r_6_2,r_6_3,r_6_4,r_6_5,r_6_6,r_6_7,r_6_8,r_6_9,r_6_10,r_6_11,r_6_12,r_6_13,r_6_14,r_6_15,r_6_16,r_6_17,r_6_18,r_6_19,r_6_20, r_6_21,r_6_22,r_6_23,r_6_24,r_6_25,r_6_26,r_6_27,r_6_28,r_6_29,r_6_30,r_6_31,d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20, d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31);
+  (r_7_0,r_7_1,r_7_2,r_7_3,r_7_4,r_7_5,r_7_6,r_7_7,r_7_8,r_7_9,r_7_10,r_7_11,r_7_12,r_7_13,r_7_14,r_7_15,r_7_16,r_7_17,r_7_18,r_7_19,r_7_20, r_7_21,r_7_22,r_7_23,r_7_24,r_7_25,r_7_26,r_7_27,r_7_28,r_7_29,r_7_30,r_7_31) = maj(a7 & weReg, r_7_0,r_7_1,r_7_2,r_7_3,r_7_4,r_7_5,r_7_6,r_7_7,r_7_8,r_7_9,r_7_10,r_7_11,r_7_12,r_7_13,r_7_14,r_7_15,r_7_16,r_7_17,r_7_18,r_7_19,r_7_20, r_7_21,r_7_22,r_7_23,r_7_24,r_7_25,r_7_26,r_7_27,r_7_28,r_7_29,r_7_30,r_7_31,d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20, d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31);
+
+  flagJump = mux(branchOp, zf, reg(zf));
+  jump = (flagJump & jzOp) + ((not flagJump) & jnzOp);
+
+  (aPC0,aPC1,aPC2,aPC3,aPC4,aPC5,aPC6,aPC7,aPC8,aPC9,aPC10,aPC11,aPC12,aPC13,aPC14,aPC15,aPC16) = add17(pc0,pc1,pc2,pc3,pc4,pc5,pc6,pc7,pc8,pc9,pc10,pc11,pc12,pc13,pc14,pc15,pc16, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1);
+
+  (nPC0,nPC1,nPC2,nPC3,nPC4,nPC5,nPC6,nPC7,nPC8,nPC9,nPC10,nPC11,nPC12,nPC13,nPC14,nPC15,nPC16) = mux17(jump, d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31, aPC0,aPC1,aPC2,aPC3,aPC4,aPC5,aPC6,aPC7,aPC8,aPC9,aPC10,aPC11,aPC12,aPC13,aPC14,aPC15,aPC16);
+
+end where
+
+
+
+
+
+
+

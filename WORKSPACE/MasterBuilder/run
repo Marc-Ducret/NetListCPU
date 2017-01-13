@@ -4,4 +4,4 @@ cd ../TongCompiler/
 ./tongc ../MasterBuilder/src/$1.tong ../MasterBuilder/bin/rom
 echo Running processor...
 cd ../SimulatorEnv/
-time ./env $2 $3 ../MasterBuilder/bin/proc.exe ../MasterBuilder/bin/rom
+time ./env $2 $3 ../MasterBuilder/bin/proc.exe ../MasterBuilder/bin/rom $4
