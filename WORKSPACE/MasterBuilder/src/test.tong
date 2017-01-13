@@ -1,0 +1,10 @@
+.vars x y
+.prgm
+@ main
+	x = 16;
+	! x {
+		>draw x-1 x+97;
+		x = x - 1;
+	}
+	>redraw;
+	>exit;

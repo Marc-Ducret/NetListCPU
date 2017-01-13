@@ -38,7 +38,7 @@ public class SimulatorEnv {
 		this.h = h;
 		buff = new char[w*h];
 		for(int i = 0; i < buff.length; i ++) buff[i] = '.';
-		screen = new FrameScreen();
+		screen = new ConsoleScreen();
 		screen.init(w, h);
 	}
 

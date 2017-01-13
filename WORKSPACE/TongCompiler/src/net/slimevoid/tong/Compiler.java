@@ -166,11 +166,8 @@ public class Compiler {
 			if(!nextToken().equals("=")) error("Missing =");
 			Register out = Register.allocReg();
 			computeExpr(out, instrs);
-			Register addr = Register.allocReg();
-			instrs.add(new InstrR(Op.LI, vars.get(tok), addr));
-			instrs.add(new InstrR(Op.SW, out, addr));
+			instrs.add(new InstrR(Op.SWI, vars.get(tok), out));
 			out.free();
-			addr.free();
 		} else error("Invalid instruction");
 		if(!nextToken().equals(";")) error("Missing ;");
 		return true;
@@ -182,10 +179,7 @@ public class Compiler {
 			computeExpr(out, instrs);
 			if(!nextToken().equals(")")) error("Missing )");
 		} else if(isIdent(tok)) {
-			Register addr = Register.allocReg();
-			instrs.add(new InstrR(Op.LI, vars.get(tok), addr));
-			instrs.add(new InstrR(Op.LW, addr, out));
-			addr.free();
+			instrs.add(new InstrR(Op.LWI, vars.get(tok), out));
 		} else if(isNumber(tok)) {
 			int i = tok.startsWith("0x") ? Integer.parseInt(tok.substring(2), 16): Integer.parseInt(tok);
 			instrs.add(new InstrR(Op.LI, i, out));

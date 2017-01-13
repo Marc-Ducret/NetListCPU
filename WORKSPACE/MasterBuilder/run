@@ -1,6 +1,7 @@
 #!/bin/bash
 echo Compiling Tong...
-./../TongCompiler/tongc/ $1.tong bin/rom
+cd ../TongCompiler/
+./tongc ../MasterBuilder/src/$1.tong ../MasterBuilder/bin/rom
 echo Running processor...
 cd ../SimulatorEnv/
 time ./env $2 $3 ../MasterBuilder/bin/proc.exe ../MasterBuilder/bin/rom

@@ -14,16 +14,19 @@ usage: ./buildTools
 
 -> buildProc [file]
 	Takes a .mj file (without the extension) and compiles the associated net list, c code and finally executable (proc.exe)
+	The file must be located in the src folder
 	
 usage: ./buildProc main
 
 -> build [file]
 	runs buildTools then buildProc
+	The file must be located in the src folder
 	
 usage: ./build main
 
--> runProc [file] [width] [height]
+-> run [file] [width] [height]
 	compiles the specified Tong source file (without .tong) into rom then runs the processor on this rom.
 	Uses width and height as screen sizes.
+	The file must be located in the src folder
 	
-usage: ./runProc prgm 32 16
+usage: ./run prgm 32 16
