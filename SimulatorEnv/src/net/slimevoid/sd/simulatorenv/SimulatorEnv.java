@@ -31,12 +31,15 @@ public class SimulatorEnv {
 	private final int w;
 	private final int h;
 	private final char[] buff;
+	private final Screen screen;
 
 	private SimulatorEnv(int w, int h) {
 		this.w = w;
 		this.h = h;
 		buff = new char[w*h];
 		for(int i = 0; i < buff.length; i ++) buff[i] = '.';
+		screen = new FrameScreen();
+		screen.init(w, h);
 	}
 
 	public void run(InputStream in, OutputStream out, final InputStream debug, InputStream rom) {
@@ -114,18 +117,10 @@ public class SimulatorEnv {
 	}
 
 	public void clearScreen() {
-		System.out.print("\033[H\033[2J");  
-		System.out.flush(); 
+		screen.clear();
 	}
 
 	public void drawScreen() {
-		StringBuilder builder = new StringBuilder();
-		for(int y = 0; y < h; y ++) {
-			for(int x = 0; x < w; x ++) {
-				builder.append(buff[x+w*y]);
-			}
-			builder.append('\n');
-		}
-		System.out.print(builder.toString());
+		screen.draw(buff);
 	}
 }
