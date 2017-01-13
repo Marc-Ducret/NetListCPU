@@ -25,7 +25,8 @@ public class FrameScreen implements Screen {
 
 			@Override
 			public void paint(Graphics g) {
-				g.setFont(font); 
+				super.paint(g);
+				g.setFont(font);
 				FontMetrics metrics = g.getFontMetrics(font);
 				StringBuilder builder = new StringBuilder();
 				if(buff != null) {
@@ -37,7 +38,7 @@ public class FrameScreen implements Screen {
 						builder.setLength(0);
 					}
 				} else {
-					frame.setSize(metrics.stringWidth(".") * w + 10, metrics.getHeight() * h + 10);
+					frame.setSize(metrics.stringWidth(".") * w + 10, FONT_SIZE * h + 10);
 				}
 			}
 		};

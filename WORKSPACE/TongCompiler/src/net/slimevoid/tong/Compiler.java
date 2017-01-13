@@ -20,7 +20,7 @@ public class Compiler {
 
 	private static Compiler instance;
 	
-	public static enum Operator {PLUS, MINUS, TIMES, AND, OR, EQ, NEQ, LT, GT, LE, GE};
+	public static enum Operator {PLUS, MINUS, SL, SR, AND, OR, EQ, NEQ, LT, LE};
 	
 	public static void main(String[] args) throws IOException {
 		if(args.length < 2) {
@@ -54,12 +54,20 @@ public class Compiler {
 			if(('A' <= c && c <= 'z') || c == '.' || c == '_' || ('0' <= c && c <= '9'))
 				build.append(c);
 			else {
-				String s = build.toString();
-				if(s.length() > 0 && !comment) toks.add(s);
-				build.setLength(0);
-				if(c == '#') comment = true;
-				if(c != ' ' && c != '\t' && c != '\r' && c != '\n' && !comment) toks.add(""+c);
-				if(c == '\n') comment = false;
+				if(c == '\'') {
+					if(build.length() > 0) error("Missplaced '");
+					if(i+2 >= src.length()) error("Missplaced '");
+					char ch = src.charAt(i+1);
+					i += 2;
+					toks.add(""+(int) ch);
+				} else {
+					String s = build.toString();
+					if(s.length() > 0 && !comment) toks.add(s);
+					build.setLength(0);
+					if(c == '#') comment = true;
+					if(c != ' ' && c != '\t' && c != '\r' && c != '\n' && !comment) toks.add(""+c);
+					if(c == '\n') comment = false;
+				}
 			}
 		}
 		toks.add("~EOF");
@@ -199,25 +207,19 @@ public class Compiler {
 				o = Op.AND;
 				break;
 			case EQ:
-				//TODO
-				break;
-			case GE:
-				//TODO
-				break;
-			case GT:
-				//TODO
+				o = Op.SEQ;
 				break;
 			case LE:
-				//TODO
+				o = Op.SLE;
 				break;
 			case LT:
-				//TODO
+				o = Op.SLT;
 				break;
 			case MINUS:
 				o = Op.SUB;
 				break;
 			case NEQ:
-				//TODO
+				o = Op.SNE;
 				break;
 			case OR:
 				o = Op.OR;
@@ -225,9 +227,11 @@ public class Compiler {
 			case PLUS:
 				o = Op.ADD;
 				break;
-			case TIMES:
-				o = Op.MUL;
+			case SL:
+				o = Op.SL;
 				break;
+			case SR:
+				o = Op.SR;
 			default:
 				break;
 			}
@@ -241,16 +245,14 @@ public class Compiler {
 		switch(tok) {
 		case "+": return Operator.PLUS;
 		case "-": return Operator.MINUS;
-		case "*": return Operator.TIMES;
+		case "*": return Operator.SL;
+		case "/": return Operator.SR;
 		case "&": return Operator.AND;
 		case "|": return Operator.OR;
 		case "=": return Operator.EQ;
-		case "!": if(nextToken() != "=") error("Expected = after !");
+		case "!": if(!nextToken().equals("=")) error("Expected = after !");
 				  return Operator.NEQ;
-		case ">": if(nextToken() == "=") return Operator.GE;
-			prevToken();
-			return Operator.GT;
-		case "<": if(nextToken() == "=") return Operator.LE;
+		case "<": if(nextToken().equals("=")) return Operator.LE;
 			prevToken();
 			return Operator.LT;
 		default: 

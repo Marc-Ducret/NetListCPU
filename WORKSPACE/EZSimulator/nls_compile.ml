@@ -62,7 +62,7 @@ let sim p =
 		"\t\t"^(eval_var (is_only_array var) var)^" = "^str^";\n"
 	in
 	let eval_expr var = function
-		| Earg a -> assign var(* normal into array = lose*) (eval_arg (is_only_array var) a)
+		| Earg a -> assign var (eval_arg (is_only_array var) a)
 		|	Ereg i -> assign var (eval_var (is_only_array var) i)
 		|	Enot a -> assign var ("!" ^ (eval_arg_bit a))
 		| Ebinop (op, a, b) ->
