@@ -61,7 +61,7 @@ public class SimulatorEnv {
 							if(debugMode) System.err.print((char) r);
 						}
 					} catch (IOException e) {
-						System.err.println("Program terminated ("+e.getMessage()+")");
+						System.err.println("Error reading stderr ("+e.getMessage()+")");
 					}
 				}
 			}).start();
@@ -74,6 +74,7 @@ public class SimulatorEnv {
 				switch(r) {
 				case EXIT:
 					in.close();
+					System.out.println("Program terminated with a clean exit");
 					return;
 				
 				case CHAR:
