@@ -33,3 +33,73 @@ usage: ./build main
 	
 usage: ./run prgm 32 16
 	   ./run prgm 32 16 -console -debug
+	   
+PROGRAMMING IN TONG
+
+Simple loop exemple:
+
+	.vars x
+	.prgm
+	@ main
+		x = 0;
+		! x < 0x10000 {
+			x = x + 1;
+		}
+		>exit;
+
+Syntax:
+	* Programs must start with the .vars section where all variables must be enumerated.
+	* The .prgm section must follow.
+	* This sections contains procedure definitions starting with "@ [procedure_name]" followed by a list of instructions.
+	* One of the procedures must be called "main".
+	* Comments start with "#"
+	
+Instructions:
+	* Updating variables: 	"[var] = <expression>;"
+	* Procedure call:		">[procedure_name];"
+	* Native call:			">[native_name] <expression> <expression>....;
+		exemple: >draw 5 'A';
+	* Flow control:
+		If:					"? <expression> { # executed if <expression> != 0
+								<instruction> 
+								<instruction>
+								....
+							} { # executed if <expression> = 0
+								<instruction> 
+								<instruction>
+								....
+							}
+							
+		While:				"! <expression> { # executed while <expression> != 0
+								<instruction> 
+								<instruction>
+								....
+							}
+							
+Natives:
+	* Exit: ">exit;" stops the program
+		Warning: the simulator might not close after exit if not in console mode to leave time for the user to look at the screen
+	* Draw: ">draw <x> <y> <char>;" draws char at (x, y) on the screen (doesn't update it)
+		Warning: currently y paramater has no effect
+	* Redraw: ">redraw;" updates the screen with the drawn characters
+
+Expressions:
+	* All variales and expression represent integers.
+	* Variables:			"[var]"
+	* Constants:			"<integer>", "'<character>'"
+		exemple: 42, 0x42, '$'
+	* Arithmetic:			"<expression> <operator> <expression>"
+		Warning: strange associativity x-y+z = x-(y+z)  (subject to change)
+		Warning: intermediate results are stored with registers, if there isn't enough of them, compilation will fail
+	
+Operators:
+	* Add: "+"
+	* Sub: "-"
+	* Lsl: "*"
+	* Lsr: "/"
+	* Lt : "<"
+	* Le : "<="
+	* And: "&"
+	* Or : "|"
+	* Eq : "="
+	* Neq: "!="

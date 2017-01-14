@@ -1,11 +1,11 @@
-.vars x y
+.vars x c
 .prgm
 @ main
 	x = 0;
 	! x < 0x400 {
-		y = 65+(x/5);
-		? x & 1 { y = 97+(x/6); }
-		>draw x y;
+		c = 65+(x/5);
+		? x & 1 { c = 97+(x/6); }
+		>draw x 0 c;
 		x = x + 1;
 	}
 	>redraw;
