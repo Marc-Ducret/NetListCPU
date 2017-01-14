@@ -29,11 +29,13 @@ public class Natives {
 	
 	private static Procedure buildDraw() {
 		List<Instr> instrs = new ArrayList<>();
-		Register x = Register.allocReg(); //TODO add x and y args
+		Register x = Register.allocReg();
+		Register y = Register.allocReg();
 		Register c = Register.allocReg();
 		instrs.add(new InstrR(Op.SW, c, x));
-		c.free();
 		x.free();
+		y.free();
+		c.free();
 		return new Procedure("draw", instrs);
 	}
 }
