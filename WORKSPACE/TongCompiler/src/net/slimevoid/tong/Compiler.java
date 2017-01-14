@@ -151,8 +151,21 @@ public class Compiler {
 				prevToken();
 				if(!nextInstr(instrs)) error("Missing }");
 			}
+			if(!nextToken().equals("{")) {
+			prevToken();
 			instrs.set(start, new InstrR(Op.BEQI, instrs.size(), out, zero));
 			return true;
+			}
+			else{
+			int mid = instrs.size();
+			instrs.add(null);
+			while(!nextToken().equals("}")) {
+				prevToken();
+				if(!nextInstr(instrs)) error("Missing }");
+			}
+			instrs.set(start, new InstrR(Op.BEQI, mid+1, out, zero));
+			instrs.set(mid, new InstrR(Op.JI, instrs.size()));
+			return true;}
 		} else if(tok.equals("!")) {
 			int start = instrs.size();
 			Register zero = Register.allocReg();

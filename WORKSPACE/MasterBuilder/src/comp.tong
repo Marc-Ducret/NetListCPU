@@ -1,0 +1,18 @@
+.vars x y
+.prgm
+@ main
+	x = 0;
+	y = 10;
+	! x < y {
+		x = x + 8;
+	}
+	! y < x {
+		x = x - 5;
+	}
+	! x != y {
+		x = x + 1;
+	}
+	! x = y {
+		x = x + 42;
+		}
+	>exit;

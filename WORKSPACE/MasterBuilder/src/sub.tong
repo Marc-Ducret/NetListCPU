@@ -1,0 +1,8 @@
+.vars x
+.prgm
+@ main
+	x = 10000;
+	! 0 < x {
+		x = x - 1;
+	}
+	>exit;

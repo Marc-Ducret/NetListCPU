@@ -1,0 +1,13 @@
+.vars x y
+.prgm
+@ main
+	x = 0x1000;
+	y = 1;
+	! y < x {
+		y = y * 1;
+	}
+	y = 0;
+	! y < x {
+		x = x / 1;
+	}
+	>exit;
