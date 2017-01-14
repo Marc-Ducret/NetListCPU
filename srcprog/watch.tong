@@ -30,20 +30,20 @@
 #@ seconds_in_century
 #	? (century & 3) = 0
 #	{
-#	  seconds_in_century_res = 3155760000;
+#	  seconds_in_century_res = 24654375 * 7;
 #	}
 #	{
-#	  seconds_in_century_res = 3155673600;
+#	  seconds_in_century_res = 6163425 * 9;
 #	}
 
 @ seconds_in_year
 	> is_bissext;
 	? is_bissext_res 
 	{ 
-	 seconds_in_year_res = 31622400; 
+	 seconds_in_year_res = 123525*8; 
 	} 
 	{ 
-	 seconds_in_year_res = 31536000; 
+	 seconds_in_year_res = (123187*1+1)*7; 
 	}
 
 @ days_in_month
@@ -66,10 +66,10 @@
 	{ 
 	  ? is_bissext_res 
 	  { 
-	    seconds_in_month_res = 2505600; 
+	    seconds_in_month_res = 19575*7; 
 	  } 
 	  {
-            seconds_in_month_res = 2419200; 
+            seconds_in_month_res = 4725*9;#2419200
 	  } 
 	} 
 	{
@@ -77,24 +77,25 @@
 	  { 
 	    ? month & 1 
 	    {
-	      days_in_month_res = 2592000; 
+	      days_in_month_res = 10125*8; #2592000 
 	    } 
 	    {
-	      days_in_month_res = 2678400; 
+	      days_in_month_res = 20925*7; #2678400
 	    } 
 	  } 
 	  {
 	    ? month & 1 
 	    {
-	      days_in_month_res = 2678400; 
+	      days_in_month_res = 20925*7; #2678400
 	    } 
 	    {
-	      days_in_month_res = 2592000; 
+	      days_in_month_res = 10125*8; #2592000
 	    } 
 	  }
 	}
 
 @ div
+	div_q = 0;
 	! 9 < div_a
 	{
 	  div_a = div_a - 10;
@@ -104,8 +105,8 @@
 
 @ draw_int # draw div_a at addr and addr+1
 	> div;
-	> draw addr div_q;
-	> draw (addr + 1) div_a;
+	> draw addr (48+div_q);
+	> draw (addr + 1) (48+div_a);
 	
 @ draw_time
 	addr = 0;
@@ -189,11 +190,11 @@
 
 	! 1
 	{
-	  time_new = time;
-
-	  second = second + time_new - time_old;
+	  #time_new = time + 1;
+	  #PAs le bon truc : time_new = time;
+	  #second = second + time_new - time_old;
 	  time_old = time_new;
-	
+	  second = second + 1;
 	  ? 60 <= second 
 	  {
 	    second = second - 60;
@@ -232,4 +233,5 @@
 	  }
 
 	  > draw_time;
+	  >redraw;
 	}

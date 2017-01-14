@@ -136,7 +136,16 @@ public class Compiler {
 			}
 			prevToken();
 			for(Register r : args) r.free();
-			instrs.addAll(procs.get(func).instrs);
+			// C'etait le bazarre ici je crois
+			int start = instrs.size();
+			for (Instr instr1 : procs.get(func).instrs) {
+				InstrR instr = (InstrR)instr1;
+				if((instr.op == Op.JI) || (instr.op == Op.JZI) || instr.op == Op.JNZI || instr.op == Op.BEQI
+						|| instr.op == Op.BNEI){
+				instr = new InstrR(instr.op, instr.immediate + start, instr.r1, instr.r2);}
+				instrs.add(instr);
+			}
+			//instrs.addAll(procs.get(func).instrs);
 		} else if(tok.equals("?")) {
 			Register zero = Register.allocReg();
 			instrs.add(new InstrR(Op.LI, 0x0, zero));
@@ -205,10 +214,13 @@ public class Compiler {
 			instrs.add(new InstrR(Op.LWI, vars.get(tok), out));
 		} else if(isNumber(tok)) {
 			int i = tok.startsWith("0x") ? Integer.parseInt(tok.substring(2), 16): Integer.parseInt(tok);
+			if(i >= (1<<17)) error("Constante trop grande");
 			instrs.add(new InstrR(Op.LI, i, out));
 		} else if(tok.equals("-")) {
-			computeExpr(out, instrs);
-			//... do
+			Register tmp = Register.allocReg();
+			computeExpr(tmp, instrs);
+			instrs.add(new InstrR(Op.SUB, out, tmp));
+			tmp.free();
 		} else error("Invalid expression");
 		Operator op = nextOp();
 		if(op != null) {
