@@ -1,0 +1,6 @@
+#!/bin/bash
+
+mkdir -p genSrc
+mkdir -p bin
+cp src/*.c genSrc/
+gcc -pthread genSrc/$1.c -o bin/proc.exe -Ofast -w
