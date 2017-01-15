@@ -1,6 +1,7 @@
 #!/bin/bash
 
 chmod u+x MasterBuilder/build
+chmod u+x MasterBuilder/buildC
 chmod u+x MasterBuilder/buildProc
 chmod u+x MasterBuilder/buildTools
 chmod u+x MasterBuilder/run
