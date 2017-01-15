@@ -1,1 +1,0 @@
-INDEX VERSION 1.126+D:\Martin\Documents\ENS\1ere annee\Informatique\Systeme Numerique\NetListCPU\WORKSPACE\TongCompiler\src\net\slimevoid\tong\.metadata\.plugins\org.eclipse.jdt.core
