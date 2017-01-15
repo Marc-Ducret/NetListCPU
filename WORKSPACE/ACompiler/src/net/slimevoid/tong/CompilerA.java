@@ -84,12 +84,12 @@ public class CompilerA {
 						r1 = true;
 						r2 = true;
 						break;
-					case "lsl":
+					case "sl":
 						op = Op.SL;
 						r1 = true;
 						r2 = true;
 						break;
-					case "lsr":
+					case "sr":
 						op = Op.SR;
 						r1 = true;
 						r2 = true;
@@ -197,6 +197,7 @@ public class CompilerA {
 						imm = true;
 						r1 = true;
 						r2 = true;
+						break;
 					case "bnei":
 						op = Op.BNEI;
 						imm = true;
@@ -242,7 +243,7 @@ public class CompilerA {
 			}
 		}
 		int ct = 0;
-		for(Instr instr : instrs) System.out.println(Integer.toHexString(ct++)+"\t"+instr);
+		for(Instr instr : instrs) System.out.println(instr);//Integer.toHexString(ct++)+"\t"+
 		for(Instr instr : instrs) out.writeInt(instr.toAsm(this));
 	}
 
@@ -252,6 +253,6 @@ public class CompilerA {
 	}
 	
 	private boolean isNumber(String str) {
-		return str.matches("(-?[0-9]+)|(0x[0-9A-F]+)");
+		return str.toLowerCase().matches("(-?[0-9]+)|(0x[0-9a-f]+)");
 	}
 }

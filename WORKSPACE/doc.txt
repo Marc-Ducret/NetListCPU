@@ -118,8 +118,8 @@ PROGRAMMING IN ASSEMBLY:
 Use the assembly syntax, with all the operations implemented :
 add n1 n2 (numbers of the registers)
 sub n1 n2
-lsl n1 n2
-lsr n1 n2
+sl n1 n2
+sr n1 n2
 ...
 beq imm n1 n2
 ...
