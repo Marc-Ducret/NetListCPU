@@ -16,6 +16,8 @@ public class FrameScreen implements Screen {
 	private JPanel pan;
 	private JFrame frame;
 	private Font font;
+	private boolean redrawPending = false;
+	private long lastRedraw = 0;
 	
 	private boolean sizeInit = false;
 
@@ -32,6 +34,8 @@ public class FrameScreen implements Screen {
 			@Override
 			public void paint(Graphics g) {
 				super.paint(g);
+				redrawPending = false;
+				lastRedraw = System.currentTimeMillis();
 				g.setFont(font);
 				FontMetrics metrics = g.getFontMetrics(font);
 				StringBuilder builder = new StringBuilder();
@@ -55,11 +59,13 @@ public class FrameScreen implements Screen {
 
 	public void draw(char[] buff) {
 		this.buff = buff;
-		pan.repaint();
+		if(!redrawPending || (System.currentTimeMillis() - lastRedraw) > 100){
+			pan.repaint();
+			redrawPending = true;
+		}
 	}
 
 	public void clear() {
-		//TODO ?
 	}
 
 	@Override
