@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +28,12 @@ public class Compiler {
 			System.err.println("Args format : [source file] [rom to write]");
 			System.exit(-1);		
 		}
-		Reader read = new BufferedReader(new FileReader(new File(args[0])));
+		if(!args[0].endsWith(".tong")) {
+			System.err.println("Source file must be .tong");
+			System.exit(-1);		
+		}
+		File sourceFile = new File(args[0]);
+		Reader read = new BufferedReader(new FileReader(sourceFile));
 		int r;
 		String src = "";
 		while((r = read.read()) >= 0) {
@@ -36,7 +42,8 @@ public class Compiler {
 		read.close();
 		OutputStream out = new BufferedOutputStream(new FileOutputStream(new File(args[1])));
 		instance = new Compiler(src);
-		instance.compile(new DataOutputStream(out));
+		instance.compile(new DataOutputStream(out), new PrintStream(new File(sourceFile.getParent(), 
+				"Assembleur/"+sourceFile.getName().substring(0, sourceFile.getName().length()-5))));
 		out.close();
 	}
 
@@ -79,7 +86,7 @@ public class Compiler {
 		System.exit(-1);
 	}
 
-	private void compile(DataOutputStream out) throws IOException {
+	private void compile(DataOutputStream out, PrintStream textAsm) throws IOException {
 		if(!curToken().equals(".vars")) error("Program must start with .vars");
 		List<String> vars = new ArrayList<>();
 		String tok;
@@ -108,7 +115,11 @@ public class Compiler {
 			for(Instr instr : p.instrs) System.out.println(Integer.toHexString(ct++)+"\t"+instr);		
 		}
 		if(!procs.containsKey("main")) error("No main procedure");
-		for(Instr instr : procs.get("main").instrs) out.writeInt(instr.toAsm(this));
+		for(Instr instr : procs.get("main").instrs) {
+			out.writeInt(instr.toAsm());
+			textAsm.println(instr.toTextAsm());
+		}
+		textAsm.close();
 	}
 
 	private Procedure nextProc() {
@@ -136,16 +147,10 @@ public class Compiler {
 			}
 			prevToken();
 			for(Register r : args) r.free();
-			// C'etait le bazarre ici je crois
 			int start = instrs.size();
-			for (Instr instr1 : procs.get(func).instrs) {
-				InstrR instr = (InstrR)instr1;
-				if((instr.op == Op.JI) || (instr.op == Op.JZI) || instr.op == Op.JNZI || instr.op == Op.BEQI
-						|| instr.op == Op.BNEI){
-				instr = new InstrR(instr.op, instr.immediate + start, instr.r1, instr.r2);}
-				instrs.add(instr);
+			for (Instr instr : procs.get(func).instrs) {
+				instrs.add(instr.shift(start));
 			}
-			//instrs.addAll(procs.get(func).instrs);
 		} else if(tok.equals("?")) {
 			Register zero = Register.allocReg();
 			instrs.add(new InstrR(Op.LI, 0x0, zero));

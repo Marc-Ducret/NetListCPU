@@ -1,6 +1,8 @@
 package net.slimevoid.tong;
 
-public abstract class Instr {
+public interface Instr {
 	
-	public abstract int toAsm(Compiler compiler);
+	public int toAsm();
+	public String toTextAsm();
+	public Instr shift(int offset);
 }

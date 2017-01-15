@@ -3,6 +3,7 @@ package net.slimevoid.sd.simulatorenv;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -57,5 +58,10 @@ public class FrameScreen implements Screen {
 
 	public void clear() {
 		//TODO ?
+	}
+
+	@Override
+	public void addKeyListener(KeyListener list) {
+		pan.addKeyListener(list);
 	}
 }

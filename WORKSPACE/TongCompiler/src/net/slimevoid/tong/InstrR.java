@@ -1,6 +1,6 @@
 package net.slimevoid.tong;
 
-public class InstrR extends Instr {
+public class InstrR implements Instr {
 
 	public static enum Op {
 		
@@ -60,9 +60,16 @@ public class InstrR extends Instr {
 	public InstrR(Op op, int immediate) {
 		this(op, immediate, null, null);
 	}
+	
+	@Override
+	public Instr shift(int offset) {
+		if(op == Op.JI || op == Op.JZI || op == Op.JNZI || op == Op.BEQI || op == Op.BNEI)
+			return new InstrR(op, immediate + offset, r1, r2);
+		else return this;
+	}
 
 	@Override
-	public int toAsm(Compiler compiler) {
+	public int toAsm() {
 		int code = op.code;
 		if(immediate >= 0) 	code |= immediate << 6;
 		if(r1 != null)		code |= r1.ordinal() << 3;
@@ -74,5 +81,11 @@ public class InstrR extends Instr {
 	public String toString() {
 		return op.name().toLowerCase()+"\t"+(immediate >= 0 ? Integer.toHexString(immediate)+"\t" : "")
 				+(r1 != null ? r1+"\t" : "")+(r2 != null ? r2+" " : "");
+	}
+	
+	@Override
+	public String toTextAsm() {
+		return op.name().toLowerCase()+" "+(immediate >= 0 ? "0x"+Integer.toHexString(immediate)+" " : "")+
+				(r1 != null ? r1.ordinal()+" " : "")+(r2 != null ? r2.ordinal() : "");
 	}
 }

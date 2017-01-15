@@ -1,5 +1,7 @@
 package net.slimevoid.sd.simulatorenv;
 
+import java.awt.event.KeyListener;
+
 public class ConsoleScreen implements Screen {
 
 	private int w, h;
@@ -23,5 +25,9 @@ public class ConsoleScreen implements Screen {
 	public void clear() {
 		System.out.print("\033[H\033[2J");  
 		System.out.flush(); 
+	}
+
+	@Override
+	public void addKeyListener(KeyListener list) {
 	}
 }
