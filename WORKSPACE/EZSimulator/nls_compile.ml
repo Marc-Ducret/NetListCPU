@@ -16,8 +16,8 @@ let sim p =
 	in
 	let is_array var =
 		match Env.find var p.p_vars with
-  		| TBit -> false
-  		| TBitArray _ -> true
+		| TBit -> false
+		| TBitArray _ -> true
 	in
 	let is_only_array var =
 		match Env.find var p.p_vars with
@@ -62,10 +62,10 @@ let sim p =
 		"\t\t"^(eval_var (is_only_array var) var)^" = "^str^";\n"
 	in
 	let eval_expr var = function
-		| Earg a -> assign var (eval_arg (is_only_array var) a)
+		| 	Earg a -> assign var (eval_arg (is_only_array var) a)
 		|	Ereg i -> assign var (eval_var (is_only_array var) i)
 		|	Enot a -> assign var ("!" ^ (eval_arg_bit a))
-		| Ebinop (op, a, b) ->
+		| 	Ebinop (op, a, b) ->
 				let va = eval_arg_bit a in
 				let vb = eval_arg_bit b in
 				assign var
@@ -75,7 +75,7 @@ let sim p =
 					| And 	-> va^" & "^vb
 					|	Nand 	-> "!("^va ^" & "^vb^")"
 				)
-		| Emux (sel, a, b) -> 
+		| 	Emux (sel, a, b) -> 
 				let vsel = eval_arg_bit sel in
 				let va = eval_arg_bit a in
 				let vb = eval_arg_bit b in
