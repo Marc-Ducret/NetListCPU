@@ -1,9 +1,47 @@
 .vars
-	run bx by dbx dby ry dry t
+	run bx by dbx dby ry dry t i
 .prgm	
 @ draw_ball
-	>draw (bx-dbx)+(by-dby)*6 ' ';
-	>draw bx+by*6 '@';
+	>draw (bx-dbx)+(by-dby)*6 	'.';
+	>draw bx+by*6 				'@';
+	
+@ draw_raq
+	? dry = 1 {
+		>draw (ry-dry)*6 		'.';
+		>draw (ry+5)*6 			'|';
+	}
+	? dry = -1 {
+		>draw (ry+5-dry)*6 		'.';
+		>draw ry*6 				'|';
+	}
+@ draw_raq_first
+	i = 0;
+	! i < 6 {
+		>draw (ry+i)*6			'|';
+		i = i + 1;
+	}
+@ draw_lost
+	>draw 28+(20*6) 			'Y';
+	>draw 29+(20*6) 			'o';
+	>draw 30+(20*6) 			'u';
+	>draw 31+(20*6) 			'.';
+	>draw 32+(20*6) 			'l';
+	>draw 33+(20*6) 			'o';
+	>draw 34+(20*6) 			's';
+	>draw 35+(20*6) 			't';
+	>draw 36+(20*6) 			'!';
+	i = 0;
+	! i < 9 {
+		>draw 28+i+(21*6)		'+';
+		>draw 28+i+(19*6)		'+';
+		i = i + 1;
+	}
+	>draw 27+(19*6) 			'+';
+	>draw 27+(20*6) 			'+';
+	>draw 27+(21*6) 			'+';
+	>draw 37+(19*6) 			'+';
+	>draw 37+(20*6) 			'+';
+	>draw 37+(21*6) 			'+';
 @ main
 	run = 1;
 	t = time_ms;
@@ -11,23 +49,32 @@
 	by = 0;
 	dbx = 1;
 	dby = 1;
+	ry = 15;
+	>draw_raq_first;
 	! run {
 		dry = 0;
-		>key_status 38; dry = key_res;
-		>key_status 40; dry = dry - key_res;
+		>key_status 40; dry = key_res;
+		>key_status 38; dry = dry - key_res;
 		? 50 <= time_ms - t {
 			t = time_ms;
-			? ((bx = 63) & (dbx = 1)) | ((bx = 0) & (dbx = -1)) {
+			? ((bx = 63) & (dbx = 1)) | ((bx = 1) & (dbx = -1) & (by <= ry + 5) & (ry <= by)) {
 				dbx = -dbx;
 			}
-			? ((by = 31) & (dby = 1)) | ((by = 0) & (dby = -1)) {
+			? ((bx = 0) & (dbx = -1)) {
+				run = 0;
+				dbx = 0;
+				>draw_lost;
+			}
+			? ((by = 39) & (dby = 1)) | ((by = 0) & (dby = -1)) {
 				dby = -dby;
 			}
 			bx = bx + dbx;
 			by = by + dby;
+			ry = ry + dry;
 			>draw_ball;
+			>draw_raq;
 			>redraw;
 		}
-		>key_status 27; run = 1 - key_res; #27 = escape
+		>key_status 27; run = run & (1 - key_res); #27 = escape
 	}
 	>exit;
