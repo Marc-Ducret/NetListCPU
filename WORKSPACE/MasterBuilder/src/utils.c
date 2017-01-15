@@ -12,6 +12,13 @@ void init(char *_ram) {
 	_ram_ref = _ram;
 }
 
+void tick() {
+	int t = (int) time(NULL);
+	for(int i = 0; i < 32; i ++) {
+		_ram_ref[0x11001 * 32 + 31 - i] = (t >> i) & 1;
+	}
+}
+
 char* readRom() {
 	char sizePow;
 	read(0, &sizePow, 1);

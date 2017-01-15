@@ -110,6 +110,7 @@ let sim p =
 																				^"\t\t\tif(_addr == 0x10000) writeRedraw();\n"
 																				^"\t\t\tif(_addr == 0x10001) { writeExit(); break; }\n"
 																				^"\t\t}\n"
+																				^"\t\ttick();\n"
 		|	_ -> ""
 	in
 	let head = "#include <stdio.h>\n#include \"utils.c\"\n\nint main() {\n"	in

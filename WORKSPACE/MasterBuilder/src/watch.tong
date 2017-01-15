@@ -1,5 +1,4 @@
 .vars
-	time
 	time_old
 	time_new
 
