@@ -218,6 +218,7 @@ public class Compiler {
 			computeExpr(out, instrs);
 			if(!nextToken().equals(")")) error("Missing )");
 		} else if(isIdent(tok)) {
+			if(!vars.containsKey(tok)) error("Unknown variable "+tok);
 			instrs.add(new InstrR(Op.LWI, vars.get(tok), out));
 		} else if(isNumber(tok)) {
 			int i = tok.startsWith("0x") ? Integer.parseInt(tok.substring(2), 16): Integer.parseInt(tok);
