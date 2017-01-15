@@ -7,7 +7,7 @@ import net.slimevoid.tong.InstrR.Op;
 
 public class Natives {
 	
-	public static enum NativeVar {KEY_RES, TIME}
+	public static enum NativeVar {KEY_RES, TIME, TIME_MS}
 	
 	public static List<Procedure> buildNatives() {
 		List<Procedure> nat = new ArrayList<>();

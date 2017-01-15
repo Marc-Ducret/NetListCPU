@@ -17,6 +17,13 @@ void tick() {
 	for(int i = 0; i < 32; i ++) {
 		_ram_ref[0x11001 * 32 + 31 - i] = (t >> i) & 1;
 	}
+	struct timespec time;
+	clock_gettime(CLOCK_MONOTONIC_RAW, &time);
+
+	int t_ms = (int) (time.tv_sec * 1000 + time.tv_nsec / 1000000);
+	for(int i = 0; i < 32; i ++) {
+		_ram_ref[0x11002 * 32 + 31 - i] = (t_ms >> i) & 1;
+	}
 }
 
 char* readRom() {
