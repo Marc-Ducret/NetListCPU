@@ -1,0 +1,184 @@
+\documentclass[a4paper, 10pt, french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{lmodern}
+\usepackage[autolanguage]{numprint}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{collcell}
+
+\usepackage[margin=3cm]{geometry}
+\usepackage{multicol}
+\usepackage[10pt]{moresize}
+\usepackage{pdflscape}
+
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsopn}
+\usepackage{stmaryrd}
+
+
+\usepackage{listings}
+\usepackage{minted}
+
+\usemintedstyle[OCaml]{frame=lines,style=colorful,fontfamily=tt,breaklines}
+\renewcommand{\listingscaption}{Listing}
+\renewcommand{\listoflistingscaption}{Table des listings}
+
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\foreign}[1]{\emph{#1}}
+
+\newcommand{\affects}{$\leftarrow$}
+\newcolumntype{R}{>{\ttfamily}{l}}
+\newcolumntype{M}{>{$}{c}<{$}}
+\newcolumntype{U}{>{\code{r1,}}{c}}
+\newcolumntype{D}{>{\code{r2,}}{c}}
+\newcolumntype{O}{>{\code{o}}{c}}
+\newcolumntype{E}{>{$r_1$}{c}}
+\newcolumntype{A}{>{\affects}{l}}
+
+
+
+\title{Rapport de Systèmes Numériques / Digitaux / Digitals}
+\author{Marc \bsc{Ducret} \and Florentin \bsc{Guth} \and Martin \bsc{Ruffel} \and Lionel \bsc{Zoubritzky}}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Structure du système}
+
+\subsection{Architecture du processeur}
+
+On choisit de stocker les mots sur 32 bits (4 octets). En effet, cela permettra d'utiliser des entiers (signés seulement, pour simplifier) de taille importante. On utilise 8 registres (codés sur 2 bits) en plus du \foreign{program counter}. Les adresse sont codées sur 17 bits, ce qui fait une \foreign{RAM} de 128 Ko.
+
+\subsection{Organisation de la \foreign{RAM}}
+
+\begin{table}[H]
+ \centering
+ \begin{tabular}{|R|c|c|}
+  \hline
+  Adresse & Nombre de mots & Données \\
+  \hline
+  0x00000 & $s_w * s_h$ & Contenu affiché à l'écran (caractères) \\
+  \hline
+  0x10000 & 1 & Indique si il est nécessaire de redessiner l'écran \\
+  0x10001 & 1 & Indique si le programme a terminé son exécution \\
+  0x10002 & 1 & Largeur de l'écran $s_w$ \\
+  0x10003 & 1 & Hauteur de l'écran $s_h$ \\
+  0x10004 & 1 & Temps en secondes depuis le 01/01/1970 00h00 \\
+  \hline
+  0x10005 & ? & \'Etat du clavier \\
+  \hline
+  0x11000 & ? & Variables du programme \\
+  \hline
+ \end{tabular}
+ \caption{Organisation de la \foreign{RAM}}
+\end{table}
+
+
+
+\section{Opérations implémentées}
+
+\subsection{Opérations arithmético-logiques}
+
+On conserve pratiquement toutes les opérations de base du MIPS.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|RUDO|EAMMM|}
+    \hline
+    \multicolumn{4}{|c|}{Opération} & \multicolumn{5}{c|}{Effet} \\
+    \hline
+    add & & & & & & r_2 &+& o \\
+    sub & & & & & & r_2 &-& o \\
+    mul & & & & & & r_2 &\times& o \\
+    div & & & & & & r_2 &\div& o \\
+    sll & & & & & & r_2 &\mathrm{lsl}& o \\
+    srl & & & & & & r_2 &\mathrm{lsr}& o \\
+    \hline
+    and & & & & & & r_2 &\wedge& o \\
+    or  & & & & & & r_2 &\vee& o \\
+    xor & & & & & & r_2 &\oplus& o \\
+    \hline
+    slt & & & & & & r_2 &<& o \\
+    sle & & & & & & r_2 &\leq& o \\
+    seq & & & & & & r_2 &=& o \\
+    sne & & & & & & r_2 &\neq& o \\
+    \hline
+  \end{tabular}
+  \caption{Opérations arithmético-logiques}
+\end{table}
+
+On ajoute néanmoins les opérations suivantes, afin de faciliter les opérations sur les heures :
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|RURR|EAMMM|}
+    \hline
+    \multicolumn{4}{|c|}{Opération} & \multicolumn{5}{c|}{Effet} \\
+    \hline
+    add24 & & r2, & o & & & r_2 + o & \mathrm{mod} & 24 \\
+    add60 & & r2, & o & & & r_2 + o & \mathrm{mod} & 60 \\
+    \hline
+    mod   & & r2, & o & & & r_2     & \mathrm{mod} & o  \\
+    mod24 & & r2  &   & & & r_2     & \mathrm{mod} & 24 \\
+    mod60 & & r2  &   & & & r_2     & \mathrm{mod} & 60 \\
+    \hline
+  \end{tabular}
+  \caption{Opérations arithmético-logiques}
+\end{table}
+
+On ajoute que les opérations \code{add24} et \code{add60} lèveront un \emph{flag} lorsqu'un dépassement aura eu lieu.
+
+
+\subsection{Opérations de manipulations de données}
+
+Parmi les opérations du MIPS, on conserve les suivantes. On a choisi de ne pas inclure d'opération de type \code{load\_immediate}, car on stockera dans certains registres les constantes nécessaires avant le lancement du processeur (comme 0, 24, 60\ldots).
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|RURR|EcM|}
+    \hline
+    \multicolumn{4}{|c|}{Opération} & \multicolumn{3}{c|}{Effet} \\
+    \hline
+    move & & r2 &      & & \affects & r_2 \\
+    \hline
+    lw   & & o  & (r2) & & \affects & \mathrm{RAM}[r_2 + o] \\
+    rw   & & o  & (r2) & & $\rightarrow$ & \mathrm{RAM}[r_2 + o] \\
+    \hline
+  \end{tabular}
+  \caption{Opérations de manipulations de données}
+\end{table}
+
+
+\subsection{Opérations de contrôle de l’exécution}
+
+Enfin, on dispose des opérations suivantes afin de simuler des conditions et des boucles.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|RRRR|McMM|}
+    \hline
+    \multicolumn{4}{|c|}{Opération} & \multicolumn{4}{c|}{Effet} \\
+    \hline
+    j   & o  &    &   & \mathrm{PC} & \affects & o & \\
+    \hline
+    beq & r, & o, & a & \mathrm{PC} & \affects & a & \text{si } $r = o$ \\
+    \hline
+    nop &    &    &   &             & & \varnothing & \\
+    \hline
+  \end{tabular}
+  \caption{Opérations de contrôle de l’exécution}
+\end{table}
+
+
+\end{document}

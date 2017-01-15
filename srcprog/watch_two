@@ -1,0 +1,508 @@
+#Initialisation
+lwi 0x11000 0 
+swi 0x11001 0 
+li 0x13 0 
+swi 0x11003 0 
+li 0x46 0 
+swi 0x11004 0 
+li 0x0 0 
+swi 0x11005 0 
+li 0x0 0 
+swi 0x11006 0 
+li 0x0 0 
+swi 0x11007 0 
+li 0x0 0 
+swi 0x11008 0 
+lwi 0x11001 0 
+swi 0x11009 0 
+lwi 0x11004 0 
+li 0x3 1 
+and 0 1
+li 0x0 1 
+seq 0 1
+lwi 0x11003 1 
+li 0x0 2 
+sne 1 2
+and 0 1
+lwi 0x11004 1 
+li 0x0 2 
+seq 1 2
+lwi 0x11003 2 
+li 0x3 3 
+and 2 3
+li 0x0 3 
+seq 2 3
+and 1 2
+or 0 1
+swi 0x1100a 0 
+li 0x0 0 
+lwi 0x1100a 1 
+beqi 0x2c 1 0
+li 0x1e285 0 
+li 0x8 1 
+sl 0 1
+swi 0x1100c 0 
+ji 0x34 
+li 0x1e133 0 
+li 0x1 1 
+li 0x1 2 
+add 1 2
+sl 0 1
+li 0x7 1 
+sl 0 1
+swi 0x1100c 0 
+li 0x0 0 
+lwi 0x1100c 1 
+lwi 0x11009 2 
+sle 1 2
+beqi 0x72 1 0
+lwi 0x11004 0 
+li 0x1 1 
+add 0 1
+swi 0x11004 0 
+li 0x0 0 
+lwi 0x11004 1 
+li 0x64 2 
+seq 1 2
+beqi 0x49 1 0
+li 0x0 0 
+swi 0x11004 0 
+lwi 0x11003 0 
+li 0x1 1 
+add 0 1
+swi 0x11003 0 
+ji 0x49 
+lwi 0x11009 0 
+lwi 0x1100c 1 
+sub 0 1
+swi 0x11009 0 
+lwi 0x11004 0 
+li 0x3 1 
+and 0 1
+li 0x0 1 
+seq 0 1
+lwi 0x11003 1 
+li 0x0 2 
+sne 1 2
+and 0 1
+lwi 0x11004 1 
+li 0x0 2 
+seq 1 2
+lwi 0x11003 2 
+li 0x3 3 
+and 2 3
+li 0x0 3 
+seq 2 3
+and 1 2
+or 0 1
+swi 0x1100a 0 
+li 0x0 0 
+lwi 0x1100a 1 
+beqi 0x69 1 0
+li 0x1e285 0 
+li 0x8 1 
+sl 0 1
+swi 0x1100c 0 
+ji 0x71 
+li 0x1e133 0 
+li 0x1 1 
+li 0x1 2 
+add 1 2
+sl 0 1
+li 0x7 1 
+sl 0 1
+swi 0x1100c 0 
+ji 0x34 
+li 0x0 0 
+lwi 0x11005 1 
+li 0x1 2 
+seq 1 2
+beqi 0x84 1 0
+li 0x0 0 
+lwi 0x1100a 1 
+beqi 0x7f 1 0
+li 0x4c77 0 
+li 0x7 1 
+sl 0 1
+swi 0x1100d 0 
+ji 0x83 
+li 0x1275 0 
+li 0x9 1 
+sl 0 1
+swi 0x1100d 0 
+ji 0xa6 
+li 0x0 0 
+lwi 0x11005 1 
+li 0x7 2 
+slt 1 2
+beqi 0x98 1 0
+li 0x0 0 
+lwi 0x11005 1 
+li 0x1 2 
+and 1 2
+beqi 0x93 1 0
+li 0x278d 0 
+li 0x8 1 
+sl 0 1
+swi 0x1100b 0 
+ji 0x97 
+li 0x51bd 0 
+li 0x7 1 
+sl 0 1
+swi 0x1100b 0 
+ji 0xa6 
+li 0x0 0 
+lwi 0x11005 1 
+li 0x1 2 
+and 1 2
+beqi 0xa2 1 0
+li 0x51bd 0 
+li 0x7 1 
+sl 0 1
+swi 0x1100b 0 
+ji 0xa6 
+li 0x278d 0 
+li 0x8 1 
+sl 0 1
+swi 0x1100b 0 
+li 0x0 0 
+lwi 0x1100d 1 
+lwi 0x11009 2 
+sle 1 2
+beqi 0xe8 1 0
+lwi 0x11005 0 
+li 0x1 1 
+add 0 1
+swi 0x11005 0 
+lwi 0x11009 0 
+lwi 0x1100d 1 
+sub 0 1
+swi 0x11009 0 
+li 0x0 0 
+lwi 0x11005 1 
+li 0x1 2 
+seq 1 2
+beqi 0xc5 1 0
+li 0x0 0 
+lwi 0x1100a 1 
+beqi 0xc0 1 0
+li 0x4c77 0 
+li 0x7 1 
+sl 0 1
+swi 0x1100d 0 
+ji 0xc4 
+li 0x1275 0 
+li 0x9 1 
+sl 0 1
+swi 0x1100d 0 
+ji 0xe7 
+li 0x0 0 
+lwi 0x11005 1 
+li 0x7 2 
+slt 1 2
+beqi 0xd9 1 0
+li 0x0 0 
+lwi 0x11005 1 
+li 0x1 2 
+and 1 2
+beqi 0xd4 1 0
+li 0x278d 0 
+li 0x8 1 
+sl 0 1
+swi 0x1100b 0 
+ji 0xd8 
+li 0x51bd 0 
+li 0x7 1 
+sl 0 1
+swi 0x1100b 0 
+ji 0xe7 
+li 0x0 0 
+lwi 0x11005 1 
+li 0x1 2 
+and 1 2
+beqi 0xe3 1 0
+li 0x51bd 0 
+li 0x7 1 
+sl 0 1
+swi 0x1100b 0 
+ji 0xe7 
+li 0x278d 0 
+li 0x8 1 
+sl 0 1
+swi 0x1100b 0 
+ji 0xa6 
+li 0x0 0 
+li 0x15180 1 
+lwi 0x11009 2 
+sle 1 2
+beqi 0xf6 1 0
+lwi 0x11006 0 
+li 0x1 1 
+add 0 1
+swi 0x11006 0 
+lwi 0x11009 0 
+li 0x15180 1 
+sub 0 1
+swi 0x11009 0 
+ji 0xe8 
+li 0x0 0 
+li 0xe10 1 
+lwi 0x11009 2 
+sle 1 2
+beqi 0x104 1 0
+lwi 0x11007 0 
+li 0x1 1 
+add 0 1
+swi 0x11007 0 
+lwi 0x11009 0 
+li 0xe10 1 
+sub 0 1
+swi 0x11009 0 
+ji 0xf6 
+li 0x0 0 
+li 0x3c 1 
+lwi 0x11009 2 
+sle 1 2
+beqi 0x112 1 0
+lwi 0x11008 0 
+li 0x1 1 
+add 0 1
+swi 0x11008 0 
+lwi 0x11009 0 
+li 0x3c 1 
+sub 0 1
+swi 0x11009 0 
+ji 0x104
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#0 : constante de comparaison
+#1 : secondes
+#2 : minutes
+#3 : heures
+#4 : jours
+#5 : mois
+
+#RAM 0x12000 : nombre de jours dans le mois
+#RAM 0x12001 : année bissextile ?
+#RAM 0x12003 : années
+#RAM 0x12004 : siècles
+#RAM 0x12005 : secondes
+#RAM 0x12006 : minutes
+
+
+
+#Boucle des secondes
+li 1 7
+
+#update secondes
+add 1 7
+li 60 0
+bnei x1 1 0
+
+#Update minutes
+li 0 1
+add 2 7
+bnei x2 2 0
+
+#Update heures
+li 0 2
+add 3 7
+li 24 0
+bnei x3 3 0
+
+#Update jours
+li 0 3
+add 4 7
+#Va chercher nb_jours
+lwi 0x12000 0
+bnei x4 4 0
+
+#Update mois
+li 0 4
+add 5 7
+
+#Update nb_jours
+lwi 0x12001 6 
+#6 = bissext?
+
+move 7 5
+#7 = month
+li 2 0
+seq 7 0 
+#7 = (month = 2)
+
+and 6 7
+jz L0
+
+#Ici février bissextile
+li 29 0
+swi 0x12000 0
+ji L1
+
+#L0 osef bissext
+li 7 0
+slte 0 5 
+#0 = (mois >= 7)
+jnz L2
+
+# Ici mois < 7
+move 7 5
+li 1 6
+and 7 6
+li 31 0
+sub 0 7 
+#0 = 31 - (month & 1)
+swi 0x12000 0
+ji L1
+
+#L2 mois >= 7
+move 7 5
+li 1 6
+and 7 6
+li 30 0
+add 0 7 
+#0 = 30 + (month & 1)
+swi 0x12000 0
+
+#L1 fin calcul nb_jours
+li 12 0
+bnei x5 5 0
+
+#Update ans
+#6 = ans
+lwi 0x12003 6
+li 0 5
+li 1 0
+add 6 0
+
+#sauvegarder 1 et 2
+swi 0x12005 1
+swi 0x12006 2
+
+#UPDATE BISSEXTILE
+#year3 = 1
+#cnt = 7
+#cnt3 = 2
+lwi 0x12004 7
+li 3 0
+move 1 6
+and 1 0
+jnzi L4
+
+#Ici year & 3 = 0
+and 7 7
+jzi L4
+
+#L7 : est bissext
+li 1 0
+ji L3
+
+#L4 : 1ère branche du | fausse
+and 6 6
+jnzi L6
+
+#Ici year = 0
+li 3 0
+move 2 7
+and 2 0
+jzi L7
+
+#L6 : n'est pas bissext
+li 0 0
+
+#L3 fin calcul bissextile
+swi 0x12001 0
+bnei x6 6 100
+
+#update centuries
+li 0 6
+add 7 1
+
+#UPDATE BISSEXTILE
+li 3 0
+move 1 6
+and 1 0
+jnzi L04
+
+#Ici year & 3 = 0
+and 7 8
+jzi L04
+
+#L07 : est bissext
+li 1 0
+ji L03
+
+#L04 : 1ère branche du | fausse
+and 6 6
+jnzi L06
+
+#Ici year = 0
+li 3 0
+move 2 7
+and 2 0
+jzi L07
+
+#L06 : n'est pas bissext
+li 0 0
+
+#L03 fin calcul bissextile
+swi 0x12001 0
+bnei x6 6 100
+
+#jj/mm/ccaa hh:mm:ss
+#0123456789012345678
+
+#x7 : On draw les siècles
+draw 6 cnt
+
+#Store centuries
+swi 0x10004 7
+
+#x6 : On draw les années
+draw 8 ans
+
+#Restaurer 1 et 2
+lwi 0x12005 1
+lwi 0x12006 2
+
+#Store year
+swi 0x10003 6
+
+
+#x5 : On draw les mois
+draw 3 mois
+
+#x4 : On draw les jours
+draw 0 jours
+
+#x3 : On draw les heures
+draw 11 heures
+
+#x2 : On draw les minutes
+draw 14 min
+
+#x1 : On draw les secondes
+draw 17 sec
+
+#redraw
+swi 0x10000 0
+
+
+
+ji 112
+
+# EXIT
+swi 0x10001 0 
