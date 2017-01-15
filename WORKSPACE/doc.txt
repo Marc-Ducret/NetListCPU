@@ -8,7 +8,7 @@ in this folder.
 USING THE SCRIPTS
 
 -> buildTools 
-	builds all the static tools (namely: EZSimulator, TongCompiler, SimulatorEnv)
+	builds all the static tools (namely: EZSimulator, TongCompiler, SimulatorEnv, and ACompiler)
 
 usage: ./buildTools	
 
@@ -33,7 +33,17 @@ usage: ./build main
 	
 usage: ./run prgm 32 16
 	   ./run prgm 32 16 -console -debug
-	   
+
+-> runAss [file] [width] [height] <-console> <-debug>
+	compiles the specified assembly source file into rom then runs the processor on this rom.
+	Uses width and height as screen sizes.
+	The file must be located in the src/Assembleur folder.
+	-console uses the console as screen
+	-debug displays the error stream from the processor
+	
+usage: ./run prgm 32 16
+	   ./run prgm 32 16 -console -debug
+  
 PROGRAMMING IN TONG
 
 Simple loop exemple:
@@ -103,3 +113,19 @@ Operators:
 	* Or : "|"
 	* Eq : "="
 	* Neq: "!="
+
+PROGRAMMING IN ASSEMBLY:
+Use the assembly syntax, with all the operations implemented :
+add n1 n2 (numbers of the registers)
+sub n1 n2
+lsl n1 n2
+lsr n1 n2
+...
+beq imm n1 n2
+...
+
+'\n' signals the end of an instruction, and don't leave any blank line, especially at the end of the file.
+You can use '#' to comment.
+
+Put your assembly file (without any extension) in MasterBuilder/src/Assembleur.
+

@@ -1,0 +1,7 @@
+#!/bin/bash
+echo Compiling Assembly...
+cd ../ACompiler/
+./assc ../MasterBuilder/src/Assembleur/$1 ../MasterBuilder/bin/rom
+echo Running processor...
+cd ../SimulatorEnv/
+time ./env $2 $3 ../MasterBuilder/bin/proc.exe ../MasterBuilder/bin/rom $4

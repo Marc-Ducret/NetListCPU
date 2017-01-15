@@ -67,9 +67,9 @@ public class CompilerA {
 				build.setLength(0);
 				if(c == '#') comment = true;
 				if(c != ' ' && c != '\t' && c != '\r' && c != '\n' && !comment) toks.add(""+c);
-				if(c == '\n') {
-					comment = false;
-					if(toks.size()==0) error("Missing line ?", ""+src.charAt(i-1));
+				if(c == '\n' && comment) comment = false;
+				else if(c == '\n') {
+					if(toks.size()==0) error("Blank line", ""+src.charAt(i-1));
 					String opName = toks.get(0).toLowerCase();
 					boolean imm=false, r1=false, r2=false;
 					Op op = null;
@@ -203,6 +203,8 @@ public class CompilerA {
 						r1 = true;
 						r2 = true;
 						break;
+					default:
+						error("Unknown operator", opName);
 					}
 					int tokInd = 1;
 					int size = toks.size();
