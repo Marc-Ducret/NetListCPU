@@ -9,4 +9,4 @@ rm src/$1.net
 cp genSrc/$1.net.c genSrc/$1.c
 rm genSrc/$1.net.c
 cp src/*.c genSrc/
-gcc genSrc/$1.c -o bin/proc.exe
+gcc -pthread genSrc/$1.c -o bin/proc.exe

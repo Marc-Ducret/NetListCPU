@@ -97,7 +97,6 @@ let sim p =
 	in
 	let pre_expr = function
 		| Eram (sa, sw, ra, we, wa, data) -> "\tchar * _ram = (char *) malloc("^(string_of_int ((1 lsl sa)*sw))^");\n"
-																				(*^"_ram[0] = " TODO put screen dim in ram*)
 		|	_ -> ""
 	in
 	let post_expr = function
@@ -110,20 +109,22 @@ let sim p =
 																				^" toInt("^(arg_var_name data)^", "^(string_of_int sw)^"));\n"
 																				^"\t\t\tif(_addr == 0x10000) writeRedraw();\n"
 																				^"\t\t\tif(_addr == 0x10001) { writeExit(); break; }\n"
-																				^"\t\t}"
+																				^"\t\t}\n"
 		|	_ -> ""
 	in
-	let head = "#include <stdio.h>\n#include \"utils.c\"\n\nint main() {\n"
-						^"\tchar _screenW = readByte();\n"
-						^"\tchar _screenH = readByte();\n"
-						^"\tchar* _rom = readRom();\n" in
+	let head = "#include <stdio.h>\n#include \"utils.c\"\n\nint main() {\n"	in
+	let pre_exprs = (List.fold_left 
+									(fun str (var, expr) -> str ^(pre_expr expr))
+									"" p.p_eqs) in
+	let init = "\tinit(_ram);\n"
+				^"\tchar _screenW = readByte();\n"
+				^"\tchar _screenH = readByte();\n"
+				^"\tchar* _rom = readRom();\n"
+				^"\trunKeyThread();\n" in
 	let vars = "\tint _addr;\n" ^ Env.fold (fun var t str -> match t with
 				|	TBit -> str ^ "\tchar " ^ var ^ " = 0;\n"
 				| TBitArray n -> str ^ "\tchar * " ^ var ^ " = (char *) malloc("^(string_of_int n)^");\n"
 				) p.p_vars "" in
-	let pre_exprs = (List.fold_left 
-																(fun str (var, expr) -> str ^(pre_expr expr))
-																"" p.p_eqs) in
 	let exprs = "\n\twhile(1) {\n" ^ (List.fold_left
 																								(fun str (var, expr) -> str ^ (eval_expr var expr))
 																								"" p.p_eqs)
@@ -131,7 +132,7 @@ let sim p =
 																								(fun str (var, expr) -> str ^ (post_expr expr))
 																								"" p.p_eqs)
 																 ^ "\t}\n}" in
-	head ^ vars ^ pre_exprs ^ exprs
+	head ^ pre_exprs ^ init ^ vars ^ exprs
 	
 let compile filename =
   try

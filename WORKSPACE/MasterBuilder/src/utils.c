@@ -1,6 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <pthread.h>
+#include <time.h>
+
+int threadRun;
+char *_ram_ref;
+
+void init(char *_ram) {
+	freopen(NULL, "rb", stdin);
+	_ram_ref = _ram;
+}
 
 char* readRom() {
 	char sizePow;
@@ -9,19 +19,13 @@ char* readRom() {
 	fprintf(stderr, "size=%d\n", size);
 	fflush(stderr);
 	unsigned char* rom = (unsigned char *) malloc(size);
-	fprintf(stderr, "{ROM}\n");
 	read(0, rom, size);
-	for(int i = 0; i < size; i ++)
-		fprintf(stderr, "%x:\t%x\n", i, rom[i]);
 	return rom;
 }
 
 char readByte() {
-	fprintf(stderr, "waiting to read....");
 	char buf;
 	read(0, &buf, 1);
-	fprintf(stderr, "OK[%d]\n", buf);
-	fflush(stderr);
 	return buf;
 }
 
@@ -65,4 +69,35 @@ void rom(char * dest, char * _rom, char wordSize, int _addr) {
 
 void printBitVector(char * vec, int size, char * name) {
 	fprintf(stderr, "%s:\t%x\n", name, toInt(vec, size));
+}
+
+void *keyThread(void *arg) {
+	while(threadRun) {
+		char action = readByte();
+		char key = readByte();
+		if(action == 0x10) {
+			fprintf(stderr, "press: %d\n", key);
+			_ram_ref[0x10005 + key] = 1;
+		} else if(action == 0x20) {
+			fprintf(stderr, "reals: %d\n", key);
+			_ram_ref[0x10005 + key] = 0;
+		} else {
+			fprintf(stderr, "Unknown code: %d\n", action);
+		}
+	}
+	pthread_exit(NULL);
+}
+
+void runKeyThread() {
+	threadRun = 1;
+	pthread_t thread;
+	if (pthread_create(&thread, NULL, keyThread, NULL)) {
+		fprintf(stderr, "Cannot create key thread\n");
+    } else {
+		fprintf(stderr, "key thread started\n");
+	}
+}
+
+void exitKeyThread() {
+	threadRun = 0;
 }

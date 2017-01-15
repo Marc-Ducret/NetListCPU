@@ -14,12 +14,13 @@ public class FrameScreen implements Screen {
 	
 	private char[] buff;
 	private JPanel pan;
+	private JFrame frame;
 	private Font font;
 	
 	private boolean sizeInit = false;
 
 	public void init(int w, int h) {
-		JFrame frame = new JFrame("TongScreen");
+		frame = new JFrame("TongScreen");
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setSize(256, 256);
@@ -62,6 +63,6 @@ public class FrameScreen implements Screen {
 
 	@Override
 	public void addKeyListener(KeyListener list) {
-		pan.addKeyListener(list);
+		frame.addKeyListener(list);
 	}
 }

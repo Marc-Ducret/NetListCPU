@@ -12,7 +12,8 @@ import java.util.List;
 
 public class SimulatorEnv {
 	
-	public static final int EXIT = 0, CHAR = 1, REDRAW = 2;
+	public static final int EXIT = 0x0, CHAR = 0x1, REDRAW = 0x2;
+	public static final int PRESS = 0x10, RELEASE = 0x20;
 	public static boolean debugMode = false;
 
 	public static void main(String[] args) throws IOException {
@@ -37,6 +38,7 @@ public class SimulatorEnv {
 	private final int h;
 	private final char[] buff;
 	private final Screen screen;
+	private KeyTransmiter keyTrans;
 
 	private SimulatorEnv(int w, int h, boolean console) {
 		this.w = w;
@@ -69,6 +71,8 @@ public class SimulatorEnv {
 			out.write(h);
 			writeRom(rom, out);
 			out.flush();
+			keyTrans = new KeyTransmiter(out);
+			screen.addKeyListener(keyTrans);
 			int r;
 			while((r = in.read()) >= 0) {
 				switch(r) {
