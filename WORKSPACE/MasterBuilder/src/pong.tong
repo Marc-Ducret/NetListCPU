@@ -1,0 +1,17 @@
+.vars
+	run x speed
+.prgm	
+@ main
+	run = 1;
+	! run {
+		speed = 0;
+		>key_status 100; speed = -key_res;
+		>key_status 102; speed = speed + key_res;
+		x = x + speed;
+		>draw 5 '0'+1+speed;
+		>draw x-speed '.';
+		>draw x '*';
+		>redraw;
+		>key_status 27; run = 1 - key_res; #27 = escape
+	}
+	>exit;

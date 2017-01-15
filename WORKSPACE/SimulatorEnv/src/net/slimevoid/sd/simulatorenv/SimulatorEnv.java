@@ -78,6 +78,7 @@ public class SimulatorEnv {
 				switch(r) {
 				case EXIT:
 					in.close();
+					keyTrans.close();
 					System.out.println("Program terminated with a clean exit");
 					return;
 				

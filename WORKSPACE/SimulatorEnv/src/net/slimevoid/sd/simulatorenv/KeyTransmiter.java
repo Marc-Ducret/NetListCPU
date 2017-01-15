@@ -44,6 +44,10 @@ public class KeyTransmiter implements KeyListener {
 		deathNotice = e;
 	}
 
+	public void close()	 {
+		deathNotice = new IOException("its all fine ;)");
+	}
+	
 	@Override
 	public void keyTyped(KeyEvent e) {}
 	

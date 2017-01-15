@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.slimevoid.tong.InstrR.Op;
+import net.slimevoid.tong.Natives.NativeVar;
 
 public class Compiler {
 
@@ -89,6 +90,7 @@ public class Compiler {
 	private void compile(DataOutputStream out, PrintStream textAsm) throws IOException {
 		if(!curToken().equals(".vars")) error("Program must start with .vars");
 		List<String> vars = new ArrayList<>();
+		for(NativeVar v : NativeVar.values()) vars.add(v.name().toLowerCase());
 		String tok;
 		while((tok = nextToken()) != null && !tok.startsWith(".")) {
 			if(!isIdent(tok)) error("Invalid identifier: "+tok);
@@ -224,6 +226,7 @@ public class Compiler {
 		} else if(tok.equals("-")) {
 			Register tmp = Register.allocReg();
 			computeExpr(tmp, instrs);
+			instrs.add(new InstrR(Op.LI, 0x0, out));
 			instrs.add(new InstrR(Op.SUB, out, tmp));
 			tmp.free();
 		} else error("Invalid expression");

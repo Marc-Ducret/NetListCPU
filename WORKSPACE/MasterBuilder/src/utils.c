@@ -77,10 +77,10 @@ void *keyThread(void *arg) {
 		char key = readByte();
 		if(action == 0x10) {
 			fprintf(stderr, "press: %d\n", key);
-			_ram_ref[0x10005 + key] = 1;
+			_ram_ref[(0x10005 + key) * 32 + 31] = 1;
 		} else if(action == 0x20) {
 			fprintf(stderr, "reals: %d\n", key);
-			_ram_ref[0x10005 + key] = 0;
+			_ram_ref[(0x10005 + key) * 32 + 31] = 0;
 		} else {
 			fprintf(stderr, "Unknown code: %d\n", action);
 		}
