@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.6.27)  15 JAN 2017 22:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.6.27)  15 JAN 2017 23:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -900,45 +900,45 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 <opcodes.pdf, id=1, 845.1575pt x 597.23125pt>
 File: opcodes.pdf Graphic file (type pdf)
  <use opcodes.pdf>
-Package pdftex.def Info: opcodes.pdf used on input line 92.
+Package pdftex.def Info: opcodes.pdf used on input line 91.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
 File: opcodes.pdf Graphic file (type pdf)
 
 <use opcodes.pdf>
-Package pdftex.def Info: opcodes.pdf used on input line 92.
+Package pdftex.def Info: opcodes.pdf used on input line 91.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
  <opcodes.pdf, id=4, page=1, 845.1575pt x 597.23125pt>
 File: opcodes.pdf Graphic file (type pdf)
 
 <use opcodes.pdf, page 1>
-Package pdftex.def Info: opcodes.pdf, page1 used on input line 92.
+Package pdftex.def Info: opcodes.pdf, page1 used on input line 91.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
 File: opcodes.pdf Graphic file (type pdf)
  <use opcodes.pdf, page 1>
-Package pdftex.def Info: opcodes.pdf, page1 used on input line 92.
+Package pdftex.def Info: opcodes.pdf, page1 used on input line 91.
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 File: opcodes.pdf Graphic file (type pdf)
  <use opcodes.pdf, page 1>
-Package pdftex.def Info: opcodes.pdf, page1 used on input line 92.
+Package pdftex.def Info: opcodes.pdf, page1 used on input line 91.
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
 File: opcodes.pdf Graphic file (type pdf)
 
 <use opcodes.pdf, page 1>
-Package pdftex.def Info: opcodes.pdf, page1 used on input line 92.
+Package pdftex.def Info: opcodes.pdf, page1 used on input line 91.
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
 File: opcodes.pdf Graphic file (type pdf)
  <use opcodes.pdf, page 1>
-Package pdftex.def Info: opcodes.pdf, page1 used on input line 92.
+Package pdftex.def Info: opcodes.pdf, page1 used on input line 91.
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
  [2 <./opcodes.pdf>]
 [3] (./rapport2.aux) ) 
 Here is how much of TeX's memory you used:
  7294 strings out of 493029
  99881 string characters out of 6136234
- 191360 words of memory out of 5000000
+ 191338 words of memory out of 5000000
  10626 multiletter control sequences out of 15000+600000
  66337 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -955,7 +955,7 @@ are/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf
 /fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt1
 0.pfb>
-Output written on rapport2.pdf (3 pages, 261854 bytes).
+Output written on rapport2.pdf (3 pages, 260674 bytes).
 PDF statistics:
  83 PDF objects out of 1000 (max. 8388607)
  58 compressed objects within 1 object stream
