@@ -10,3 +10,5 @@ chmod u+x SimulatorEnv/env
 chmod u+x SimulatorEnv/make
 chmod u+x TongCompiler/tongc
 chmod u+x TongCompiler/make
+chmod u+x ACompiler/assc
+chmod u+x ACompiler/make
